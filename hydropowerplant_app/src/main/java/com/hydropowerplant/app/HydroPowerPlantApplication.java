@@ -1,13 +1,13 @@
-package com.hydropowerplant.root;
+package java.com.hydropowerplant.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HydropowerplantRootApplication {
+public class HydroPowerPlantApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(HydropowerplantRootApplication.class, args);
+		SpringApplication.run(HydroPowerPlantApplication.class, args);
 	}
 
 }
