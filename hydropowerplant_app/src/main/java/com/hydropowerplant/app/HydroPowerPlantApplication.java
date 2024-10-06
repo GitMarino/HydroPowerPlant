@@ -1,4 +1,4 @@
-package java.com.hydropowerplant.app;
+package com.hydropowerplant.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
