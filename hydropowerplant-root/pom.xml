@@ -14,7 +14,7 @@
 	<artifactId>root</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<description>Hydropower plant project with main pom</description>
-	<name>hydropowerplant_root</name>
+	<name>Hydropowerplant Root</name>
 
 	<packaging>pom</packaging>
 	<properties>
