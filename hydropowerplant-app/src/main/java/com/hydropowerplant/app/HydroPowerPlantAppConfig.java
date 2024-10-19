@@ -7,11 +7,10 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-
+@Configuration
 @EntityScan("com.hydropowerplant.waterlevel.entity")
 @EnableJpaRepositories("com.hydropowerplant.waterlevel.repository")
-@Configuration
-@ComponentScan(basePackages = "com.hydropowerplant.waterlevel.manager")
+@ComponentScan(basePackages = "com.hydropowerplant.waterlevel.service")
 @PropertySources({@PropertySource("classpath:database.properties"), @PropertySource("classpath:server.properties")})
 /*@EnableAspectJAutoProxy(proxyTargetClass = true)
 @EnableBatchProcessing*/

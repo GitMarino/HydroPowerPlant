@@ -35,6 +35,12 @@
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.hydropowerplant</groupId>
+            <artifactId>waterlevel</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
 </project>
