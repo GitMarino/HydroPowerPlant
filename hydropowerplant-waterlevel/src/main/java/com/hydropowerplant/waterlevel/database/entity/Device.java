@@ -1,4 +1,4 @@
-package com.hydropowerplant.waterlevel.entity;
+package com.hydropowerplant.waterlevel.database.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -6,8 +6,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-
-import java.util.Objects;
 
 
 @Entity
@@ -39,23 +37,4 @@ public class Device {
         this.name = name;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Device device)) return false;
-        return Objects.equals(id, device.id) && Objects.equals(name, device.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name);
-    }
-
-    @Override
-    public String toString() {
-        return "Device{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
 }
