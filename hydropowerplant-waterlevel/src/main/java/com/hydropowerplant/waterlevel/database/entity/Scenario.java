@@ -1,5 +1,6 @@
 package com.hydropowerplant.waterlevel.database.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,11 +17,54 @@ public class Scenario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "description", nullable = true)
+    private String description;
+
+    @Column(name = "enabled")
+    private boolean enabled;
+
+    @Column(name = "name", nullable = false)
+    private String name;
+
     public Integer getId() {
         return id;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Scenario{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", enabled=" + enabled +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
