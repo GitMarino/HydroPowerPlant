@@ -2,8 +2,6 @@ package com.hydropowerplant.waterlevel.database.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -15,26 +13,36 @@ public class Device {
     public static final String TABLE_NAME = "device";
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @Column(name = "serial", length = 50)
+    private String serial;
 
-    @Column(nullable = false, length = 50)
+    @Column(name = "name", nullable = false, length = 50)
     private String name;
 
-    public Integer getId() {
-        return id;
+    @Column(name = "powerlevel", nullable = false)
+    private Integer powerLevel;
+
+    public String getSerial() {
+        return serial;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public Integer getPowerLevel() {
+        return powerLevel;
+    }
+
+    public void setSerial(String serial) {
+        this.serial = serial;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
+    public void setPowerLevel(Integer powerLevel) {
+        this.powerLevel = powerLevel;
+    }
 }
