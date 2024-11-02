@@ -10,6 +10,8 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = Action.TABLE_NAME)
 public class Action {
@@ -28,7 +30,6 @@ public class Action {
     @PrimaryKeyJoinColumn
     private SmsAction smsAction;
 
-
     @Column(name = "type", nullable = false)
     private String type;
 
@@ -46,5 +47,27 @@ public class Action {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Action action)) return false;
+        return Objects.equals(id, action.id) && Objects.equals(emailAction, action.emailAction) && Objects.equals(smsAction, action.smsAction) && Objects.equals(type, action.type);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, emailAction, smsAction, type);
+    }
+
+    @Override
+    public String toString() {
+        return "Action{" +
+                "id=" + id +
+                ", emailAction=" + emailAction +
+                ", smsAction=" + smsAction +
+                ", type='" + type + '\'' +
+                '}';
     }
 }

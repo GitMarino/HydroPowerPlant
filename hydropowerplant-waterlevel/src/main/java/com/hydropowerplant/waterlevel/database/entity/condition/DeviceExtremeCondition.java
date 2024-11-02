@@ -9,6 +9,8 @@ import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = DeviceExtremeCondition.TABLE_NAME)
 public class DeviceExtremeCondition {
@@ -63,6 +65,29 @@ public class DeviceExtremeCondition {
 
     public void setMinPowerLevel(Integer minPowerLevel) {
         this.minPowerLevel = minPowerLevel;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof DeviceExtremeCondition that)) return false;
+        return Objects.equals(id, that.id) && Objects.equals(condition, that.condition) && Objects.equals(device, that.device) && Objects.equals(maxPowerLevel, that.maxPowerLevel) && Objects.equals(minPowerLevel, that.minPowerLevel);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, condition, device, maxPowerLevel, minPowerLevel);
+    }
+
+    @Override
+    public String toString() {
+        return "DeviceExtremeCondition{" +
+                "id=" + id +
+                ", condition=" + condition +
+                ", device=" + device +
+                ", maxPowerLevel=" + maxPowerLevel +
+                ", minPowerLevel=" + minPowerLevel +
+                '}';
     }
 }
 

@@ -8,6 +8,8 @@ import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = EmailAction.TABLE_NAME)
 public class EmailAction {
@@ -36,12 +38,12 @@ public class EmailAction {
         return id;
     }
 
-    public String getSubject() {
-        return subject;
-    }
-
     public String getAddress() {
         return address;
+    }
+
+    public String getSubject() {
+        return subject;
     }
 
     public String getText() {
@@ -62,5 +64,28 @@ public class EmailAction {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof EmailAction that)) return false;
+        return Objects.equals(id, that.id) && Objects.equals(action, that.action) && Objects.equals(address, that.address) && Objects.equals(subject, that.subject) && Objects.equals(text, that.text);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, action, address, subject, text);
+    }
+
+    @Override
+    public String toString() {
+        return "EmailAction{" +
+                "id=" + id +
+                ", action=" + action +
+                ", address='" + address + '\'' +
+                ", subject='" + subject + '\'' +
+                ", text='" + text + '\'' +
+                '}';
     }
 }

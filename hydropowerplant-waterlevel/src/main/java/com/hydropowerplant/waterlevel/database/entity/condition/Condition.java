@@ -10,6 +10,8 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = Condition.TABLE_NAME)
 public class Condition {
@@ -42,5 +44,26 @@ public class Condition {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Condition condition)) return false;
+        return Objects.equals(id, condition.id) && Objects.equals(deviceExtremeCondition, condition.deviceExtremeCondition) && Objects.equals(type, condition.type);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, deviceExtremeCondition, type);
+    }
+
+    @Override
+    public String toString() {
+        return "Condition{" +
+                "id=" + id +
+                ", deviceExtremeCondition=" + deviceExtremeCondition +
+                ", type='" + type + '\'' +
+                '}';
     }
 }

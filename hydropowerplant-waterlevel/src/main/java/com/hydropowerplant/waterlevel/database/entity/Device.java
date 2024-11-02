@@ -45,4 +45,13 @@ public class Device {
     public void setPowerLevel(Integer powerLevel) {
         this.powerLevel = powerLevel;
     }
+
+    @Override
+    public String toString() {
+        return "Device{" +
+                "serial='" + serial + '\'' +
+                ", name='" + name + '\'' +
+                ", powerLevel=" + powerLevel +
+                '}';
+    }
 }
