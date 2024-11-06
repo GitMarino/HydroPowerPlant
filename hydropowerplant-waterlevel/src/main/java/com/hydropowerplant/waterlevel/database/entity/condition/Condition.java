@@ -23,15 +23,26 @@ public class Condition {
     @Column(name = "id")
     private Integer id;
 
-    @OneToOne(mappedBy = "condition", cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn
-    private DeviceExtremeCondition deviceExtremeCondition;
+    @Column(name = "name", nullable = false)
+    private String name;
 
     @Column(name = "type", nullable = false)
     private String type;
 
+    @OneToOne(mappedBy = "condition", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private PowerLevelCondition powerLevelCondition;
+
+    @OneToOne(mappedBy = "condition", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private PowerLevelLimitCondition powerLevelLimitCondition;
+
     public Integer getId() {
         return id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public String getType() {
@@ -42,6 +53,10 @@ public class Condition {
         this.id = id;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public void setType(String type) {
         this.type = type;
     }
@@ -50,20 +65,22 @@ public class Condition {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Condition condition)) return false;
-        return Objects.equals(id, condition.id) && Objects.equals(deviceExtremeCondition, condition.deviceExtremeCondition) && Objects.equals(type, condition.type);
+        return Objects.equals(id, condition.id) && Objects.equals(name, condition.name) && Objects.equals(type, condition.type) && Objects.equals(powerLevelCondition, condition.powerLevelCondition) && Objects.equals(powerLevelLimitCondition, condition.powerLevelLimitCondition);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, deviceExtremeCondition, type);
+        return Objects.hash(id, name, type, powerLevelCondition, powerLevelLimitCondition);
     }
 
     @Override
     public String toString() {
         return "Condition{" +
                 "id=" + id +
-                ", deviceExtremeCondition=" + deviceExtremeCondition +
+                ", name='" + name + '\'' +
                 ", type='" + type + '\'' +
+                ", powerLevelCondition=" + powerLevelCondition +
+                ", powerLevelLimitCondition=" + powerLevelLimitCondition +
                 '}';
     }
 }

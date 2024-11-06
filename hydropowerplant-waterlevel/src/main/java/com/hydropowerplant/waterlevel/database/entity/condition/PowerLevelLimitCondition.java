@@ -5,6 +5,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -12,10 +13,10 @@ import jakarta.persistence.Table;
 import java.util.Objects;
 
 @Entity
-@Table(name = DeviceExtremeCondition.TABLE_NAME)
-public class DeviceExtremeCondition {
+@Table(name = PowerLevelLimitCondition.TABLE_NAME)
+public class PowerLevelLimitCondition {
 
-    public static final String TABLE_NAME = "device_extreme_condition";
+    public static final String TABLE_NAME = "power_level_limit_condition";
 
     @Id
     @Column(name = "condition_id")
@@ -26,7 +27,7 @@ public class DeviceExtremeCondition {
     @JoinColumn(name = "condition_id")
     private Condition condition;
 
-    @OneToOne
+    @ManyToOne
     private Device device;
 
     @Column(name = "maxpowerlevel", nullable = false)
@@ -70,7 +71,7 @@ public class DeviceExtremeCondition {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof DeviceExtremeCondition that)) return false;
+        if (!(o instanceof PowerLevelLimitCondition that)) return false;
         return Objects.equals(id, that.id) && Objects.equals(condition, that.condition) && Objects.equals(device, that.device) && Objects.equals(maxPowerLevel, that.maxPowerLevel) && Objects.equals(minPowerLevel, that.minPowerLevel);
     }
 
@@ -81,7 +82,7 @@ public class DeviceExtremeCondition {
 
     @Override
     public String toString() {
-        return "DeviceExtremeCondition{" +
+        return "PowerLevelLimitCondition{" +
                 "id=" + id +
                 ", condition=" + condition +
                 ", device=" + device +
