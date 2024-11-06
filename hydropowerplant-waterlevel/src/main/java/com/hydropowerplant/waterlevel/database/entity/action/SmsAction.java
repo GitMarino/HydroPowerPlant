@@ -25,10 +25,10 @@ public class SmsAction {
     @JoinColumn(name = "action_id")
     private Action action;
 
-    @Column(name = "phonenumber")
+    @Column(name = "phonenumber", nullable = false)
     private String phoneNumber;
 
-    @Column(name = "text")
+    @Column(name = "text", nullable = false)
     private String text;
 
     public Integer getId() {

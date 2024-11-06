@@ -25,13 +25,13 @@ public class EmailAction {
     @JoinColumn(name = "action_id")
     private Action action;
 
-    @Column(name = "address")
+    @Column(name = "address", nullable = false)
     private String address;
 
     @Column(name = "subject")
     private String subject;
 
-    @Column(name = "text")
+    @Column(name = "text", nullable = false)
     private String text;
 
     public Integer getId() {
