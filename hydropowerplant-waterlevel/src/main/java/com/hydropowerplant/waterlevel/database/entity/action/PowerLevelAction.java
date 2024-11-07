@@ -1,11 +1,9 @@
 package com.hydropowerplant.waterlevel.database.entity.action;
 
-import com.hydropowerplant.waterlevel.database.entity.Device;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -27,18 +25,11 @@ public class PowerLevelAction {
     @JoinColumn(name = "action_id")
     private Action action;
 
-    @ManyToOne
-    private Device device;
-
     @Column(name = "formula", nullable = false)
     private String formula;
 
     public Integer getId() {
         return id;
-    }
-
-    public Device getDevice() {
-        return device;
     }
 
     public String getFormula() {
@@ -49,10 +40,6 @@ public class PowerLevelAction {
         this.id = id;
     }
 
-    public void setDevice(Device device) {
-        this.device = device;
-    }
-
     public void setFormula(String formula) {
         this.formula = formula;
     }
@@ -61,12 +48,12 @@ public class PowerLevelAction {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof PowerLevelAction that)) return false;
-        return Objects.equals(id, that.id) && Objects.equals(action, that.action) && Objects.equals(device, that.device) && Objects.equals(formula, that.formula);
+        return Objects.equals(id, that.id) && Objects.equals(action, that.action) && Objects.equals(formula, that.formula);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, action, device, formula);
+        return Objects.hash(id, action, formula);
     }
 
     @Override
@@ -74,7 +61,6 @@ public class PowerLevelAction {
         return "PowerLevelAction{" +
                 "id=" + id +
                 ", action=" + action +
-                ", device=" + device +
                 ", formula='" + formula + '\'' +
                 '}';
     }
