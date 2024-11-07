@@ -1,11 +1,9 @@
 package com.hydropowerplant.waterlevel.database.entity.condition;
 
-import com.hydropowerplant.waterlevel.database.entity.Device;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -27,9 +25,6 @@ public class PowerLevelLimitCondition {
     @JoinColumn(name = "condition_id")
     private Condition condition;
 
-    @ManyToOne
-    private Device device;
-
     @Column(name = "maxpowerlevel", nullable = false)
     private Integer maxPowerLevel;
 
@@ -38,10 +33,6 @@ public class PowerLevelLimitCondition {
 
     public Integer getId() {
         return id;
-    }
-
-    public Device getDevice() {
-        return device;
     }
 
     public Integer getMaxPowerLevel() {
@@ -56,10 +47,6 @@ public class PowerLevelLimitCondition {
         this.id = id;
     }
 
-    public void setDevice(Device device) {
-        this.device = device;
-    }
-
     public void setMaxPowerLevel(Integer maxPowerLevel) {
         this.maxPowerLevel = maxPowerLevel;
     }
@@ -72,12 +59,12 @@ public class PowerLevelLimitCondition {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof PowerLevelLimitCondition that)) return false;
-        return Objects.equals(id, that.id) && Objects.equals(condition, that.condition) && Objects.equals(device, that.device) && Objects.equals(maxPowerLevel, that.maxPowerLevel) && Objects.equals(minPowerLevel, that.minPowerLevel);
+        return Objects.equals(id, that.id) && Objects.equals(condition, that.condition) && Objects.equals(maxPowerLevel, that.maxPowerLevel) && Objects.equals(minPowerLevel, that.minPowerLevel);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, condition, device, maxPowerLevel, minPowerLevel);
+        return Objects.hash(id, condition, maxPowerLevel, minPowerLevel);
     }
 
     @Override
@@ -85,7 +72,6 @@ public class PowerLevelLimitCondition {
         return "PowerLevelLimitCondition{" +
                 "id=" + id +
                 ", condition=" + condition +
-                ", device=" + device +
                 ", maxPowerLevel=" + maxPowerLevel +
                 ", minPowerLevel=" + minPowerLevel +
                 '}';
