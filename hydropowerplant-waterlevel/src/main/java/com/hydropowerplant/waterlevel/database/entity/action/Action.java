@@ -52,6 +52,18 @@ public class Action {
         return type;
     }
 
+    public EmailAction getEmailAction() {
+        return emailAction;
+    }
+
+    public SmsAction getSmsAction() {
+        return smsAction;
+    }
+
+    public PowerLevelAction getPowerLevelAction() {
+        return powerLevelAction;
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -62,6 +74,18 @@ public class Action {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public void setEmailAction(EmailAction emailAction) {
+        this.emailAction = emailAction;
+    }
+
+    public void setSmsAction(SmsAction smsAction) {
+        this.smsAction = smsAction;
+    }
+
+    public void setPowerLevelAction(PowerLevelAction powerLevelAction) {
+        this.powerLevelAction = powerLevelAction;
     }
 
     @Override

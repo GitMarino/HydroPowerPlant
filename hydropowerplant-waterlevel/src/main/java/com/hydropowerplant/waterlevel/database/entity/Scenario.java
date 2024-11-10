@@ -17,10 +17,10 @@ public class Scenario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "description", nullable = true)
+    @Column(name = "description")
     private String description;
 
-    @Column(name = "enabled")
+    @Column(name = "enabled", nullable = false)
     private boolean enabled;
 
     @Column(name = "name", nullable = false)
