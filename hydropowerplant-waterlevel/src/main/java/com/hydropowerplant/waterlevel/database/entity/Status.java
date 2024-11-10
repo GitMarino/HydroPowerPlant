@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
-@Table(name = Scenario.TABLE_NAME)
+@Table(name = Status.TABLE_NAME)
 public class Status {
 
     public static final String TABLE_NAME = "status";

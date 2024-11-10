@@ -12,7 +12,7 @@ public interface PowerLevelConditionRepository extends JpaRepository<PowerLevelC
 
     @Query("SELECT c.id "
             + "FROM PowerLevelLimitCondition c "
-            + "join DevicePowerLevelConditionRelationship dc on c.id=dc.id.powerlevelcondition.id "
+            + "join DevicePowerLevelConditionRelationship dc on c.id=dc.id.powerLevelCondition.id "
             + "WHERE dc.id.device.serial=?1")
     List<Integer> findPowerLevelConditionIdsByDevice(String deviceSerial);
 }
