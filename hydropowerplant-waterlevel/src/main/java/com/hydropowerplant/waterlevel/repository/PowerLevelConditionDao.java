@@ -1,4 +1,4 @@
-package com.hydropowerplant.waterlevel.dao;
+package com.hydropowerplant.waterlevel.repository;
 
 import com.hydropowerplant.waterlevel.database.entity.condition.PowerLevelCondition;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface PowerLevelConditionRepository extends JpaRepository<PowerLevelCondition, Integer> {
+public interface PowerLevelConditionDao extends JpaRepository<PowerLevelCondition, Integer> {
 
     @Query("SELECT c.id "
             + "FROM PowerLevelLimitCondition c "

@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
 @EntityScan("com.hydropowerplant.waterlevel.database")
-@EnableJpaRepositories("com.hydropowerplant.waterlevel.dao")
+@EnableJpaRepositories("com.hydropowerplant.waterlevel.repository")
 @ComponentScan(basePackages = "com.hydropowerplant.waterlevel.businesslogic")
 @PropertySources({@PropertySource("classpath:database.properties"), @PropertySource("classpath:server.properties")})
 /*@EnableAspectJAutoProxy(proxyTargetClass = true)

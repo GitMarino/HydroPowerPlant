@@ -1,9 +1,9 @@
-package com.hydropowerplant.waterlevel.dao;
+package com.hydropowerplant.waterlevel.repository;
 
 import com.hydropowerplant.waterlevel.database.entity.Status;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface StatusRepository extends JpaRepository<Status, Integer> {
+public interface StatusDao extends JpaRepository<Status, Integer> {
 }

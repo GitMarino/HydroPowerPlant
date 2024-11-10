@@ -1,13 +1,14 @@
-package com.hydropowerplant.waterlevel.businesslogic.service;
+package com.hydropowerplant.waterlevel.businesslogic.service.condition;
 
 import com.hydropowerplant.waterlevel.businesslogic.exception.ItemNotFoundException;
-import com.hydropowerplant.waterlevel.dao.DeviceRepository;
-import com.hydropowerplant.waterlevel.dao.PowerLevelConditionRepository;
-import com.hydropowerplant.waterlevel.dao.PowerLevelLimitConditionRepository;
-import com.hydropowerplant.waterlevel.dao.StatusRepository;
+import com.hydropowerplant.waterlevel.businesslogic.service.scenario.ScenarioBo;
 import com.hydropowerplant.waterlevel.database.entity.Device;
 import com.hydropowerplant.waterlevel.database.entity.Status;
 import com.hydropowerplant.waterlevel.database.entity.condition.PowerLevelLimitCondition;
+import com.hydropowerplant.waterlevel.repository.DeviceDao;
+import com.hydropowerplant.waterlevel.repository.PowerLevelConditionDao;
+import com.hydropowerplant.waterlevel.repository.PowerLevelLimitConditionDao;
+import com.hydropowerplant.waterlevel.repository.StatusDao;
 import com.hydropowerplant.waterlevel.web.dto.DeviceStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,19 +18,22 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ConditionServiceImpl implements ConditionService {
+public class ConditionBoImpl implements ConditionBo {
 
     @Autowired
-    private DeviceRepository deviceDao;
+    private DeviceDao deviceDao;
 
     @Autowired
-    private PowerLevelConditionRepository powerLevelConditionDao;
+    private PowerLevelConditionDao powerLevelConditionDao;
 
     @Autowired
-    private PowerLevelLimitConditionRepository powerLevelLimitConditionDao;
+    private PowerLevelLimitConditionDao powerLevelLimitConditionDao;
 
     @Autowired
-    private StatusRepository statusDao;
+    private StatusDao statusDao;
+
+    @Autowired
+    private ScenarioBo scenarioBo;
 
 
     public void manageDevicePowerLevelCondition(DeviceStatus deviceStatus) {
@@ -40,7 +44,7 @@ public class ConditionServiceImpl implements ConditionService {
         }
         List<Integer> conditions = getConditionsByDevice(deviceSerial, deviceStatus.getPowerLevel());
         if (!conditions.isEmpty()) {
-            //pass conditions to scenario method
+            scenarioBo.startActions(conditions);
         }
         statusDao.save(new Status(optionalDevice.get(), deviceStatus.getPowerLevel(), LocalDateTime.parse(deviceStatus.getRecordedAt())));
     }
