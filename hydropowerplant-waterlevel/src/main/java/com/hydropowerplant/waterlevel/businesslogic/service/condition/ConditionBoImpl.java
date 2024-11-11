@@ -3,15 +3,15 @@ package com.hydropowerplant.waterlevel.businesslogic.service.condition;
 import com.hydropowerplant.waterlevel.businesslogic.exception.ItemNotFoundException;
 import com.hydropowerplant.waterlevel.businesslogic.service.scenario.ScenarioBo;
 import com.hydropowerplant.waterlevel.database.entity.Device;
-import com.hydropowerplant.waterlevel.database.entity.Status;
-import com.hydropowerplant.waterlevel.database.entity.condition.PowerLevelLimitCondition;
+import com.hydropowerplant.waterlevel.database.entity.DeviceLog;
 import com.hydropowerplant.waterlevel.repository.DeviceDao;
+import com.hydropowerplant.waterlevel.repository.DeviceLogDao;
 import com.hydropowerplant.waterlevel.repository.PowerLevelConditionDao;
 import com.hydropowerplant.waterlevel.repository.PowerLevelLimitConditionDao;
-import com.hydropowerplant.waterlevel.repository.StatusDao;
 import com.hydropowerplant.waterlevel.web.dto.DeviceStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -30,31 +30,32 @@ public class ConditionBoImpl implements ConditionBo {
     private PowerLevelLimitConditionDao powerLevelLimitConditionDao;
 
     @Autowired
-    private StatusDao statusDao;
+    private DeviceLogDao deviceLogDao;
 
     @Autowired
     private ScenarioBo scenarioBo;
-
-
+    
+    @Transactional
     public void manageDevicePowerLevelCondition(DeviceStatus deviceStatus) {
         String deviceSerial = deviceStatus.getSerial();
         Optional<Device> optionalDevice = deviceDao.findBySerial(deviceSerial);
         if (optionalDevice.isEmpty()) {
             throw new ItemNotFoundException("No device found with serial " + deviceSerial);
         }
-        List<Integer> conditions = getConditionsByDevice(deviceSerial, deviceStatus.getPowerLevel());
-        if (!conditions.isEmpty()) {
-            scenarioBo.startActions(conditions);
-        }
-        statusDao.save(new Status(optionalDevice.get(), deviceStatus.getPowerLevel(), LocalDateTime.parse(deviceStatus.getRecordedAt())));
+        Integer devicePowerLevel = deviceStatus.getPowerLevel();
+        Device device = optionalDevice.get();
+        device.setPowerLevel(devicePowerLevel);
+
+        deviceDao.save(device);
+        deviceLogDao.save(new DeviceLog(device, devicePowerLevel, LocalDateTime.parse(deviceStatus.getRecordedAt())));
+        performScenarios(deviceSerial, devicePowerLevel);
     }
 
-    private List<Integer> getConditionsByDevice(String deviceSerial, Integer devicePowerLevel) {
-        List<Integer> conditions = powerLevelConditionDao.findPowerLevelConditionIdsByDevice(deviceSerial);
-        conditions.addAll(powerLevelLimitConditionDao.findAllByDevice(deviceSerial).stream()
-                .filter(powerLevelLimitCondition -> powerLevelLimitCondition.getMinPowerLevel() < devicePowerLevel
-                        && powerLevelLimitCondition.getMaxPowerLevel() > devicePowerLevel)
-                .map(PowerLevelLimitCondition::getId).toList());
-        return conditions;
+    private void performScenarios(String deviceSerial, Integer devicePowerLevel) {
+        List<Integer> conditions = powerLevelConditionDao.findAllByDevice(deviceSerial);
+        conditions.addAll(powerLevelLimitConditionDao.findAllByDeviceSerialAndPowerLevel(deviceSerial, devicePowerLevel));
+        if (!conditions.isEmpty()) {
+            scenarioBo.performActions(conditions);
+        }
     }
 }

@@ -10,9 +10,8 @@ import java.util.List;
 @Repository
 public interface PowerLevelConditionDao extends JpaRepository<PowerLevelCondition, Integer> {
 
-    @Query("SELECT c.id "
-            + "FROM PowerLevelLimitCondition c "
-            + "join DevicePowerLevelConditionRelationship dc on c.id=dc.id.powerLevelCondition.id "
-            + "WHERE dc.id.device.serial=?1")
-    List<Integer> findPowerLevelConditionIdsByDevice(String deviceSerial);
+    @Query("SELECT id.powerLevelCondition.id "
+            + "FROM DevicePowerLevelConditionRelationship "
+            + "WHERE id.device.serial=?1")
+    List<Integer> findAllByDevice(String deviceSerial);
 }
