@@ -12,10 +12,10 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
-@Table(name = Status.TABLE_NAME)
-public class Status {
+@Table(name = DeviceLog.TABLE_NAME)
+public class DeviceLog {
 
-    public static final String TABLE_NAME = "status";
+    public static final String TABLE_NAME = "device_log";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +30,7 @@ public class Status {
     @Column(name = "recordedat", nullable = false)
     private LocalDateTime recordedAt;
 
-    public Status(Device device, Integer powerLevel, LocalDateTime recordedAt) {
+    public DeviceLog(Device device, Integer powerLevel, LocalDateTime recordedAt) {
         this.device = device;
         this.powerLevel = powerLevel;
         this.recordedAt = recordedAt;
@@ -71,8 +71,8 @@ public class Status {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Status status)) return false;
-        return Objects.equals(id, status.id) && Objects.equals(device, status.device) && Objects.equals(powerLevel, status.powerLevel) && Objects.equals(recordedAt, status.recordedAt);
+        if (!(o instanceof DeviceLog deviceLog)) return false;
+        return Objects.equals(id, deviceLog.id) && Objects.equals(device, deviceLog.device) && Objects.equals(powerLevel, deviceLog.powerLevel) && Objects.equals(recordedAt, deviceLog.recordedAt);
     }
 
     @Override
@@ -82,7 +82,7 @@ public class Status {
 
     @Override
     public String toString() {
-        return "Status{" +
+        return "DeviceLog{" +
                 "id=" + id +
                 ", device=" + device +
                 ", powerLevel=" + powerLevel +
