@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface ScenarioBo {
 
-    void startActions(List<Integer> conditionIds);
+    void performActions(List<Integer> conditionIds);
 
 }

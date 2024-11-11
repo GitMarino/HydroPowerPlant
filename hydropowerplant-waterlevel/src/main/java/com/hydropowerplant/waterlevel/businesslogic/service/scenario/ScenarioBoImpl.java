@@ -18,12 +18,12 @@ public class ScenarioBoImpl implements ScenarioBo {
     @Autowired
     private ActionBoFactory actionBoFactory;
 
-    public void startActions(List<Integer> conditionIds) {
+    public void performActions(List<Integer> conditionIds) {
         actionDao.findAllByConditions(conditionIds).
-                parallelStream().forEach(this::startAction);
+                parallelStream().forEach(this::performAction);
     }
 
-    private void startAction(Action action) {
+    private void performAction(Action action) {
         ActionContext actionContext = new ActionContext();
         switch (action.getType()) {
             case "EMAIL":
