@@ -1,7 +1,7 @@
-package com.hydropowerplant.waterlevel.database.key;
+package com.hydropowerplant.waterlevel.entity.relationship.key;
 
-import com.hydropowerplant.waterlevel.database.entity.Device;
-import com.hydropowerplant.waterlevel.database.entity.condition.PowerLevelCondition;
+import com.hydropowerplant.waterlevel.entity.Device;
+import com.hydropowerplant.waterlevel.entity.condition.PowerLevelCondition;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;

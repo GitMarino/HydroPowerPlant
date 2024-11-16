@@ -1,6 +1,6 @@
-package com.hydropowerplant.waterlevel.database.relationship;
+package com.hydropowerplant.waterlevel.entity.relationship;
 
-import com.hydropowerplant.waterlevel.database.key.ScenarioActionRelationshipKey;
+import com.hydropowerplant.waterlevel.entity.relationship.key.ScenarioActionRelationshipKey;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

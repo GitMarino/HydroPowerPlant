@@ -1,4 +1,4 @@
-package com.hydropowerplant.waterlevel.database.entity;
+package com.hydropowerplant.waterlevel.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
