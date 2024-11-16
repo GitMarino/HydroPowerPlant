@@ -1,4 +1,4 @@
-package com.hydropowerplant.waterlevel.web.controller;
+package com.hydropowerplant.waterlevel.ws.controller;
 
 import com.hydropowerplant.waterlevel.businesslogic.exception.ItemNotFoundException;
 import org.springframework.http.HttpStatus;

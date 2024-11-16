@@ -1,7 +1,7 @@
-package com.hydropowerplant.waterlevel.web.controller;
+package com.hydropowerplant.waterlevel.ws.controller;
 
-import com.hydropowerplant.waterlevel.businesslogic.service.condition.ConditionBo;
-import com.hydropowerplant.waterlevel.web.dto.DeviceStatus;
+import com.hydropowerplant.waterlevel.businesslogic.bo.ConditionBo;
+import com.hydropowerplant.waterlevel.ws.dto.DeviceStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

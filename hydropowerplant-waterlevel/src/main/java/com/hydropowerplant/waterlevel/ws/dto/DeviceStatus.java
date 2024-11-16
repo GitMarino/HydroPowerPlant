@@ -1,4 +1,4 @@
-package com.hydropowerplant.waterlevel.web.dto;
+package com.hydropowerplant.waterlevel.ws.dto;
 
 import java.io.Serial;
 import java.io.Serializable;
