@@ -1,4 +1,4 @@
-package com.hydropowerplant.waterlevel.businesslogic.service.scenario;
+package com.hydropowerplant.waterlevel.businesslogic.bo;
 
 import java.util.List;
 
