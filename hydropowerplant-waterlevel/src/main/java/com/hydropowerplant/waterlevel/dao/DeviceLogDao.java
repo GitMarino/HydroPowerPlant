@@ -1,6 +1,6 @@
-package com.hydropowerplant.waterlevel.repository;
+package com.hydropowerplant.waterlevel.dao;
 
-import com.hydropowerplant.waterlevel.database.entity.DeviceLog;
+import com.hydropowerplant.waterlevel.entity.DeviceLog;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

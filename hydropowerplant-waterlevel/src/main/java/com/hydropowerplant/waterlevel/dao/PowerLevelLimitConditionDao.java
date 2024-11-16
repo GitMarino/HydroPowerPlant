@@ -1,6 +1,6 @@
-package com.hydropowerplant.waterlevel.repository;
+package com.hydropowerplant.waterlevel.dao;
 
-import com.hydropowerplant.waterlevel.database.entity.condition.PowerLevelLimitCondition;
+import com.hydropowerplant.waterlevel.entity.condition.PowerLevelLimitCondition;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -14,6 +14,6 @@ public interface PowerLevelLimitConditionDao extends JpaRepository<PowerLevelLim
             + "FROM PowerLevelLimitCondition c "
             + "join DevicePowerLevelLimitConditionRelationship dc on c.id=dc.id.powerLevelLimitCondition.id "
             + "WHERE dc.id.device.serial=?1 and (?2<c.minPowerLevel or c.maxPowerLevel>?2)")
-    List<Integer> findAllByDeviceSerialAndPowerLevel(String deviceSerial, int devicePowerLevel);
+    List<Integer> findByDeviceSerialAndPowerLevel(String deviceSerial, int devicePowerLevel);
 
 }
