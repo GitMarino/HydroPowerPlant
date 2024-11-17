@@ -4,6 +4,6 @@ import com.hydropowerplant.waterlevel.entity.action.Action;
 
 public interface ActionBo {
 
-    void start(Action action);
+    <T extends Action> void start(T action);
 
 }
