@@ -7,6 +7,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = Scenario.TABLE_NAME)
 public class Scenario {
@@ -25,6 +27,13 @@ public class Scenario {
 
     @Column(name = "name", nullable = false)
     private String name;
+
+    public Scenario(Integer id, String description, boolean enabled, String name) {
+        this.id = id;
+        this.description = description;
+        this.enabled = enabled;
+        this.name = name;
+    }
 
     public Integer getId() {
         return id;
@@ -56,6 +65,18 @@ public class Scenario {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Scenario scenario)) return false;
+        return enabled == scenario.enabled && Objects.equals(id, scenario.id) && Objects.equals(description, scenario.description) && Objects.equals(name, scenario.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, description, enabled, name);
     }
 
     @Override

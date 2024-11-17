@@ -19,6 +19,11 @@ public class ScenarioActionRelationshipKey {
     @JoinColumn(name = "scenario_id", nullable = false)
     Scenario scenario;
 
+    public ScenarioActionRelationshipKey(Action action, Scenario scenario) {
+        this.action = action;
+        this.scenario = scenario;
+    }
+
     public Action getAction() {
         return action;
     }

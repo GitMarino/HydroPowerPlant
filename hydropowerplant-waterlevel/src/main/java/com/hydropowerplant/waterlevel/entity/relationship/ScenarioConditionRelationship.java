@@ -14,6 +14,10 @@ public class ScenarioConditionRelationship {
     @EmbeddedId
     ScenarioConditionRelationshipKey id;
 
+    public ScenarioConditionRelationship(ScenarioConditionRelationshipKey id) {
+        this.id = id;
+    }
+
     public ScenarioConditionRelationshipKey getId() {
         return id;
     }

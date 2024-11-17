@@ -14,6 +14,10 @@ public class ScenarioActionRelationship {
     @EmbeddedId
     ScenarioActionRelationshipKey id;
 
+    public ScenarioActionRelationship(ScenarioActionRelationshipKey id) {
+        this.id = id;
+    }
+
     public ScenarioActionRelationshipKey getId() {
         return id;
     }
