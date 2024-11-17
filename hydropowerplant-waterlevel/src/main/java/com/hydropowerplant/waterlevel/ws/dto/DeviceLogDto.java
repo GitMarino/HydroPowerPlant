@@ -4,14 +4,14 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class DeviceStatus implements Serializable {
+public class DeviceLogDto implements Serializable {
 
     @Serial
     private static final long serialVersionUID = -841289762445079666L;
 
     private String serial;
 
-    private Integer powerLevel;
+    private Double powerLevel;
 
     private String recordedAt;
 
@@ -19,7 +19,7 @@ public class DeviceStatus implements Serializable {
         return serial;
     }
 
-    public Integer getPowerLevel() {
+    public Double getPowerLevel() {
         return powerLevel;
     }
 
@@ -31,7 +31,7 @@ public class DeviceStatus implements Serializable {
         this.serial = serial;
     }
 
-    public void setPowerLevel(Integer powerLevel) {
+    public void setPowerLevel(Double powerLevel) {
         this.powerLevel = powerLevel;
     }
 
@@ -42,7 +42,7 @@ public class DeviceStatus implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof DeviceStatus that)) return false;
+        if (!(o instanceof DeviceLogDto that)) return false;
         return Objects.equals(serial, that.serial) && Objects.equals(powerLevel, that.powerLevel) && Objects.equals(recordedAt, that.recordedAt);
     }
 
@@ -53,7 +53,7 @@ public class DeviceStatus implements Serializable {
 
     @Override
     public String toString() {
-        return "DeviceStatus{" +
+        return "DeviceLogDto{" +
                 "serial='" + serial + '\'' +
                 ", powerLevel=" + powerLevel +
                 ", recordedAt='" + recordedAt + '\'' +
