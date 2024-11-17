@@ -26,20 +26,20 @@ public class PowerLevelLimitCondition {
     private Condition condition;
 
     @Column(name = "maxpowerlevel", nullable = false)
-    private Integer maxPowerLevel;
+    private double maxPowerLevel;
 
     @Column(name = "minpowerlevel", nullable = false)
-    private Integer minPowerLevel;
+    private double minPowerLevel;
 
     public Integer getId() {
         return id;
     }
 
-    public Integer getMaxPowerLevel() {
+    public double getMaxPowerLevel() {
         return maxPowerLevel;
     }
 
-    public Integer getMinPowerLevel() {
+    public double getMinPowerLevel() {
         return minPowerLevel;
     }
 
@@ -47,11 +47,11 @@ public class PowerLevelLimitCondition {
         this.id = id;
     }
 
-    public void setMaxPowerLevel(Integer maxPowerLevel) {
+    public void setMaxPowerLevel(double maxPowerLevel) {
         this.maxPowerLevel = maxPowerLevel;
     }
 
-    public void setMinPowerLevel(Integer minPowerLevel) {
+    public void setMinPowerLevel(double minPowerLevel) {
         this.minPowerLevel = minPowerLevel;
     }
 
@@ -59,7 +59,7 @@ public class PowerLevelLimitCondition {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof PowerLevelLimitCondition that)) return false;
-        return Objects.equals(id, that.id) && Objects.equals(condition, that.condition) && Objects.equals(maxPowerLevel, that.maxPowerLevel) && Objects.equals(minPowerLevel, that.minPowerLevel);
+        return Double.compare(maxPowerLevel, that.maxPowerLevel) == 0 && Double.compare(minPowerLevel, that.minPowerLevel) == 0 && Objects.equals(id, that.id) && Objects.equals(condition, that.condition);
     }
 
     @Override

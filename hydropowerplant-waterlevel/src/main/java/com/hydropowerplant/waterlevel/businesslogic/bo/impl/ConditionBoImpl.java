@@ -3,11 +3,11 @@ package com.hydropowerplant.waterlevel.businesslogic.bo.impl;
 import com.hydropowerplant.waterlevel.businesslogic.bo.ConditionBo;
 import com.hydropowerplant.waterlevel.businesslogic.bo.DeviceBo;
 import com.hydropowerplant.waterlevel.businesslogic.bo.ScenarioBo;
-import com.hydropowerplant.waterlevel.dao.PowerLevelConditionDao;
-import com.hydropowerplant.waterlevel.dao.PowerLevelLimitConditionDao;
+import com.hydropowerplant.waterlevel.dao.condition.PowerLevelConditionDao;
+import com.hydropowerplant.waterlevel.dao.condition.PowerLevelLimitConditionDao;
 import com.hydropowerplant.waterlevel.entity.Device;
 import com.hydropowerplant.waterlevel.entity.DeviceLog;
-import com.hydropowerplant.waterlevel.ws.dto.DeviceStatus;
+import com.hydropowerplant.waterlevel.ws.dto.DeviceLogDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,18 +29,18 @@ public class ConditionBoImpl implements ConditionBo {
     @Autowired
     private ScenarioBo scenarioBo;
 
-    public void manageDevicePowerLevelCondition(DeviceStatus deviceStatus) {
-        String deviceSerial = deviceStatus.getSerial();
-        Integer devicePowerLevel = deviceStatus.getPowerLevel();
+    public void manageDevicePowerLevelCondition(DeviceLogDto deviceLogDto) {
+        String deviceSerial = deviceLogDto.getSerial();
+        double devicePowerLevel = deviceLogDto.getPowerLevel();
 
         Device device = deviceBo.getDeviceBySerial(deviceSerial);
         device.setPowerLevel(devicePowerLevel);
 
-        deviceBo.saveDeviceAndLog(device, new DeviceLog(device, devicePowerLevel, LocalDateTime.parse(deviceStatus.getRecordedAt())));
+        deviceBo.saveDeviceAndLog(device, new DeviceLog(null, device, devicePowerLevel, LocalDateTime.parse(deviceLogDto.getRecordedAt())));
         performScenarios(deviceSerial, devicePowerLevel);
     }
 
-    private void performScenarios(String deviceSerial, Integer devicePowerLevel) {
+    private void performScenarios(String deviceSerial, double devicePowerLevel) {
         List<Integer> conditions = powerLevelConditionDao.findByDeviceSerial(deviceSerial);
         conditions.addAll(powerLevelLimitConditionDao.findByDeviceSerialAndPowerLevel(deviceSerial, devicePowerLevel));
         if (!conditions.isEmpty()) {

@@ -25,12 +25,13 @@ public class DeviceLog {
     private Device device;
 
     @Column(name = "powerlevel", nullable = false)
-    private Integer powerLevel;
+    private double powerLevel;
 
     @Column(name = "recordedat", nullable = false)
     private LocalDateTime recordedAt;
 
-    public DeviceLog(Device device, Integer powerLevel, LocalDateTime recordedAt) {
+    public DeviceLog(Integer id, Device device, double powerLevel, LocalDateTime recordedAt) {
+        this.id = id;
         this.device = device;
         this.powerLevel = powerLevel;
         this.recordedAt = recordedAt;
@@ -44,7 +45,7 @@ public class DeviceLog {
         return device;
     }
 
-    public Integer getPowerLevel() {
+    public double getPowerLevel() {
         return powerLevel;
     }
 
@@ -60,7 +61,7 @@ public class DeviceLog {
         this.device = device;
     }
 
-    public void setPowerLevel(Integer powerLevel) {
+    public void setPowerLevel(double powerLevel) {
         this.powerLevel = powerLevel;
     }
 
@@ -72,7 +73,7 @@ public class DeviceLog {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof DeviceLog deviceLog)) return false;
-        return Objects.equals(id, deviceLog.id) && Objects.equals(device, deviceLog.device) && Objects.equals(powerLevel, deviceLog.powerLevel) && Objects.equals(recordedAt, deviceLog.recordedAt);
+        return Double.compare(powerLevel, deviceLog.powerLevel) == 0 && Objects.equals(id, deviceLog.id) && Objects.equals(device, deviceLog.device) && Objects.equals(recordedAt, deviceLog.recordedAt);
     }
 
     @Override
