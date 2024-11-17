@@ -1,4 +1,4 @@
-package com.hydropowerplant.waterlevel.dao;
+package com.hydropowerplant.waterlevel.dao.condition;
 
 import com.hydropowerplant.waterlevel.entity.condition.PowerLevelCondition;
 import org.springframework.data.jpa.repository.JpaRepository;
