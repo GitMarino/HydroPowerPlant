@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+import java.util.Objects;
+
 
 @Entity
 @Table(name = Device.TABLE_NAME)
@@ -20,7 +22,13 @@ public class Device {
     private String name;
 
     @Column(name = "powerlevel", nullable = false)
-    private Integer powerLevel;
+    private double powerLevel;
+
+    public Device(String serial, String name, double powerLevel) {
+        this.serial = serial;
+        this.name = name;
+        this.powerLevel = powerLevel;
+    }
 
     public String getSerial() {
         return serial;
@@ -30,7 +38,7 @@ public class Device {
         return name;
     }
 
-    public Integer getPowerLevel() {
+    public double getPowerLevel() {
         return powerLevel;
     }
 
@@ -42,8 +50,20 @@ public class Device {
         this.name = name;
     }
 
-    public void setPowerLevel(Integer powerLevel) {
+    public void setPowerLevel(double powerLevel) {
         this.powerLevel = powerLevel;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Device device)) return false;
+        return Double.compare(powerLevel, device.powerLevel) == 0 && Objects.equals(serial, device.serial) && Objects.equals(name, device.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(serial, name, powerLevel);
     }
 
     @Override
