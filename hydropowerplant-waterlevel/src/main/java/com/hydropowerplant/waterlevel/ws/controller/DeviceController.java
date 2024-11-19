@@ -4,6 +4,7 @@ import com.hydropowerplant.waterlevel.businesslogic.bo.DeviceBo;
 import com.hydropowerplant.waterlevel.entity.Device;
 import com.hydropowerplant.waterlevel.ws.dto.DeviceDto;
 import com.hydropowerplant.waterlevel.ws.dto.ResponseDto;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +24,7 @@ public class DeviceController {
     private DeviceBo deviceBo;
 
     @PostMapping
-    public ResponseEntity<ResponseDto> createDevice(@RequestBody DeviceDto deviceDto) {
+    public ResponseEntity<ResponseDto> createDevice(@Valid @RequestBody DeviceDto deviceDto) {
         deviceBo.saveDevice(new Device(deviceDto.getSerial(), deviceDto.getName(), deviceDto.getPowerLevel()));
         return new ResponseEntity<>(new ResponseDto("Success! Device created."), HttpStatus.OK);
     }

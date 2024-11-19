@@ -1,5 +1,8 @@
 package com.hydropowerplant.waterlevel.ws.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 import java.util.Objects;
 
 public class DeviceDto {
@@ -10,14 +13,17 @@ public class DeviceDto {
 
     private Double powerLevel;
 
+    @NotBlank
     public String getSerial() {
         return serial;
     }
 
+    @NotBlank
     public String getName() {
         return name;
     }
 
+    @NotNull
     public Double getPowerLevel() {
         return powerLevel;
     }

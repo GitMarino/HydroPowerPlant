@@ -1,5 +1,8 @@
 package com.hydropowerplant.waterlevel.ws.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
@@ -15,14 +18,17 @@ public class DeviceLogDto implements Serializable {
 
     private String recordedAt;
 
+    @NotBlank
     public String getSerial() {
         return serial;
     }
 
+    @NotNull
     public Double getPowerLevel() {
         return powerLevel;
     }
 
+    @NotNull
     public String getRecordedAt() {
         return recordedAt;
     }

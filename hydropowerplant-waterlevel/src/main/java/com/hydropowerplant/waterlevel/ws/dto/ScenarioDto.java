@@ -1,5 +1,9 @@
 package com.hydropowerplant.waterlevel.ws.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
@@ -20,10 +24,12 @@ public class ScenarioDto implements Serializable {
 
     private String name;
 
+    @NotEmpty
     public List<Integer> getActionsIds() {
         return actionsIds;
     }
 
+    @NotEmpty
     public List<Integer> getConditionsIds() {
         return conditionsIds;
     }
@@ -32,10 +38,12 @@ public class ScenarioDto implements Serializable {
         return description;
     }
 
+    @NotNull
     public Boolean getEnabled() {
         return enabled;
     }
 
+    @NotBlank
     public String getName() {
         return name;
     }

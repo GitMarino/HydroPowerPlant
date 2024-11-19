@@ -3,6 +3,7 @@ package com.hydropowerplant.waterlevel.ws.controller;
 import com.hydropowerplant.waterlevel.businesslogic.bo.ConditionBo;
 import com.hydropowerplant.waterlevel.ws.dto.DeviceLogDto;
 import com.hydropowerplant.waterlevel.ws.dto.ResponseDto;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ public class ConditionController {
     private ConditionBo conditionBo;
 
     @PostMapping("/device/powerLevel")
-    public ResponseEntity<ResponseDto> manageDevicePowerLevelCondition(@RequestBody DeviceLogDto deviceLogDto) {
+    public ResponseEntity<ResponseDto> manageDevicePowerLevelCondition(@Valid @RequestBody DeviceLogDto deviceLogDto) {
         conditionBo.manageDevicePowerLevelCondition(deviceLogDto);
         return new ResponseEntity<>(new ResponseDto("Success!"), HttpStatus.OK);
     }
