@@ -5,7 +5,6 @@ import com.hydropowerplant.waterlevel.entity.Device;
 import com.hydropowerplant.waterlevel.ws.dto.DeviceDto;
 import com.hydropowerplant.waterlevel.ws.dto.ResponseDto;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -20,8 +19,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/device")
 public class DeviceController {
 
-    @Autowired
-    private DeviceBo deviceBo;
+    private final DeviceBo deviceBo;
+
+    public DeviceController(DeviceBo deviceBo) {
+        this.deviceBo = deviceBo;
+    }
+    
 
     @PostMapping
     public ResponseEntity<ResponseDto> createDevice(@Valid @RequestBody DeviceDto deviceDto) {

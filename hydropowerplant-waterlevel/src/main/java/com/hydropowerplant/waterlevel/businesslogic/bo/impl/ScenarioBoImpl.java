@@ -16,7 +16,6 @@ import com.hydropowerplant.waterlevel.entity.relationship.ScenarioConditionRelat
 import com.hydropowerplant.waterlevel.entity.relationship.key.ScenarioActionRelationshipKey;
 import com.hydropowerplant.waterlevel.entity.relationship.key.ScenarioConditionRelationshipKey;
 import com.hydropowerplant.waterlevel.ws.dto.ScenarioDto;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,23 +25,28 @@ import java.util.Optional;
 @Service
 public class ScenarioBoImpl implements ScenarioBo {
 
-    @Autowired
-    private ActionDao actionDao;
+    private final ActionBoFactory actionBoFactory;
 
-    @Autowired
-    private ActionBoFactory actionBoFactory;
+    private final ActionDao actionDao;
 
-    @Autowired
-    private ConditionDao conditionDao;
+    private final ConditionDao conditionDao;
 
-    @Autowired
-    private ScenarioDao scenarioDao;
+    private final ScenarioActionRelationshipDao scenarioActionRelationshipDao;
 
-    @Autowired
-    private ScenarioConditionRelationshipDao scenarioConditionRelationshipDao;
+    private final ScenarioConditionRelationshipDao scenarioConditionRelationshipDao;
 
-    @Autowired
-    private ScenarioActionRelationshipDao scenarioActionRelationshipDao;
+    private final ScenarioDao scenarioDao;
+
+    public ScenarioBoImpl(ActionBoFactory actionBoFactory, ActionDao actionDao, ConditionDao conditionDao, ScenarioActionRelationshipDao scenarioActionRelationshipDao,
+                          ScenarioConditionRelationshipDao scenarioConditionRelationshipDao, ScenarioDao scenarioDao) {
+        this.actionBoFactory = actionBoFactory;
+        this.actionDao = actionDao;
+        this.conditionDao = conditionDao;
+        this.scenarioActionRelationshipDao = scenarioActionRelationshipDao;
+        this.scenarioConditionRelationshipDao = scenarioConditionRelationshipDao;
+        this.scenarioDao = scenarioDao;
+    }
+    
 
     @Transactional
     public void createScenario(ScenarioDto scenarioDto) {

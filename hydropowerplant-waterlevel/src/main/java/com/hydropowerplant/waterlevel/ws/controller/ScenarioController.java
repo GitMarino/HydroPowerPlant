@@ -4,7 +4,6 @@ import com.hydropowerplant.waterlevel.businesslogic.bo.ScenarioBo;
 import com.hydropowerplant.waterlevel.ws.dto.ResponseDto;
 import com.hydropowerplant.waterlevel.ws.dto.ScenarioDto;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,8 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/scenario")
 public class ScenarioController {
 
-    @Autowired
-    private ScenarioBo scenarioBo;
+    private final ScenarioBo scenarioBo;
+
+    public ScenarioController(ScenarioBo scenarioBo) {
+        this.scenarioBo = scenarioBo;
+    }
+    
 
     @PostMapping
     public ResponseEntity<ResponseDto> createScenario(@Valid @RequestBody ScenarioDto scenarioDto) {

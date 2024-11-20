@@ -2,7 +2,6 @@ package com.hydropowerplant.waterlevel.businesslogic.bo.impl.action;
 
 import com.hydropowerplant.waterlevel.businesslogic.bo.ActionBo;
 import com.hydropowerplant.waterlevel.entity.action.Action;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -12,8 +11,12 @@ public class EmailActionBoImpl implements ActionBo {
 
     public static final String SERVICE_NAME = "emailAction";
 
-    @Autowired
-    private JavaMailSender emailSender;
+    private final JavaMailSender emailSender;
+
+    public EmailActionBoImpl(JavaMailSender emailSender) {
+        this.emailSender = emailSender;
+    }
+    
 
     public <T extends Action> void start(T action) {
         SimpleMailMessage message = new SimpleMailMessage();

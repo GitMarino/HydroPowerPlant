@@ -8,7 +8,6 @@ import com.hydropowerplant.waterlevel.dao.condition.PowerLevelLimitConditionDao;
 import com.hydropowerplant.waterlevel.entity.Device;
 import com.hydropowerplant.waterlevel.entity.DeviceLog;
 import com.hydropowerplant.waterlevel.ws.dto.DeviceLogDto;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -17,17 +16,22 @@ import java.util.List;
 @Service
 public class ConditionBoImpl implements ConditionBo {
 
-    @Autowired
-    private PowerLevelConditionDao powerLevelConditionDao;
+    private final PowerLevelConditionDao powerLevelConditionDao;
 
-    @Autowired
-    private PowerLevelLimitConditionDao powerLevelLimitConditionDao;
+    private final PowerLevelLimitConditionDao powerLevelLimitConditionDao;
 
-    @Autowired
-    private DeviceBo deviceBo;
+    private final DeviceBo deviceBo;
 
-    @Autowired
-    private ScenarioBo scenarioBo;
+    private final ScenarioBo scenarioBo;
+
+    public ConditionBoImpl(PowerLevelConditionDao powerLevelConditionDao, PowerLevelLimitConditionDao powerLevelLimitConditionDao,
+                           DeviceBo deviceBo, ScenarioBo scenarioBo) {
+        this.powerLevelConditionDao = powerLevelConditionDao;
+        this.powerLevelLimitConditionDao = powerLevelLimitConditionDao;
+        this.deviceBo = deviceBo;
+        this.scenarioBo = scenarioBo;
+    }
+    
 
     public void manageDevicePowerLevelCondition(DeviceLogDto deviceLogDto) {
         String deviceSerial = deviceLogDto.getSerial();
