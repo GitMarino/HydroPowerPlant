@@ -9,8 +9,7 @@ public class PowerLevelActionBoImpl implements ActionBo {
 
     public static final String SERVICE_NAME = "powerLevelAction";
 
-    public void start(Action action) {
+    public <T extends Action> void start(T action) {
         //TODO
     }
-
 }
