@@ -2,28 +2,11 @@ package com.hydropowerplant.waterlevel.entity.action;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.MapsId;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 
-import java.util.Objects;
-
-@Entity
-@Table(name = EmailAction.TABLE_NAME)
-public class EmailAction {
+@Entity(name = EmailAction.TABLE_NAME)
+public class EmailAction extends Action {
 
     public static final String TABLE_NAME = "email_action";
-
-    @Id
-    @Column(name = "action_id")
-    private Integer id;
-
-    @OneToOne
-    @MapsId
-    @JoinColumn(name = "action_id")
-    private Action action;
 
     @Column(name = "address", nullable = false)
     private String address;
@@ -33,10 +16,6 @@ public class EmailAction {
 
     @Column(name = "text", nullable = false)
     private String text;
-
-    public Integer getId() {
-        return id;
-    }
 
     public String getAddress() {
         return address;
@@ -48,10 +27,6 @@ public class EmailAction {
 
     public String getText() {
         return text;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public void setAddress(String address) {
@@ -66,26 +41,4 @@ public class EmailAction {
         this.text = text;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof EmailAction that)) return false;
-        return Objects.equals(id, that.id) && Objects.equals(action, that.action) && Objects.equals(address, that.address) && Objects.equals(subject, that.subject) && Objects.equals(text, that.text);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, action, address, subject, text);
-    }
-
-    @Override
-    public String toString() {
-        return "EmailAction{" +
-                "id=" + id +
-                ", action=" + action +
-                ", address='" + address + '\'' +
-                ", subject='" + subject + '\'' +
-                ", text='" + text + '\'' +
-                '}';
-    }
 }
