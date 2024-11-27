@@ -5,8 +5,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 
 @Entity(name = Condition.TABLE_NAME)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Condition {
 
     public static final String TABLE_NAME = "condition";
