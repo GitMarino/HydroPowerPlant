@@ -20,6 +20,11 @@ public class DevicePowerLevelActionRelationshipKey {
     @JoinColumn(name = "powerlevelaction_id", nullable = false)
     PowerLevelAction powerLevelAction;
 
+    public DevicePowerLevelActionRelationshipKey(Device device, PowerLevelAction powerLevelAction) {
+        this.device = device;
+        this.powerLevelAction = powerLevelAction;
+    }
+
     public Device getDevice() {
         return device;
     }

@@ -15,6 +15,10 @@ public class DevicePowerLevelActionRelationship {
     @EmbeddedId
     DevicePowerLevelActionRelationshipKey id;
 
+    public DevicePowerLevelActionRelationship(DevicePowerLevelActionRelationshipKey id) {
+        this.id = id;
+    }
+
     public DevicePowerLevelActionRelationshipKey getId() {
         return id;
     }

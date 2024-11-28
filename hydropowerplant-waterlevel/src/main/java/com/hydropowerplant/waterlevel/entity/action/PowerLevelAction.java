@@ -9,13 +9,18 @@ public class PowerLevelAction extends Action {
     public static final String TABLE_NAME = "power_level_action";
 
     @Column(name = "multiplier", nullable = false)
-    private String multiplier;
+    private double multiplier;
 
-    public String getMultiplier() {
+    public PowerLevelAction(Integer id, String name, String type, double multiplier) {
+        super(id, name, type);
+        this.multiplier = multiplier;
+    }
+
+    public double getMultiplier() {
         return multiplier;
     }
 
-    public void setMultiplier(String multiplier) {
+    public void setMultiplier(double multiplier) {
         this.multiplier = multiplier;
     }
 }
