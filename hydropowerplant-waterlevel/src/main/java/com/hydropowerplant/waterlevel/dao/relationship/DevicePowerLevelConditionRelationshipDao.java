@@ -1,0 +1,10 @@
+package com.hydropowerplant.waterlevel.dao.relationship;
+
+import com.hydropowerplant.waterlevel.entity.relationship.DevicePowerLevelConditionRelationship;
+import com.hydropowerplant.waterlevel.entity.relationship.key.DevicePowerLevelConditionRelationshipKey;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface DevicePowerLevelConditionRelationshipDao extends JpaRepository<DevicePowerLevelConditionRelationship, DevicePowerLevelConditionRelationshipKey> {
+}

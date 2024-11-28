@@ -7,4 +7,7 @@ public class PowerLevelCondition extends Condition {
 
     public static final String TABLE_NAME = "power_level_condition";
 
+    public PowerLevelCondition(Integer id, String name, String type) {
+        super(id, name, type);
+    }
 }

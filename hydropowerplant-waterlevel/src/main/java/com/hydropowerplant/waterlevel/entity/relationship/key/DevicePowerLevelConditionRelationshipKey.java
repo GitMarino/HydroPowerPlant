@@ -19,6 +19,11 @@ public class DevicePowerLevelConditionRelationshipKey {
     @JoinColumn(name = "powerlevelcondition_id", nullable = false)
     PowerLevelCondition powerLevelCondition;
 
+    public DevicePowerLevelConditionRelationshipKey(Device device, PowerLevelCondition powerLevelCondition) {
+        this.device = device;
+        this.powerLevelCondition = powerLevelCondition;
+    }
+
     public Device getDevice() {
         return device;
     }
