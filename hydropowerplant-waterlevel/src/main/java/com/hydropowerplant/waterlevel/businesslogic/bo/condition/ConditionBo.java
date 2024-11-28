@@ -1,6 +1,6 @@
-package com.hydropowerplant.waterlevel.businesslogic.bo;
+package com.hydropowerplant.waterlevel.businesslogic.bo.condition;
 
-import com.hydropowerplant.waterlevel.ws.dto.DeviceLogDto;
+import com.hydropowerplant.waterlevel.ws.dto.device.DeviceLogDto;
 
 public interface ConditionBo {
 

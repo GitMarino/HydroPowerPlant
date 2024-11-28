@@ -1,13 +1,12 @@
-package com.hydropowerplant.waterlevel.businesslogic.bo.impl;
+package com.hydropowerplant.waterlevel.businesslogic.bo.condition;
 
-import com.hydropowerplant.waterlevel.businesslogic.bo.ConditionBo;
-import com.hydropowerplant.waterlevel.businesslogic.bo.DeviceBo;
-import com.hydropowerplant.waterlevel.businesslogic.bo.ScenarioBo;
+import com.hydropowerplant.waterlevel.businesslogic.bo.device.DeviceBo;
+import com.hydropowerplant.waterlevel.businesslogic.bo.scenario.ScenarioBo;
 import com.hydropowerplant.waterlevel.dao.condition.PowerLevelConditionDao;
 import com.hydropowerplant.waterlevel.dao.condition.PowerLevelLimitConditionDao;
 import com.hydropowerplant.waterlevel.entity.Device;
 import com.hydropowerplant.waterlevel.entity.DeviceLog;
-import com.hydropowerplant.waterlevel.ws.dto.DeviceLogDto;
+import com.hydropowerplant.waterlevel.ws.dto.device.DeviceLogDto;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
