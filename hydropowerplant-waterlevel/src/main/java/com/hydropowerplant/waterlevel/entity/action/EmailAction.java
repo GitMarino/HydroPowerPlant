@@ -17,6 +17,13 @@ public class EmailAction extends Action {
     @Column(name = "text", nullable = false)
     private String text;
 
+    public EmailAction(Integer id, String name, String type, String address, String subject, String text) {
+        super(id, name, type);
+        this.address = address;
+        this.subject = subject;
+        this.text = text;
+    }
+
     public String getAddress() {
         return address;
     }
