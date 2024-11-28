@@ -1,11 +1,16 @@
-package com.hydropowerplant.waterlevel.ws.dto;
+package com.hydropowerplant.waterlevel.ws.dto.device;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.Objects;
 
-public class DeviceDto {
+public class DeviceDto implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 4583358869346738599L;
 
     private String serial;
 

@@ -1,6 +1,5 @@
-package com.hydropowerplant.waterlevel.businesslogic.bo.impl;
+package com.hydropowerplant.waterlevel.businesslogic.bo.device;
 
-import com.hydropowerplant.waterlevel.businesslogic.bo.DeviceBo;
 import com.hydropowerplant.waterlevel.businesslogic.exception.ItemNotFoundException;
 import com.hydropowerplant.waterlevel.dao.device.DeviceDao;
 import com.hydropowerplant.waterlevel.dao.device.DeviceLogDao;

@@ -1,4 +1,4 @@
-package com.hydropowerplant.waterlevel.businesslogic.bo;
+package com.hydropowerplant.waterlevel.businesslogic.bo.device;
 
 import com.hydropowerplant.waterlevel.entity.Device;
 import com.hydropowerplant.waterlevel.entity.DeviceLog;
