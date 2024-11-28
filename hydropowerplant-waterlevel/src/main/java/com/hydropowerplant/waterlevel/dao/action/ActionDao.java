@@ -1,4 +1,4 @@
-package com.hydropowerplant.waterlevel.dao;
+package com.hydropowerplant.waterlevel.dao.action;
 
 import com.hydropowerplant.waterlevel.entity.action.Action;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -18,6 +18,4 @@ public interface ActionDao extends JpaRepository<Action, Integer> {
             + "WHERE s.enabled=true and sc.id.condition.id in ?1")
     List<Action> findByConditions(List<Integer> conditions);
 
-    /*@Query("SELECT e FROM EntityName e WHERE e.columnName IN :ids")
-    List<EntityName> findByColumnNameIn(@Param("ids") List<Integer> ids);*/
 }

@@ -24,6 +24,12 @@ public class Action {
     @Column(name = "type", nullable = false)
     private String type;
 
+    public Action(Integer id, String name, String type) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+    }
+
     public Integer getId() {
         return id;
     }

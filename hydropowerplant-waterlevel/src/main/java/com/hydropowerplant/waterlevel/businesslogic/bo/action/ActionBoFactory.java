@@ -1,6 +1,6 @@
-package com.hydropowerplant.waterlevel.businesslogic.bo;
+package com.hydropowerplant.waterlevel.businesslogic.bo.action;
 
-import com.hydropowerplant.waterlevel.businesslogic.object.ActionType;
+import com.hydropowerplant.waterlevel.businesslogic.object.ActionService;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ public class ActionBoFactory {
     
 
     public ActionBo getActionBo(String actionType) {
-        return beanFactory.getBean(ActionType.getServiceNameByValue(actionType), ActionBo.class);
+        return beanFactory.getBean(ActionService.valueOf(actionType).getValue(), ActionBo.class);
     }
 
 }
