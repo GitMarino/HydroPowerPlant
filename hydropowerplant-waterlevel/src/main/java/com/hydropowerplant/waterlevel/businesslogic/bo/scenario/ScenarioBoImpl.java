@@ -1,13 +1,12 @@
-package com.hydropowerplant.waterlevel.businesslogic.bo.impl;
+package com.hydropowerplant.waterlevel.businesslogic.bo.scenario;
 
-import com.hydropowerplant.waterlevel.businesslogic.bo.ActionBoFactory;
-import com.hydropowerplant.waterlevel.businesslogic.bo.ScenarioBo;
+import com.hydropowerplant.waterlevel.businesslogic.bo.action.ActionBoFactory;
 import com.hydropowerplant.waterlevel.businesslogic.exception.ItemNotFoundException;
-import com.hydropowerplant.waterlevel.dao.ActionDao;
+import com.hydropowerplant.waterlevel.dao.ScenarioDao;
+import com.hydropowerplant.waterlevel.dao.action.ActionDao;
 import com.hydropowerplant.waterlevel.dao.condition.ConditionDao;
-import com.hydropowerplant.waterlevel.dao.scenario.ScenarioActionRelationshipDao;
-import com.hydropowerplant.waterlevel.dao.scenario.ScenarioConditionRelationshipDao;
-import com.hydropowerplant.waterlevel.dao.scenario.ScenarioDao;
+import com.hydropowerplant.waterlevel.dao.relationship.ScenarioActionRelationshipDao;
+import com.hydropowerplant.waterlevel.dao.relationship.ScenarioConditionRelationshipDao;
 import com.hydropowerplant.waterlevel.entity.Scenario;
 import com.hydropowerplant.waterlevel.entity.action.Action;
 import com.hydropowerplant.waterlevel.entity.condition.Condition;
@@ -84,7 +83,7 @@ public class ScenarioBoImpl implements ScenarioBo {
     public void performActions(List<Integer> conditionIds) {
         actionDao.findByConditions(conditionIds)
                 .parallelStream()
-                .forEach(action -> actionBoFactory.getActionBo(action.getType()).start(action));
+                .forEach(action -> actionBoFactory.getActionBo(action.getType()).start(action, null));
     }
 
 }

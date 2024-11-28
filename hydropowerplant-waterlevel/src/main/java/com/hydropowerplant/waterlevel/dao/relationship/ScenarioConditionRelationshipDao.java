@@ -1,4 +1,4 @@
-package com.hydropowerplant.waterlevel.dao.scenario;
+package com.hydropowerplant.waterlevel.dao.relationship;
 
 import com.hydropowerplant.waterlevel.entity.relationship.ScenarioConditionRelationship;
 import com.hydropowerplant.waterlevel.entity.relationship.key.ScenarioConditionRelationshipKey;
