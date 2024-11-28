@@ -14,6 +14,12 @@ public class PowerLevelLimitCondition extends Condition {
     @Column(name = "minpowerlevel", nullable = false)
     private double minPowerLevel;
 
+    public PowerLevelLimitCondition(Integer id, String name, String type, double maxPowerLevel, double minPowerLevel) {
+        super(id, name, type);
+        this.maxPowerLevel = maxPowerLevel;
+        this.minPowerLevel = minPowerLevel;
+    }
+
     public double getMaxPowerLevel() {
         return maxPowerLevel;
     }

@@ -14,6 +14,10 @@ public class DevicePowerLevelLimitConditionRelationship {
     @EmbeddedId
     DevicePowerLevelLimitConditionRelationshipKey id;
 
+    public DevicePowerLevelLimitConditionRelationship(DevicePowerLevelLimitConditionRelationshipKey id) {
+        this.id = id;
+    }
+
     public DevicePowerLevelLimitConditionRelationshipKey getId() {
         return id;
     }
