@@ -14,6 +14,12 @@ public class SmsAction extends Action {
     @Column(name = "text", nullable = false)
     private String text;
 
+    public SmsAction(Integer id, String name, String type, String phoneNumber, String text) {
+        super(id, name, type);
+        this.phoneNumber = phoneNumber;
+        this.text = text;
+    }
+
     public String getPhoneNumber() {
         return phoneNumber;
     }
