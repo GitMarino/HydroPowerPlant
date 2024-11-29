@@ -22,8 +22,6 @@
 		<spring-boot.version>3.3.4</spring-boot.version>
 		<postgresql.version>42.7.3</postgresql.version>
 		<hibernate-core.version>6.6.0.Final</hibernate-core.version>
-		<jakarta.persistence-api.version>3.1.0</jakarta.persistence-api.version>
-		<jakarta.validation-api.version>3.1.0</jakarta.validation-api.version>
 		<libphonenumber.version>8.13.51</libphonenumber.version>
 	</properties>
 
@@ -46,19 +44,14 @@
 			</dependency>
 
 			<dependency>
-				<groupId>jakarta.persistence</groupId>
-				<artifactId>jakarta.persistence-api</artifactId>
-				<version>${jakarta.persistence-api.version}</version>
-			</dependency>
-			<dependency>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-starter-web</artifactId>
 				<version>${spring-boot.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>jakarta.validation</groupId>
-				<artifactId>jakarta.validation-api</artifactId>
-				<version>${jakarta.validation-api.version}</version>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-validation</artifactId>
+				<version>${spring-boot.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
