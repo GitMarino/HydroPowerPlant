@@ -24,6 +24,7 @@
 		<hibernate-core.version>6.6.0.Final</hibernate-core.version>
 		<jakarta.persistence-api.version>3.1.0</jakarta.persistence-api.version>
 		<jakarta.validation-api.version>3.1.0</jakarta.validation-api.version>
+		<libphonenumber.version>8.13.51</libphonenumber.version>
 	</properties>
 
 	<dependencyManagement>
@@ -63,6 +64,11 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-starter-mail</artifactId>
 				<version>${spring-boot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.googlecode.libphonenumber</groupId>
+				<artifactId>libphonenumber</artifactId>
+				<version>${libphonenumber.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

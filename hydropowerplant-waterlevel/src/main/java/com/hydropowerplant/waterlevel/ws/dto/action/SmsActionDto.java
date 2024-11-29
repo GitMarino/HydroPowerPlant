@@ -1,6 +1,8 @@
 package com.hydropowerplant.waterlevel.ws.dto.action;
 
+import com.hydropowerplant.waterlevel.businesslogic.annotation.PhoneNumber;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public class SmsActionDto {
 
@@ -22,7 +24,8 @@ public class SmsActionDto {
         return type;
     }
 
-    //@PhoneNumber
+    @NotNull
+    @PhoneNumber
     public String getPhoneNumber() {
         return phoneNumber;
     }
