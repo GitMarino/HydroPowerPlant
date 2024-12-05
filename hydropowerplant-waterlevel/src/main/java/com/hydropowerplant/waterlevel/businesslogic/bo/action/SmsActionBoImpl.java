@@ -6,8 +6,6 @@ import com.hydropowerplant.waterlevel.entity.action.Action;
 import com.hydropowerplant.waterlevel.entity.action.SmsAction;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service(SmsActionBoImpl.SERVICE_NAME)
 public class SmsActionBoImpl implements ActionBo, SmsActionBo {
 
@@ -24,7 +22,7 @@ public class SmsActionBoImpl implements ActionBo, SmsActionBo {
         smsActionDao.save(smsAction);
     }
 
-    public <T extends Action, S extends Event> void start(T action, Optional<S> event) {
+    public <T extends Action, S extends Event> void start(T action, S event) {
         //TODO
     }
 }

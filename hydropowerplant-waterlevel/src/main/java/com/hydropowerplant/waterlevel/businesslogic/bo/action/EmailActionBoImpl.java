@@ -8,8 +8,6 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service(EmailActionBoImpl.SERVICE_NAME)
 public class EmailActionBoImpl implements ActionBo, EmailActionBo {
 
@@ -29,7 +27,7 @@ public class EmailActionBoImpl implements ActionBo, EmailActionBo {
         emailActionDao.save(emailAction);
     }
 
-    public <T extends Action, S extends Event> void start(T action, Optional<S> event) {
+    public <T extends Action, S extends Event> void start(T action, S event) {
         if (action instanceof EmailAction emailAction) {
             SimpleMailMessage message = new SimpleMailMessage();
             message.setFrom("icmarino6108@gmail.com");

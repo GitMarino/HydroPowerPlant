@@ -2,6 +2,7 @@ package com.hydropowerplant.waterlevel.businesslogic.bo.scenario;
 
 import com.hydropowerplant.waterlevel.businesslogic.bo.action.ActionBoFactory;
 import com.hydropowerplant.waterlevel.businesslogic.exception.ItemNotFoundException;
+import com.hydropowerplant.waterlevel.businesslogic.object.event.Event;
 import com.hydropowerplant.waterlevel.dao.ScenarioDao;
 import com.hydropowerplant.waterlevel.dao.action.ActionDao;
 import com.hydropowerplant.waterlevel.dao.condition.ConditionDao;
@@ -80,10 +81,10 @@ public class ScenarioBoImpl implements ScenarioBo {
         }
     }
 
-    public void performActions(List<Integer> conditionIds) {
+    public <S extends Event> void performActions(List<Integer> conditionIds, S event) {
         actionDao.findByConditions(conditionIds)
                 .parallelStream()
-                .forEach(action -> actionBoFactory.getActionBo(action.getType()).start(action, null));
+                .forEach(action -> actionBoFactory.getActionBo(action.getType()).start(action, event));
     }
 
 }

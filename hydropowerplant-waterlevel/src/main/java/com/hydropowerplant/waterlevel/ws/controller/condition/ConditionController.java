@@ -1,8 +1,8 @@
 package com.hydropowerplant.waterlevel.ws.controller.condition;
 
 import com.hydropowerplant.waterlevel.businesslogic.bo.condition.ConditionBo;
+import com.hydropowerplant.waterlevel.businesslogic.object.event.DeviceEvent;
 import com.hydropowerplant.waterlevel.ws.dto.ResponseDto;
-import com.hydropowerplant.waterlevel.ws.dto.device.DeviceLogDto;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,8 +23,8 @@ public class ConditionController {
 
 
     @PostMapping("/device/powerLevel")
-    public ResponseEntity<ResponseDto> manageDevicePowerLevelCondition(@Valid @RequestBody DeviceLogDto deviceLogDto) {
-        conditionBo.manageDevicePowerLevelCondition(deviceLogDto);
+    public ResponseEntity<ResponseDto> manageDevicePowerLevelCondition(@Valid @RequestBody DeviceEvent deviceEvent) {
+        conditionBo.manageDevicePowerLevelCondition(deviceEvent);
         return new ResponseEntity<>(new ResponseDto("Success!"), HttpStatus.OK);
     }
 }

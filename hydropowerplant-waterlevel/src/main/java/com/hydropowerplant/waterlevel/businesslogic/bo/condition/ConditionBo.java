@@ -1,14 +1,14 @@
 package com.hydropowerplant.waterlevel.businesslogic.bo.condition;
 
-import com.hydropowerplant.waterlevel.ws.dto.device.DeviceLogDto;
+import com.hydropowerplant.waterlevel.businesslogic.object.event.DeviceEvent;
 
 public interface ConditionBo {
 
     /**
      * persists device power level and log on database
      * <p>
-     * finds conditions connected to given device and sends them to scenario manager
+     * finds conditions connected to given device and performs related scenarios
      */
-    void manageDevicePowerLevelCondition(DeviceLogDto deviceLogDto);
+    void manageDevicePowerLevelCondition(DeviceEvent deviceEvent);
 
 }
