@@ -1,6 +1,8 @@
 package com.hydropowerplant.waterlevel.businesslogic.bo.action;
 
-import com.hydropowerplant.waterlevel.businesslogic.exception.ItemNotFoundException;
+import com.hydropowerplant.waterlevel.businesslogic.bo.device.DeviceBo;
+import com.hydropowerplant.waterlevel.businesslogic.bo.device.DeviceLogBo;
+import com.hydropowerplant.waterlevel.businesslogic.object.event.DeviceEvent;
 import com.hydropowerplant.waterlevel.businesslogic.object.event.Event;
 import com.hydropowerplant.waterlevel.dao.action.PowerLevelActionDao;
 import com.hydropowerplant.waterlevel.dao.device.DeviceDao;
@@ -20,21 +22,22 @@ public class PowerLevelActionBoImpl implements ActionBo, PowerLevelActionBo {
 
     public static final String SERVICE_NAME = "powerLevelAction";
 
+    private final DeviceBo deviceBo;
+
     private final DeviceDao deviceDao;
 
     private final DevicePowerLevelActionRelationshipDao devicePowerLevelActionRelationshipDao;
 
     private final PowerLevelActionDao powerLevelActionDao;
 
-    public PowerLevelActionBoImpl(DeviceDao deviceDao, DevicePowerLevelActionRelationshipDao devicePowerLevelActionRelationshipDao, PowerLevelActionDao powerLevelActionDao) {
+    public PowerLevelActionBoImpl(DeviceBo deviceBo, DeviceDao deviceDao, DeviceLogBo deviceLogBo,
+                                  DevicePowerLevelActionRelationshipDao devicePowerLevelActionRelationshipDao, PowerLevelActionDao powerLevelActionDao) {
+        this.deviceBo = deviceBo;
         this.deviceDao = deviceDao;
         this.devicePowerLevelActionRelationshipDao = devicePowerLevelActionRelationshipDao;
         this.powerLevelActionDao = powerLevelActionDao;
     }
 
-    public <T extends Action, S extends Event> void start(T action, Optional<S> event) {
-
-    }
 
     public void createPowerLevelAction(PowerLevelAction powerLevelAction, List<String> devicesSerials) {
         PowerLevelAction powerLevelActionDb = powerLevelActionDao.save(powerLevelAction);
@@ -44,12 +47,20 @@ public class PowerLevelActionBoImpl implements ActionBo, PowerLevelActionBo {
     private void createDevicePowerLevelActionRelationships(PowerLevelAction powerLevelAction, List<String> devicesSerials) {
         Optional<Device> optionalDevice;
         for (String deviceSerial : devicesSerials) {
-            optionalDevice = deviceDao.findById(deviceSerial);
-            if (optionalDevice.isEmpty()) {
-                throw new ItemNotFoundException("No device found with serial:" + deviceSerial);
-            }
             devicePowerLevelActionRelationshipDao.save(new DevicePowerLevelActionRelationship(
-                    new DevicePowerLevelActionRelationshipKey(optionalDevice.get(), powerLevelAction)));
+                    new DevicePowerLevelActionRelationshipKey(deviceBo.getBySerial(deviceSerial), powerLevelAction)));
+        }
+    }
+
+    public <T extends Action, S extends Event> void start(T action, S event) {
+        if (action instanceof PowerLevelAction powerLevelAction && event instanceof DeviceEvent deviceEvent) {
+            double powerLevel = deviceEvent.getPowerLevel() * powerLevelAction.getMultiplier();
+            if (powerLevel > 100) {
+                powerLevel = 100;
+            }
+            for (String deviceSerial : deviceDao.findByPowerLevelAction(powerLevelAction.getId())) {
+                deviceBo.setPowerLevel(deviceSerial, powerLevel);
+            }
         }
     }
 }

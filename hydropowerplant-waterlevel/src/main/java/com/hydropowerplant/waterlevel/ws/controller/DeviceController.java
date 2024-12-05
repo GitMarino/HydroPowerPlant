@@ -2,8 +2,8 @@ package com.hydropowerplant.waterlevel.ws.controller;
 
 import com.hydropowerplant.waterlevel.businesslogic.bo.device.DeviceBo;
 import com.hydropowerplant.waterlevel.entity.Device;
+import com.hydropowerplant.waterlevel.ws.dto.DeviceDto;
 import com.hydropowerplant.waterlevel.ws.dto.ResponseDto;
-import com.hydropowerplant.waterlevel.ws.dto.device.DeviceDto;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
