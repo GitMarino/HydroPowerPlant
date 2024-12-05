@@ -24,8 +24,6 @@ public class PowerLevelActionBoImpl implements ActionBo, PowerLevelActionBo {
 
     private final DeviceBo deviceBo;
 
-    private final DeviceDao deviceDao;
-
     private final DevicePowerLevelActionRelationshipDao devicePowerLevelActionRelationshipDao;
 
     private final PowerLevelActionDao powerLevelActionDao;
@@ -33,7 +31,6 @@ public class PowerLevelActionBoImpl implements ActionBo, PowerLevelActionBo {
     public PowerLevelActionBoImpl(DeviceBo deviceBo, DeviceDao deviceDao, DeviceLogBo deviceLogBo,
                                   DevicePowerLevelActionRelationshipDao devicePowerLevelActionRelationshipDao, PowerLevelActionDao powerLevelActionDao) {
         this.deviceBo = deviceBo;
-        this.deviceDao = deviceDao;
         this.devicePowerLevelActionRelationshipDao = devicePowerLevelActionRelationshipDao;
         this.powerLevelActionDao = powerLevelActionDao;
     }
@@ -58,7 +55,7 @@ public class PowerLevelActionBoImpl implements ActionBo, PowerLevelActionBo {
             if (powerLevel > 100) {
                 powerLevel = 100;
             }
-            for (String deviceSerial : deviceDao.findByPowerLevelAction(powerLevelAction.getId())) {
+            for (String deviceSerial : devicePowerLevelActionRelationshipDao.findIdDeviceSerialByIdPowerLevelActionId(powerLevelAction.getId())) {
                 deviceBo.setPowerLevel(deviceSerial, powerLevel);
             }
         }
