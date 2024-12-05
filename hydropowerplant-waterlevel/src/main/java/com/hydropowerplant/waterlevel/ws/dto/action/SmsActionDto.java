@@ -4,6 +4,8 @@ import com.hydropowerplant.waterlevel.businesslogic.annotation.PhoneNumber;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.Objects;
+
 public class SmsActionDto {
 
     private String name;
@@ -49,5 +51,26 @@ public class SmsActionDto {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof SmsActionDto that)) return false;
+        return Objects.equals(name, that.name) && Objects.equals(phoneNumber, that.phoneNumber) && Objects.equals(text, that.text) && Objects.equals(type, that.type);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, phoneNumber, text, type);
+    }
+
+    @Override
+    public String toString() {
+        return "SmsActionDto{" +
+                "name='" + name + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", text='" + text + '\'' +
+                ", type='" + type + '\'' +
+                '}';
     }
 }

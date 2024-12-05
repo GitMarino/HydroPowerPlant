@@ -1,4 +1,4 @@
-package com.hydropowerplant.waterlevel.ws.dto.device;
+package com.hydropowerplant.waterlevel.ws.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -12,16 +12,11 @@ public class DeviceDto implements Serializable {
     @Serial
     private static final long serialVersionUID = 4583358869346738599L;
 
-    private String serial;
-
     private String name;
 
     private Double powerLevel;
 
-    @NotBlank
-    public String getSerial() {
-        return serial;
-    }
+    private String serial;
 
     @NotBlank
     public String getName() {
@@ -33,36 +28,40 @@ public class DeviceDto implements Serializable {
         return powerLevel;
     }
 
-    public void setSerial(String serial) {
-        this.serial = serial;
-    }
-
-    public void setPowerLevel(Double powerLevel) {
-        this.powerLevel = powerLevel;
+    @NotBlank
+    public String getSerial() {
+        return serial;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
+    public void setPowerLevel(Double powerLevel) {
+        this.powerLevel = powerLevel;
+    }
+
+    public void setSerial(String serial) {
+        this.serial = serial;
+    }
+
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
         if (!(o instanceof DeviceDto deviceDto)) return false;
-        return Objects.equals(serial, deviceDto.serial) && Objects.equals(name, deviceDto.name) && Objects.equals(powerLevel, deviceDto.powerLevel);
+        return Objects.equals(name, deviceDto.name) && Objects.equals(powerLevel, deviceDto.powerLevel) && Objects.equals(serial, deviceDto.serial);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(serial, name, powerLevel);
+        return Objects.hash(name, powerLevel, serial);
     }
 
     @Override
     public String toString() {
         return "DeviceDto{" +
-                "serial='" + serial + '\'' +
-                ", name='" + name + '\'' +
+                "name='" + name + '\'' +
                 ", powerLevel=" + powerLevel +
+                ", serial='" + serial + '\'' +
                 '}';
     }
 }

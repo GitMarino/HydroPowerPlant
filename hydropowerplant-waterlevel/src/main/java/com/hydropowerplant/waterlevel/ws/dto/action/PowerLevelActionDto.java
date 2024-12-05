@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotNull;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
 public class PowerLevelActionDto implements Serializable {
 
@@ -55,5 +56,26 @@ public class PowerLevelActionDto implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof PowerLevelActionDto that)) return false;
+        return Objects.equals(devices, that.devices) && Objects.equals(multiplier, that.multiplier) && Objects.equals(name, that.name) && Objects.equals(type, that.type);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(devices, multiplier, name, type);
+    }
+
+    @Override
+    public String toString() {
+        return "PowerLevelActionDto{" +
+                "devices=" + devices +
+                ", multiplier=" + multiplier +
+                ", name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                '}';
     }
 }

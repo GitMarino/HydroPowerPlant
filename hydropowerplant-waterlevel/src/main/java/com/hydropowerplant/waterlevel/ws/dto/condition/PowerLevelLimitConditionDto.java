@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotNull;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
 public class PowerLevelLimitConditionDto implements Serializable {
 
@@ -66,5 +67,27 @@ public class PowerLevelLimitConditionDto implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof PowerLevelLimitConditionDto that)) return false;
+        return Objects.equals(devices, that.devices) && Objects.equals(maxPowerLevel, that.maxPowerLevel) && Objects.equals(minPowerLevel, that.minPowerLevel) && Objects.equals(name, that.name) && Objects.equals(type, that.type);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(devices, maxPowerLevel, minPowerLevel, name, type);
+    }
+
+    @Override
+    public String toString() {
+        return "PowerLevelLimitConditionDto{" +
+                "devices=" + devices +
+                ", maxPowerLevel=" + maxPowerLevel +
+                ", minPowerLevel=" + minPowerLevel +
+                ", name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                '}';
     }
 }

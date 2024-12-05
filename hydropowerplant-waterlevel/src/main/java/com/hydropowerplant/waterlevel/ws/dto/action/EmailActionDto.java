@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.Objects;
 
 public class EmailActionDto implements Serializable {
 
@@ -65,5 +66,27 @@ public class EmailActionDto implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof EmailActionDto that)) return false;
+        return Objects.equals(address, that.address) && Objects.equals(name, that.name) && Objects.equals(subject, that.subject) && Objects.equals(text, that.text) && Objects.equals(type, that.type);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(address, name, subject, text, type);
+    }
+
+    @Override
+    public String toString() {
+        return "EmailActionDto{" +
+                "address='" + address + '\'' +
+                ", name='" + name + '\'' +
+                ", subject='" + subject + '\'' +
+                ", text='" + text + '\'' +
+                ", type='" + type + '\'' +
+                '}';
     }
 }
