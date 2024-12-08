@@ -44,11 +44,7 @@ public class DeviceBoImpl implements DeviceBo {
         Device device = getBySerial(serial);
 
         HttpHeaders headers = new HttpHeaders();
-        headers.setBearerAuth("""
-                eyJhbGciOiJIUZI1NiIsInR5cCI6IkpXVCJ9.
-                eyJzdWIi0iIxMjMONTY3ODkwIiwibmFtZSI6IkpvaG4
-                gRG91IiwiaXNTb2NpYWwiOnRydWV9.
-                4pcPyMD09o1PSyXnrXCjTwXyr4BsezdI1AVTmud2fU4""");
+        headers.setBearerAuth("Ym9zY236Ym9zY28=");
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<PowerLevelDto> request = new HttpEntity<>(new PowerLevelDto(powerLevel), headers);
 
