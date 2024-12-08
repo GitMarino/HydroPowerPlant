@@ -26,6 +26,8 @@ public class PowerLevelLimitConditionBoImpl implements PowerLevelLimitConditionB
         this.powerLevelLimitConditionDao = powerLevelLimitConditionDao;
     }
 
+    
+    @Override
     @Transactional
     public void createPowerLevelLimitCondition(PowerLevelLimitCondition powerLevelLimitCondition, List<String> devicesSerials) {
         PowerLevelLimitCondition powerLevelLimitConditionDb = powerLevelLimitConditionDao.save(powerLevelLimitCondition);

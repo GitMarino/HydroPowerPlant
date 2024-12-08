@@ -30,6 +30,7 @@ public class PowerLevelConditionBoImpl implements PowerLevelConditionBo {
     }
 
 
+    @Override
     @Transactional
     public void createPowerLevelCondition(PowerLevelCondition powerLevelCondition, List<String> devicesSerials) {
         PowerLevelCondition powerLevelConditionDb = powerLevelConditionDao.save(powerLevelCondition);

@@ -14,6 +14,7 @@ public class DeviceLogBoImpl implements DeviceLogBo {
     }
 
 
+    @Override
     public void saveDeviceLog(DeviceLog deviceLog) {
         deviceLogDao.save(deviceLog);
     }

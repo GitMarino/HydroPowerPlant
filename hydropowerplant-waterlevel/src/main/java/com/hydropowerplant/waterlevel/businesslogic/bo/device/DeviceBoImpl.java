@@ -25,6 +25,7 @@ public class DeviceBoImpl implements DeviceBo {
     }
 
 
+    @Override
     public Device getBySerial(String serial) {
         Optional<Device> optionalDevice = deviceDao.findById(serial);
         if (optionalDevice.isPresent()) {
@@ -33,10 +34,12 @@ public class DeviceBoImpl implements DeviceBo {
         throw new ItemNotFoundException("No device found with serial:" + serial);
     }
 
+    @Override
     public void saveDevice(Device device) {
         deviceDao.save(device);
     }
 
+    @Override
     public void setPowerLevel(String serial, double powerLevel) {
         Device device = getBySerial(serial);
 
@@ -63,6 +66,7 @@ public class DeviceBoImpl implements DeviceBo {
         }
     }
 
+    @Override
     public void updatePowerLevel(String serial, double powerLevel) {
         if (deviceDao.updatePowerLevelBySerial(serial, powerLevel) == 0) {
             throw new ItemNotFoundException("No device found with serial:" + serial);

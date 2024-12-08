@@ -46,8 +46,9 @@ public class ScenarioBoImpl implements ScenarioBo {
         this.scenarioConditionRelationshipDao = scenarioConditionRelationshipDao;
         this.scenarioDao = scenarioDao;
     }
-    
 
+
+    @Override
     @Transactional
     public void createScenario(ScenarioDto scenarioDto) {
         Scenario scenario = scenarioDao.save(
@@ -81,6 +82,7 @@ public class ScenarioBoImpl implements ScenarioBo {
         }
     }
 
+    @Override
     public <S extends Event> void performActions(List<Integer> conditionIds, S event) {
         actionDao.findByConditions(conditionIds)
                 .parallelStream()

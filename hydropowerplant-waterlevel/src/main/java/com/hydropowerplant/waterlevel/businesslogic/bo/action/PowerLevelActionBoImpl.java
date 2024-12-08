@@ -12,6 +12,7 @@ import com.hydropowerplant.waterlevel.entity.action.Action;
 import com.hydropowerplant.waterlevel.entity.action.PowerLevelAction;
 import com.hydropowerplant.waterlevel.entity.relationship.DevicePowerLevelActionRelationship;
 import com.hydropowerplant.waterlevel.entity.relationship.key.DevicePowerLevelActionRelationshipKey;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,6 +37,8 @@ public class PowerLevelActionBoImpl implements ActionBo, PowerLevelActionBo {
     }
 
 
+    @Override
+    @Transactional
     public void createPowerLevelAction(PowerLevelAction powerLevelAction, List<String> devicesSerials) {
         PowerLevelAction powerLevelActionDb = powerLevelActionDao.save(powerLevelAction);
         createDevicePowerLevelActionRelationships(powerLevelAction, devicesSerials);
@@ -49,6 +52,7 @@ public class PowerLevelActionBoImpl implements ActionBo, PowerLevelActionBo {
         }
     }
 
+    @Override
     public <T extends Action, S extends Event> void start(T action, S event) {
         if (action instanceof PowerLevelAction powerLevelAction && event instanceof DeviceEvent deviceEvent) {
             double powerLevel = deviceEvent.getPowerLevel() * powerLevelAction.getMultiplier();

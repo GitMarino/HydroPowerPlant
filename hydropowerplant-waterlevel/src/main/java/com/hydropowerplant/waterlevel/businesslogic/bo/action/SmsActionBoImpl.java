@@ -11,17 +11,19 @@ public class SmsActionBoImpl implements ActionBo, SmsActionBo {
 
     public static final String SERVICE_NAME = "smsAction";
 
-    private SmsActionDao smsActionDao;
+    private final SmsActionDao smsActionDao;
 
     public SmsActionBoImpl(SmsActionDao smsActionDao) {
         this.smsActionDao = smsActionDao;
     }
 
 
+    @Override
     public void saveSmsAction(SmsAction smsAction) {
         smsActionDao.save(smsAction);
     }
 
+    @Override
     public <T extends Action, S extends Event> void start(T action, S event) {
         //TODO
     }

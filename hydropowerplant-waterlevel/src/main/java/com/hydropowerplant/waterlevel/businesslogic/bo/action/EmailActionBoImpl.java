@@ -23,10 +23,12 @@ public class EmailActionBoImpl implements ActionBo, EmailActionBo {
     }
 
 
+    @Override
     public void saveEmailAction(EmailAction emailAction) {
         emailActionDao.save(emailAction);
     }
 
+    @Override
     public <T extends Action, S extends Event> void start(T action, S event) {
         if (action instanceof EmailAction emailAction) {
             SimpleMailMessage message = new SimpleMailMessage();
