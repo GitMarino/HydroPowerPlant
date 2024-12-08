@@ -53,16 +53,9 @@ public class DeviceBoImpl implements DeviceBo {
         HttpEntity<PowerLevelDto> request = new HttpEntity<>(new PowerLevelDto(powerLevel), headers);
 
         RestTemplate restTemplate = new RestTemplate();
-        try {
-            //TODO column with url
-            ResponseEntity<ResponseDto> response = restTemplate.exchange(
-                    "https://host:9090/device/powerLevel", HttpMethod.PATCH, request, ResponseDto.class);
-
-            if (response.getStatusCode().is2xxSuccessful()) {
-                updatePowerLevel(serial, powerLevel);
-            }
-        } catch (Exception e) {
-            //TODO log error in api call
+        ResponseEntity<ResponseDto> response = restTemplate.exchange(device.getAddress(), HttpMethod.PATCH, request, ResponseDto.class);
+        if (response.getStatusCode().is2xxSuccessful()) {
+            updatePowerLevel(serial, powerLevel);
         }
     }
 

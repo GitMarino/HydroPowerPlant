@@ -12,11 +12,18 @@ public class DeviceDto implements Serializable {
     @Serial
     private static final long serialVersionUID = 4583358869346738599L;
 
+    private String address;
+
     private String name;
 
     private Double powerLevel;
 
     private String serial;
+
+    @NotBlank
+    public String getAddress() {
+        return address;
+    }
 
     @NotBlank
     public String getName() {
@@ -31,6 +38,10 @@ public class DeviceDto implements Serializable {
     @NotBlank
     public String getSerial() {
         return serial;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public void setName(String name) {
@@ -48,18 +59,19 @@ public class DeviceDto implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof DeviceDto deviceDto)) return false;
-        return Objects.equals(name, deviceDto.name) && Objects.equals(powerLevel, deviceDto.powerLevel) && Objects.equals(serial, deviceDto.serial);
+        return Objects.equals(address, deviceDto.address) && Objects.equals(name, deviceDto.name) && Objects.equals(powerLevel, deviceDto.powerLevel) && Objects.equals(serial, deviceDto.serial);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, powerLevel, serial);
+        return Objects.hash(address, name, powerLevel, serial);
     }
 
     @Override
     public String toString() {
         return "DeviceDto{" +
-                "name='" + name + '\'' +
+                "address='" + address + '\'' +
+                ", name='" + name + '\'' +
                 ", powerLevel=" + powerLevel +
                 ", serial='" + serial + '\'' +
                 '}';

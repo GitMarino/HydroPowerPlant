@@ -18,20 +18,28 @@ public class Device {
     @Column(name = "serial", length = 50)
     private String serial;
 
+    @Column(name = "address", nullable = false, length = 100)
+    private String address;
+
     @Column(name = "name", nullable = false, length = 50)
     private String name;
 
     @Column(name = "powerlevel", nullable = false)
     private double powerLevel;
 
-    public Device(String serial, String name, double powerLevel) {
+    public Device(String serial, String address, String name, double powerLevel) {
         this.serial = serial;
+        this.address = address;
         this.name = name;
         this.powerLevel = powerLevel;
     }
 
     public String getSerial() {
         return serial;
+    }
+
+    public String getAddress() {
+        return address;
     }
 
     public String getName() {
@@ -46,6 +54,10 @@ public class Device {
         this.serial = serial;
     }
 
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -56,20 +68,20 @@ public class Device {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
         if (!(o instanceof Device device)) return false;
-        return Double.compare(powerLevel, device.powerLevel) == 0 && Objects.equals(serial, device.serial) && Objects.equals(name, device.name);
+        return Double.compare(powerLevel, device.powerLevel) == 0 && Objects.equals(serial, device.serial) && Objects.equals(address, device.address) && Objects.equals(name, device.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(serial, name, powerLevel);
+        return Objects.hash(serial, address, name, powerLevel);
     }
 
     @Override
     public String toString() {
         return "Device{" +
                 "serial='" + serial + '\'' +
+                ", address='" + address + '\'' +
                 ", name='" + name + '\'' +
                 ", powerLevel=" + powerLevel +
                 '}';

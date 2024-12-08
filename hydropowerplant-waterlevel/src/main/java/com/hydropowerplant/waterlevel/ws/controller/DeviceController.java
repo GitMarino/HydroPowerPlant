@@ -28,7 +28,7 @@ public class DeviceController {
 
     @PostMapping
     public ResponseEntity<ResponseDto> createDevice(@Valid @RequestBody DeviceDto deviceDto) {
-        deviceBo.saveDevice(new Device(deviceDto.getSerial(), deviceDto.getName(), deviceDto.getPowerLevel()));
+        deviceBo.saveDevice(new Device(deviceDto.getSerial(), deviceDto.getAddress(), deviceDto.getName(), deviceDto.getPowerLevel()));
         return new ResponseEntity<>(new ResponseDto("Success!"), HttpStatus.OK);
     }
 
