@@ -9,6 +9,6 @@ public interface ConditionBo {
      * <p>
      * finds conditions connected to given device and performs related scenarios
      */
-    void manageDevicePowerLevelCondition(DeviceEvent deviceEvent);
+    void manageDeviceEvent(DeviceEvent deviceEvent);
 
 }

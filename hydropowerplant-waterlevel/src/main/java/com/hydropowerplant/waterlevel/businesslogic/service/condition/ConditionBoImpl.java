@@ -37,7 +37,7 @@ public class ConditionBoImpl implements ConditionBo {
 
 
     @Override
-    public void manageDevicePowerLevelCondition(DeviceEvent deviceEvent) {
+    public void manageDeviceEvent(DeviceEvent deviceEvent) {
         String serial = deviceEvent.getSerial();
         double powerLevel = deviceEvent.getPowerLevel();
 
