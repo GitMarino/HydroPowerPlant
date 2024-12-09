@@ -2,6 +2,7 @@ package com.hydropowerplant.waterlevel.businesslogic.service.action;
 
 import com.hydropowerplant.waterlevel.businesslogic.object.event.DeviceEvent;
 import com.hydropowerplant.waterlevel.businesslogic.object.event.Event;
+import com.hydropowerplant.waterlevel.businesslogic.service.CachedThreadPool;
 import com.hydropowerplant.waterlevel.businesslogic.service.device.DeviceBo;
 import com.hydropowerplant.waterlevel.businesslogic.service.device.DeviceLogBo;
 import com.hydropowerplant.waterlevel.entity.Device;
@@ -23,14 +24,17 @@ public class PowerLevelActionBoImpl implements ActionBo, PowerLevelActionBo {
 
     public static final String SERVICE_NAME = "powerLevelAction";
 
+    private final CachedThreadPool cachedThreadPool;
+
     private final DeviceBo deviceBo;
 
     private final DevicePowerLevelActionRelationshipDao devicePowerLevelActionRelationshipDao;
 
     private final PowerLevelActionDao powerLevelActionDao;
 
-    public PowerLevelActionBoImpl(DeviceBo deviceBo, DeviceDao deviceDao, DeviceLogBo deviceLogBo,
+    public PowerLevelActionBoImpl(CachedThreadPool cachedThreadPool, DeviceBo deviceBo, DeviceDao deviceDao, DeviceLogBo deviceLogBo,
                                   DevicePowerLevelActionRelationshipDao devicePowerLevelActionRelationshipDao, PowerLevelActionDao powerLevelActionDao) {
+        this.cachedThreadPool = cachedThreadPool;
         this.deviceBo = deviceBo;
         this.devicePowerLevelActionRelationshipDao = devicePowerLevelActionRelationshipDao;
         this.powerLevelActionDao = powerLevelActionDao;
@@ -55,12 +59,9 @@ public class PowerLevelActionBoImpl implements ActionBo, PowerLevelActionBo {
     @Override
     public <T extends Action, S extends Event> void start(T action, S event) {
         if (action instanceof PowerLevelAction powerLevelAction && event instanceof DeviceEvent deviceEvent) {
-            double powerLevel = deviceEvent.getPowerLevel() * powerLevelAction.getMultiplier();
-            if (powerLevel > 100) {
-                powerLevel = 100;
-            }
+            double powerLevel = powerLevelAction.getMultiplier() * deviceEvent.getPowerLevel();
             for (String deviceSerial : devicePowerLevelActionRelationshipDao.findIdDeviceSerialByIdPowerLevelActionId(powerLevelAction.getId())) {
-                deviceBo.setPowerLevel(deviceSerial, powerLevel);
+                cachedThreadPool.getExecutor().execute(() -> deviceBo.setPowerLevel(deviceSerial, powerLevel > 100 ? 100 : powerLevel));
             }
         }
     }
