@@ -1,9 +1,9 @@
 package com.hydropowerplant.waterlevel.businesslogic.bo.action;
 
 import com.hydropowerplant.waterlevel.businesslogic.object.event.Event;
-import com.hydropowerplant.waterlevel.dao.action.EmailActionDao;
 import com.hydropowerplant.waterlevel.entity.action.Action;
 import com.hydropowerplant.waterlevel.entity.action.EmailAction;
+import com.hydropowerplant.waterlevel.repository.action.EmailActionDao;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;

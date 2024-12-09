@@ -1,12 +1,12 @@
 package com.hydropowerplant.waterlevel.businesslogic.bo.condition;
 
 import com.hydropowerplant.waterlevel.businesslogic.bo.device.DeviceBo;
-import com.hydropowerplant.waterlevel.dao.condition.PowerLevelLimitConditionDao;
-import com.hydropowerplant.waterlevel.dao.relationship.DevicePowerLevelLimitConditionRelationshipDao;
 import com.hydropowerplant.waterlevel.entity.Device;
 import com.hydropowerplant.waterlevel.entity.condition.PowerLevelLimitCondition;
 import com.hydropowerplant.waterlevel.entity.relationship.DevicePowerLevelLimitConditionRelationship;
 import com.hydropowerplant.waterlevel.entity.relationship.key.DevicePowerLevelLimitConditionRelationshipKey;
+import com.hydropowerplant.waterlevel.repository.condition.PowerLevelLimitConditionDao;
+import com.hydropowerplant.waterlevel.repository.relationship.DevicePowerLevelLimitConditionRelationshipDao;
 import jakarta.transaction.Transactional;
 
 import java.util.List;

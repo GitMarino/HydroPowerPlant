@@ -4,14 +4,14 @@ import com.hydropowerplant.waterlevel.businesslogic.bo.device.DeviceBo;
 import com.hydropowerplant.waterlevel.businesslogic.bo.device.DeviceLogBo;
 import com.hydropowerplant.waterlevel.businesslogic.object.event.DeviceEvent;
 import com.hydropowerplant.waterlevel.businesslogic.object.event.Event;
-import com.hydropowerplant.waterlevel.dao.action.PowerLevelActionDao;
-import com.hydropowerplant.waterlevel.dao.device.DeviceDao;
-import com.hydropowerplant.waterlevel.dao.relationship.DevicePowerLevelActionRelationshipDao;
 import com.hydropowerplant.waterlevel.entity.Device;
 import com.hydropowerplant.waterlevel.entity.action.Action;
 import com.hydropowerplant.waterlevel.entity.action.PowerLevelAction;
 import com.hydropowerplant.waterlevel.entity.relationship.DevicePowerLevelActionRelationship;
 import com.hydropowerplant.waterlevel.entity.relationship.key.DevicePowerLevelActionRelationshipKey;
+import com.hydropowerplant.waterlevel.repository.action.PowerLevelActionDao;
+import com.hydropowerplant.waterlevel.repository.device.DeviceDao;
+import com.hydropowerplant.waterlevel.repository.relationship.DevicePowerLevelActionRelationshipDao;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 

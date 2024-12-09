@@ -1,4 +1,4 @@
-package com.hydropowerplant.waterlevel.dao;
+package com.hydropowerplant.waterlevel.repository;
 
 import com.hydropowerplant.waterlevel.entity.Scenario;
 import org.springframework.data.jpa.repository.JpaRepository;

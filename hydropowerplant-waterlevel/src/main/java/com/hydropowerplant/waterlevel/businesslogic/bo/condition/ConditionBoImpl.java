@@ -5,9 +5,9 @@ import com.hydropowerplant.waterlevel.businesslogic.bo.device.DeviceLogBo;
 import com.hydropowerplant.waterlevel.businesslogic.bo.scenario.ScenarioBo;
 import com.hydropowerplant.waterlevel.businesslogic.object.event.DeviceEvent;
 import com.hydropowerplant.waterlevel.businesslogic.object.event.Event;
-import com.hydropowerplant.waterlevel.dao.condition.PowerLevelConditionDao;
-import com.hydropowerplant.waterlevel.dao.condition.PowerLevelLimitConditionDao;
 import com.hydropowerplant.waterlevel.entity.DeviceLog;
+import com.hydropowerplant.waterlevel.repository.condition.PowerLevelConditionDao;
+import com.hydropowerplant.waterlevel.repository.condition.PowerLevelLimitConditionDao;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;

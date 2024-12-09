@@ -1,7 +1,7 @@
 package com.hydropowerplant.waterlevel.businesslogic.bo.device;
 
 import com.hydropowerplant.waterlevel.businesslogic.exception.ItemNotFoundException;
-import com.hydropowerplant.waterlevel.dao.device.DeviceDao;
+import com.hydropowerplant.waterlevel.repository.device.DeviceDao;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

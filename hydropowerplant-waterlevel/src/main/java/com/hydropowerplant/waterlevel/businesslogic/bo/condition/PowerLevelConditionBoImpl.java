@@ -1,12 +1,12 @@
 package com.hydropowerplant.waterlevel.businesslogic.bo.condition;
 
 import com.hydropowerplant.waterlevel.businesslogic.bo.device.DeviceBo;
-import com.hydropowerplant.waterlevel.dao.condition.PowerLevelConditionDao;
-import com.hydropowerplant.waterlevel.dao.relationship.DevicePowerLevelConditionRelationshipDao;
 import com.hydropowerplant.waterlevel.entity.Device;
 import com.hydropowerplant.waterlevel.entity.condition.PowerLevelCondition;
 import com.hydropowerplant.waterlevel.entity.relationship.DevicePowerLevelConditionRelationship;
 import com.hydropowerplant.waterlevel.entity.relationship.key.DevicePowerLevelConditionRelationshipKey;
+import com.hydropowerplant.waterlevel.repository.condition.PowerLevelConditionDao;
+import com.hydropowerplant.waterlevel.repository.relationship.DevicePowerLevelConditionRelationshipDao;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 

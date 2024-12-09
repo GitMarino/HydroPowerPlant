@@ -1,7 +1,7 @@
 package com.hydropowerplant.waterlevel.businesslogic.bo.device;
 
-import com.hydropowerplant.waterlevel.dao.device.DeviceLogDao;
 import com.hydropowerplant.waterlevel.entity.DeviceLog;
+import com.hydropowerplant.waterlevel.repository.device.DeviceLogDao;
 import org.springframework.stereotype.Service;
 
 @Service

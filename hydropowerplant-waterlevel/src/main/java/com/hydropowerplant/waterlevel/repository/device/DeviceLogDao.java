@@ -1,4 +1,4 @@
-package com.hydropowerplant.waterlevel.dao.device;
+package com.hydropowerplant.waterlevel.repository.device;
 
 import com.hydropowerplant.waterlevel.entity.DeviceLog;
 import org.springframework.data.jpa.repository.JpaRepository;

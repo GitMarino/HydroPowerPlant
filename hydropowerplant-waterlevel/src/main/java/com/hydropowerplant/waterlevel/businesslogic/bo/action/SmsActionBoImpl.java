@@ -1,9 +1,9 @@
 package com.hydropowerplant.waterlevel.businesslogic.bo.action;
 
 import com.hydropowerplant.waterlevel.businesslogic.object.event.Event;
-import com.hydropowerplant.waterlevel.dao.action.SmsActionDao;
 import com.hydropowerplant.waterlevel.entity.action.Action;
 import com.hydropowerplant.waterlevel.entity.action.SmsAction;
+import com.hydropowerplant.waterlevel.repository.action.SmsActionDao;
 import org.springframework.stereotype.Service;
 
 @Service(SmsActionBoImpl.SERVICE_NAME)

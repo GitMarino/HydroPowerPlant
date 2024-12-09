@@ -1,8 +1,8 @@
 package com.hydropowerplant.waterlevel.businesslogic.bo.device;
 
 import com.hydropowerplant.waterlevel.businesslogic.exception.ItemNotFoundException;
-import com.hydropowerplant.waterlevel.dao.device.DeviceDao;
 import com.hydropowerplant.waterlevel.entity.Device;
+import com.hydropowerplant.waterlevel.repository.device.DeviceDao;
 import com.hydropowerplant.waterlevel.ws.dto.PowerLevelDto;
 import com.hydropowerplant.waterlevel.ws.dto.ResponseDto;
 import org.springframework.http.HttpEntity;

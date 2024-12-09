@@ -1,4 +1,4 @@
-package com.hydropowerplant.waterlevel.dao.action;
+package com.hydropowerplant.waterlevel.repository.action;
 
 import com.hydropowerplant.waterlevel.entity.action.EmailAction;
 import org.springframework.data.jpa.repository.JpaRepository;
