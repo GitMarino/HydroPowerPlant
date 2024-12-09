@@ -1,10 +1,10 @@
-package com.hydropowerplant.waterlevel.businesslogic.bo.condition;
+package com.hydropowerplant.waterlevel.businesslogic.service.condition;
 
-import com.hydropowerplant.waterlevel.businesslogic.bo.device.DeviceBo;
-import com.hydropowerplant.waterlevel.businesslogic.bo.device.DeviceLogBo;
-import com.hydropowerplant.waterlevel.businesslogic.bo.scenario.ScenarioBo;
 import com.hydropowerplant.waterlevel.businesslogic.object.event.DeviceEvent;
 import com.hydropowerplant.waterlevel.businesslogic.object.event.Event;
+import com.hydropowerplant.waterlevel.businesslogic.service.device.DeviceBo;
+import com.hydropowerplant.waterlevel.businesslogic.service.device.DeviceLogBo;
+import com.hydropowerplant.waterlevel.businesslogic.service.scenario.ScenarioBo;
 import com.hydropowerplant.waterlevel.entity.DeviceLog;
 import com.hydropowerplant.waterlevel.repository.condition.PowerLevelConditionDao;
 import com.hydropowerplant.waterlevel.repository.condition.PowerLevelLimitConditionDao;

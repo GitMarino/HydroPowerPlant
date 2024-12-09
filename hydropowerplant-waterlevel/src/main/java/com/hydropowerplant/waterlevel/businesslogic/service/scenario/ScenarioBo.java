@@ -1,4 +1,4 @@
-package com.hydropowerplant.waterlevel.businesslogic.bo.scenario;
+package com.hydropowerplant.waterlevel.businesslogic.service.scenario;
 
 import com.hydropowerplant.waterlevel.businesslogic.object.event.Event;
 import com.hydropowerplant.waterlevel.ws.dto.ScenarioDto;

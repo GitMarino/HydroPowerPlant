@@ -1,8 +1,8 @@
-package com.hydropowerplant.waterlevel.businesslogic.bo.scenario;
+package com.hydropowerplant.waterlevel.businesslogic.service.scenario;
 
-import com.hydropowerplant.waterlevel.businesslogic.bo.action.ActionBoFactory;
 import com.hydropowerplant.waterlevel.businesslogic.exception.ItemNotFoundException;
 import com.hydropowerplant.waterlevel.businesslogic.object.event.Event;
+import com.hydropowerplant.waterlevel.businesslogic.service.action.ActionBoFactory;
 import com.hydropowerplant.waterlevel.entity.Scenario;
 import com.hydropowerplant.waterlevel.entity.action.Action;
 import com.hydropowerplant.waterlevel.entity.condition.Condition;

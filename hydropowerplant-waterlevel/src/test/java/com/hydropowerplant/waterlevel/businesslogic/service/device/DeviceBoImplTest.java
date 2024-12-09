@@ -1,4 +1,4 @@
-package com.hydropowerplant.waterlevel.businesslogic.bo.device;
+package com.hydropowerplant.waterlevel.businesslogic.service.device;
 
 import com.hydropowerplant.waterlevel.businesslogic.exception.ItemNotFoundException;
 import com.hydropowerplant.waterlevel.repository.device.DeviceDao;

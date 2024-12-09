@@ -1,6 +1,6 @@
 package com.hydropowerplant.waterlevel.ws.controller.condition;
 
-import com.hydropowerplant.waterlevel.businesslogic.bo.condition.ConditionBo;
+import com.hydropowerplant.waterlevel.businesslogic.service.condition.ConditionBo;
 import com.hydropowerplant.waterlevel.businesslogic.object.event.DeviceEvent;
 import com.hydropowerplant.waterlevel.ws.dto.ResponseDto;
 import jakarta.validation.Valid;

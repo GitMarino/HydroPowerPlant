@@ -1,6 +1,6 @@
 package com.hydropowerplant.waterlevel.ws.controller.condition;
 
-import com.hydropowerplant.waterlevel.businesslogic.bo.condition.PowerLevelConditionBo;
+import com.hydropowerplant.waterlevel.businesslogic.service.condition.PowerLevelConditionBo;
 import com.hydropowerplant.waterlevel.entity.condition.PowerLevelCondition;
 import com.hydropowerplant.waterlevel.ws.dto.ResponseDto;
 import com.hydropowerplant.waterlevel.ws.dto.condition.PowerLevelConditionDto;

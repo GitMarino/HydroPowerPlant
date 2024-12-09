@@ -1,6 +1,6 @@
-package com.hydropowerplant.waterlevel.businesslogic.bo.condition;
+package com.hydropowerplant.waterlevel.businesslogic.service.condition;
 
-import com.hydropowerplant.waterlevel.businesslogic.bo.device.DeviceBo;
+import com.hydropowerplant.waterlevel.businesslogic.service.device.DeviceBo;
 import com.hydropowerplant.waterlevel.entity.Device;
 import com.hydropowerplant.waterlevel.entity.condition.PowerLevelCondition;
 import com.hydropowerplant.waterlevel.entity.relationship.DevicePowerLevelConditionRelationship;

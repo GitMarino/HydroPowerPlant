@@ -1,6 +1,6 @@
 package com.hydropowerplant.waterlevel.ws.controller;
 
-import com.hydropowerplant.waterlevel.businesslogic.bo.scenario.ScenarioBo;
+import com.hydropowerplant.waterlevel.businesslogic.service.scenario.ScenarioBo;
 import com.hydropowerplant.waterlevel.ws.dto.ResponseDto;
 import com.hydropowerplant.waterlevel.ws.dto.ScenarioDto;
 import jakarta.validation.Valid;

@@ -1,6 +1,6 @@
 package com.hydropowerplant.waterlevel.ws.controller;
 
-import com.hydropowerplant.waterlevel.businesslogic.bo.device.DeviceBo;
+import com.hydropowerplant.waterlevel.businesslogic.service.device.DeviceBo;
 import com.hydropowerplant.waterlevel.entity.Device;
 import com.hydropowerplant.waterlevel.ws.dto.DeviceDto;
 import com.hydropowerplant.waterlevel.ws.dto.ResponseDto;

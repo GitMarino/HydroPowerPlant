@@ -1,4 +1,4 @@
-package com.hydropowerplant.waterlevel.businesslogic.bo.action;
+package com.hydropowerplant.waterlevel.businesslogic.service.action;
 
 import com.hydropowerplant.waterlevel.businesslogic.object.ActionService;
 import org.springframework.beans.factory.BeanFactory;

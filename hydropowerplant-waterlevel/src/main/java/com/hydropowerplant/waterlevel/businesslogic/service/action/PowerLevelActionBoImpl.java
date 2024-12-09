@@ -1,9 +1,9 @@
-package com.hydropowerplant.waterlevel.businesslogic.bo.action;
+package com.hydropowerplant.waterlevel.businesslogic.service.action;
 
-import com.hydropowerplant.waterlevel.businesslogic.bo.device.DeviceBo;
-import com.hydropowerplant.waterlevel.businesslogic.bo.device.DeviceLogBo;
 import com.hydropowerplant.waterlevel.businesslogic.object.event.DeviceEvent;
 import com.hydropowerplant.waterlevel.businesslogic.object.event.Event;
+import com.hydropowerplant.waterlevel.businesslogic.service.device.DeviceBo;
+import com.hydropowerplant.waterlevel.businesslogic.service.device.DeviceLogBo;
 import com.hydropowerplant.waterlevel.entity.Device;
 import com.hydropowerplant.waterlevel.entity.action.Action;
 import com.hydropowerplant.waterlevel.entity.action.PowerLevelAction;

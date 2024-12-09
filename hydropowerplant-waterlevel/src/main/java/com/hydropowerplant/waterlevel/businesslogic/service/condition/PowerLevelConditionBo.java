@@ -1,4 +1,4 @@
-package com.hydropowerplant.waterlevel.businesslogic.bo.condition;
+package com.hydropowerplant.waterlevel.businesslogic.service.condition;
 
 import com.hydropowerplant.waterlevel.entity.condition.PowerLevelCondition;
 

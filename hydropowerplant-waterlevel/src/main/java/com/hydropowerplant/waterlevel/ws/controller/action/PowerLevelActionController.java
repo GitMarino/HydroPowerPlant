@@ -1,6 +1,6 @@
 package com.hydropowerplant.waterlevel.ws.controller.action;
 
-import com.hydropowerplant.waterlevel.businesslogic.bo.action.PowerLevelActionBo;
+import com.hydropowerplant.waterlevel.businesslogic.service.action.PowerLevelActionBo;
 import com.hydropowerplant.waterlevel.entity.action.PowerLevelAction;
 import com.hydropowerplant.waterlevel.ws.dto.ResponseDto;
 import com.hydropowerplant.waterlevel.ws.dto.action.PowerLevelActionDto;

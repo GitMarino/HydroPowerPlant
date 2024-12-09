@@ -1,8 +1,8 @@
 package com.hydropowerplant.waterlevel.businesslogic.object;
 
-import com.hydropowerplant.waterlevel.businesslogic.bo.action.EmailActionBoImpl;
-import com.hydropowerplant.waterlevel.businesslogic.bo.action.PowerLevelActionBoImpl;
-import com.hydropowerplant.waterlevel.businesslogic.bo.action.SmsActionBoImpl;
+import com.hydropowerplant.waterlevel.businesslogic.service.action.EmailActionBoImpl;
+import com.hydropowerplant.waterlevel.businesslogic.service.action.PowerLevelActionBoImpl;
+import com.hydropowerplant.waterlevel.businesslogic.service.action.SmsActionBoImpl;
 
 public enum ActionService {
 
