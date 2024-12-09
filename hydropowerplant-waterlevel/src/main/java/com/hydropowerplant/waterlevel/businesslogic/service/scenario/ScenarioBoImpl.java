@@ -83,8 +83,8 @@ public class ScenarioBoImpl implements ScenarioBo {
     }
 
     @Override
-    public <S extends Event> void performActions(List<Integer> conditionIds, S event) {
-        actionDao.findByConditions(conditionIds)
+    public <S extends Event> void performActions(List<Integer> conditionsIds, S event) {
+        actionDao.findByScenarioEnabledTrueAndScenarioConditionRelationshipIdConditionIdIn(conditionsIds)
                 .parallelStream()
                 .forEach(action -> actionBoFactory.getActionBo(action.getType()).start(action, event));
     }

@@ -9,6 +9,6 @@ public interface ScenarioBo {
 
     void createScenario(ScenarioDto scenarioDto);
 
-    <S extends Event> void performActions(List<Integer> conditionIds, S event);
+    <S extends Event> void performActions(List<Integer> conditionsIds, S event);
 
 }
