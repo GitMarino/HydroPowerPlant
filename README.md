@@ -1,3 +1,4 @@
 Hydro power plant management software.
 
-![HPP db](https://github.com/user-attachments/assets/dceb139e-de23-48b5-80b2-5271bbd4d577)
+![DB](https://github.com/user-attachments/assets/a5f536bb-30e9-423a-9676-d0a87c62e0d8)
+
