@@ -9,8 +9,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
 @EntityScan("com.hydropowerplant.waterlevel.entity")
-@EnableJpaRepositories("com.hydropowerplant.waterlevel.dao")
-@ComponentScan(basePackages = "com.hydropowerplant.waterlevel.bo")
+@EnableJpaRepositories("com.hydropowerplant.waterlevel.repository")
+@ComponentScan(basePackages = "com.hydropowerplant.waterlevel.businesslogic.service")
 @PropertySources({
         @PropertySource("classpath:database.properties"),
         @PropertySource("classpath:mail.properties"),
