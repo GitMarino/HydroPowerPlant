@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/powerLevelLimitCondition")
+@RequestMapping("/condition/powerLevelLimit")
 public class PowerLevelLimitConditionController {
 
     private final PowerLevelLimitConditionBo powerLevelLimitConditionBo;

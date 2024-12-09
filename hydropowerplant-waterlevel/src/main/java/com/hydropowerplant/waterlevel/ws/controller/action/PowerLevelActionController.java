@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/powerLevelAction")
+@RequestMapping("/action/powerLevel")
 public class PowerLevelActionController {
 
     private final PowerLevelActionBo powerLevelActionBo;
