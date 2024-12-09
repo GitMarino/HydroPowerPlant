@@ -7,7 +7,7 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class DeviceEvent extends Event implements Serializable {
+public class DeviceEvent implements Event, Serializable {
 
     @Serial
     private static final long serialVersionUID = -80280890421781227L;
