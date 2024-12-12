@@ -54,8 +54,8 @@ public class ScenarioBoImpl implements ScenarioBo {
         Scenario scenario = scenarioDao.save(
                 new Scenario(null, scenarioDto.getDescription(), scenarioDto.getEnabled(), scenarioDto.getName()));
 
-        createScenarioConditionRelationships(scenario, scenarioDto.getConditionsIds());
-        createScenarioActionRelationships(scenario, scenarioDto.getActionsIds());
+        createScenarioConditionRelationships(scenario, scenarioDto.getConditions());
+        createScenarioActionRelationships(scenario, scenarioDto.getActions());
     }
 
     private void createScenarioConditionRelationships(Scenario scenario, List<Integer> conditionsIds) {

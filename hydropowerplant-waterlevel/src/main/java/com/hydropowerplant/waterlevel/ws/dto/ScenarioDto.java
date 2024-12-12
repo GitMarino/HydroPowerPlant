@@ -14,9 +14,9 @@ public class ScenarioDto implements Serializable {
     @Serial
     private static final long serialVersionUID = -4148276754147704024L;
 
-    private List<Integer> actionsIds;
+    private List<Integer> actions;
 
-    private List<Integer> conditionsIds;
+    private List<Integer> conditions;
 
     private String description;
 
@@ -25,13 +25,13 @@ public class ScenarioDto implements Serializable {
     private String name;
 
     @NotEmpty
-    public List<Integer> getActionsIds() {
-        return actionsIds;
+    public List<Integer> getActions() {
+        return actions;
     }
 
     @NotEmpty
-    public List<Integer> getConditionsIds() {
-        return conditionsIds;
+    public List<Integer> getConditions() {
+        return conditions;
     }
 
     public String getDescription() {
@@ -48,12 +48,12 @@ public class ScenarioDto implements Serializable {
         return name;
     }
 
-    public void setActionsIds(List<Integer> actionsIds) {
-        this.actionsIds = actionsIds;
+    public void setActions(List<Integer> actions) {
+        this.actions = actions;
     }
 
-    public void setConditionsIds(List<Integer> conditionsIds) {
-        this.conditionsIds = conditionsIds;
+    public void setConditions(List<Integer> conditions) {
+        this.conditions = conditions;
     }
 
     public void setDescription(String description) {
@@ -72,19 +72,19 @@ public class ScenarioDto implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof ScenarioDto that)) return false;
-        return Objects.equals(actionsIds, that.actionsIds) && Objects.equals(conditionsIds, that.conditionsIds) && Objects.equals(description, that.description) && Objects.equals(enabled, that.enabled) && Objects.equals(name, that.name);
+        return Objects.equals(actions, that.actions) && Objects.equals(conditions, that.conditions) && Objects.equals(description, that.description) && Objects.equals(enabled, that.enabled) && Objects.equals(name, that.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(actionsIds, conditionsIds, description, enabled, name);
+        return Objects.hash(actions, conditions, description, enabled, name);
     }
 
     @Override
     public String toString() {
         return "ScenarioDto{" +
-                "actionsIds=" + actionsIds +
-                ", conditionsIds=" + conditionsIds +
+                "actions=" + actions +
+                ", conditions=" + conditions +
                 ", description='" + description + '\'' +
                 ", enabled=" + enabled +
                 ", name='" + name + '\'' +
