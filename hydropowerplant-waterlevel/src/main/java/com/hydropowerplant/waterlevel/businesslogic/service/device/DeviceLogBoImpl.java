@@ -1,6 +1,6 @@
 package com.hydropowerplant.waterlevel.businesslogic.service.device;
 
-import com.hydropowerplant.waterlevel.entity.DeviceLog;
+import com.hydropowerplant.waterlevel.entity.device.DeviceLog;
 import com.hydropowerplant.waterlevel.repository.device.DeviceLogDao;
 import org.springframework.stereotype.Service;
 
@@ -18,4 +18,5 @@ public class DeviceLogBoImpl implements DeviceLogBo {
     public void saveDeviceLog(DeviceLog deviceLog) {
         deviceLogDao.save(deviceLog);
     }
+    
 }

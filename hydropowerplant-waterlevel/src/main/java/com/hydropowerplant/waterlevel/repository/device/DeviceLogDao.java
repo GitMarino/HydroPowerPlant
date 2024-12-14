@@ -1,6 +1,6 @@
 package com.hydropowerplant.waterlevel.repository.device;
 
-import com.hydropowerplant.waterlevel.entity.DeviceLog;
+import com.hydropowerplant.waterlevel.entity.device.DeviceLog;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

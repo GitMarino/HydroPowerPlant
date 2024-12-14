@@ -1,6 +1,6 @@
 package com.hydropowerplant.waterlevel.businesslogic.service.device;
 
-import com.hydropowerplant.waterlevel.entity.DeviceLog;
+import com.hydropowerplant.waterlevel.entity.device.DeviceLog;
 
 public interface DeviceLogBo {
 
