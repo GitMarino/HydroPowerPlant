@@ -1,23 +1,26 @@
 package com.hydropowerplant.waterlevel.entity;
 
+import com.hydropowerplant.waterlevel.entity.action.Action;
+import com.hydropowerplant.waterlevel.entity.condition.Condition;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = Scenario.TABLE_NAME)
-public class Scenario {
+public class Scenario extends IdentifiedEntity {
 
     public static final String TABLE_NAME = "scenario";
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @OneToMany
+    private Set<Action> actions;
+
+    @OneToMany
+    private Set<Condition> conditions;
 
     @Column(name = "description")
     private String description;
@@ -28,15 +31,21 @@ public class Scenario {
     @Column(name = "name", nullable = false)
     private String name;
 
-    public Scenario(Integer id, String description, boolean enabled, String name) {
-        this.id = id;
+    public Scenario(Integer id, String description, Set<Action> actions, Set<Condition> conditions, boolean enabled, String name) {
+        super(id);
+        this.actions = actions;
+        this.conditions = conditions;
         this.description = description;
         this.enabled = enabled;
         this.name = name;
     }
 
-    public Integer getId() {
-        return id;
+    public Set<Action> getActions() {
+        return actions;
+    }
+
+    public Set<Condition> getConditions() {
+        return conditions;
     }
 
     public String getDescription() {
@@ -51,8 +60,12 @@ public class Scenario {
         return name;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setActions(Set<Action> actions) {
+        this.actions = actions;
+    }
+
+    public void setConditions(Set<Condition> conditions) {
+        this.conditions = conditions;
     }
 
     public void setDescription(String description) {
@@ -69,20 +82,21 @@ public class Scenario {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
         if (!(o instanceof Scenario scenario)) return false;
-        return enabled == scenario.enabled && Objects.equals(id, scenario.id) && Objects.equals(description, scenario.description) && Objects.equals(name, scenario.name);
+        if (!super.equals(o)) return false;
+        return enabled == scenario.enabled && Objects.equals(actions, scenario.actions) && Objects.equals(conditions, scenario.conditions) && Objects.equals(description, scenario.description) && Objects.equals(name, scenario.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, description, enabled, name);
+        return Objects.hash(super.hashCode(), actions, conditions, description, enabled, name);
     }
 
     @Override
     public String toString() {
         return "Scenario{" +
-                "id=" + id +
+                "actions=" + actions +
+                ", conditions=" + conditions +
                 ", description='" + description + '\'' +
                 ", enabled=" + enabled +
                 ", name='" + name + '\'' +
