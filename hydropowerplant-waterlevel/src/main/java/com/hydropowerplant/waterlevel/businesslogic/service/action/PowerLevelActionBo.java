@@ -1,11 +1,9 @@
 package com.hydropowerplant.waterlevel.businesslogic.service.action;
 
-import com.hydropowerplant.waterlevel.entity.action.PowerLevelAction;
-
-import java.util.List;
+import com.hydropowerplant.waterlevel.ws.dto.action.PowerLevelActionDto;
 
 public interface PowerLevelActionBo {
 
-    void createPowerLevelAction(PowerLevelAction powerLevelAction, List<String> devicesSerials);
+    void createPowerLevelAction(PowerLevelActionDto powerLevelActionDto);
 
 }

@@ -1,7 +1,6 @@
 package com.hydropowerplant.waterlevel.ws.controller.condition;
 
 import com.hydropowerplant.waterlevel.businesslogic.service.condition.PowerLevelLimitConditionBo;
-import com.hydropowerplant.waterlevel.entity.condition.PowerLevelLimitCondition;
 import com.hydropowerplant.waterlevel.ws.dto.ResponseDto;
 import com.hydropowerplant.waterlevel.ws.dto.condition.PowerLevelLimitConditionDto;
 import jakarta.validation.Valid;
@@ -25,9 +24,7 @@ public class PowerLevelLimitConditionController {
 
     @PostMapping
     public ResponseEntity<ResponseDto> createPowerLevelLimitCondition(@Valid @RequestBody PowerLevelLimitConditionDto powerLevelLimitConditionDto) {
-        powerLevelLimitConditionBo.createPowerLevelLimitCondition(
-                new PowerLevelLimitCondition(null, powerLevelLimitConditionDto.getName(), powerLevelLimitConditionDto.getType(), powerLevelLimitConditionDto.getMaxPowerLevel(), powerLevelLimitConditionDto.getMinPowerLevel()),
-                powerLevelLimitConditionDto.getDevices());
+        powerLevelLimitConditionBo.createPowerLevelLimitCondition(powerLevelLimitConditionDto);
         return new ResponseEntity<>(new ResponseDto("Success!"), HttpStatus.OK);
     }
 

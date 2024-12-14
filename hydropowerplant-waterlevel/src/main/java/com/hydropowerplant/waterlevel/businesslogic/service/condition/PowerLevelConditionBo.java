@@ -1,10 +1,9 @@
 package com.hydropowerplant.waterlevel.businesslogic.service.condition;
 
-import com.hydropowerplant.waterlevel.entity.condition.PowerLevelCondition;
-
-import java.util.List;
+import com.hydropowerplant.waterlevel.ws.dto.condition.PowerLevelConditionDto;
 
 public interface PowerLevelConditionBo {
 
-    void createPowerLevelCondition(PowerLevelCondition powerLevelCondition, List<String> devicesSerials);
+    void createPowerLevelCondition(PowerLevelConditionDto powerLevelConditionDto);
+
 }

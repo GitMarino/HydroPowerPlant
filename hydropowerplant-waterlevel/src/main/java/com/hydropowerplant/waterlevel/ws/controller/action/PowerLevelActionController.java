@@ -1,7 +1,6 @@
 package com.hydropowerplant.waterlevel.ws.controller.action;
 
 import com.hydropowerplant.waterlevel.businesslogic.service.action.PowerLevelActionBo;
-import com.hydropowerplant.waterlevel.entity.action.PowerLevelAction;
 import com.hydropowerplant.waterlevel.ws.dto.ResponseDto;
 import com.hydropowerplant.waterlevel.ws.dto.action.PowerLevelActionDto;
 import jakarta.validation.Valid;
@@ -25,9 +24,7 @@ public class PowerLevelActionController {
 
     @PostMapping
     public ResponseEntity<ResponseDto> createPowerLevelAction(@Valid @RequestBody PowerLevelActionDto powerLevelActionDto) {
-        powerLevelActionBo.createPowerLevelAction(
-                new PowerLevelAction(null, powerLevelActionDto.getName(), powerLevelActionDto.getType(), powerLevelActionDto.getMultiplier()),
-                powerLevelActionDto.getDevices());
+        powerLevelActionBo.createPowerLevelAction(powerLevelActionDto);
         return new ResponseEntity<>(new ResponseDto("Success!"), HttpStatus.OK);
     }
 }
