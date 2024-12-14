@@ -1,22 +1,18 @@
 package com.hydropowerplant.waterlevel.entity.action;
 
+import com.hydropowerplant.waterlevel.entity.IdentifiedEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 
+import java.util.Objects;
+
 @Entity(name = Action.TABLE_NAME)
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Action {
+public class Action extends IdentifiedEntity {
 
     public static final String TABLE_NAME = "action";
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -25,13 +21,9 @@ public class Action {
     private String type;
 
     public Action(Integer id, String name, String type) {
-        this.id = id;
+        super(id);
         this.name = name;
         this.type = type;
-    }
-
-    public Integer getId() {
-        return id;
     }
 
     public String getName() {
@@ -42,10 +34,6 @@ public class Action {
         return type;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -53,5 +41,24 @@ public class Action {
     public void setType(String type) {
         this.type = type;
     }
-    
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Action action)) return false;
+        if (!super.equals(o)) return false;
+        return Objects.equals(name, action.name) && Objects.equals(type, action.type);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), name, type);
+    }
+
+    @Override
+    public String toString() {
+        return "Action{" +
+                "name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                '}';
+    }
 }

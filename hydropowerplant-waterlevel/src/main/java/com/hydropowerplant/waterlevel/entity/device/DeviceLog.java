@@ -1,10 +1,8 @@
-package com.hydropowerplant.waterlevel.entity;
+package com.hydropowerplant.waterlevel.entity.device;
 
+import com.hydropowerplant.waterlevel.entity.IdentifiedEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -13,13 +11,9 @@ import java.util.Objects;
 
 @Entity
 @Table(name = DeviceLog.TABLE_NAME)
-public class DeviceLog {
+public class DeviceLog extends IdentifiedEntity {
 
     public static final String TABLE_NAME = "device_log";
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
 
     @ManyToOne
     private Device device;
@@ -31,14 +25,10 @@ public class DeviceLog {
     private LocalDateTime recordedAt;
 
     public DeviceLog(Integer id, Device device, double powerLevel, LocalDateTime recordedAt) {
-        this.id = id;
+        super(id);
         this.device = device;
         this.powerLevel = powerLevel;
         this.recordedAt = recordedAt;
-    }
-
-    public Integer getId() {
-        return id;
     }
 
     public Device getDevice() {
@@ -51,10 +41,6 @@ public class DeviceLog {
 
     public LocalDateTime getRecordedAt() {
         return recordedAt;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public void setDevice(Device device) {
@@ -71,21 +57,20 @@ public class DeviceLog {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
         if (!(o instanceof DeviceLog deviceLog)) return false;
-        return Double.compare(powerLevel, deviceLog.powerLevel) == 0 && Objects.equals(id, deviceLog.id) && Objects.equals(device, deviceLog.device) && Objects.equals(recordedAt, deviceLog.recordedAt);
+        if (!super.equals(o)) return false;
+        return Double.compare(powerLevel, deviceLog.powerLevel) == 0 && Objects.equals(device, deviceLog.device) && Objects.equals(recordedAt, deviceLog.recordedAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, device, powerLevel, recordedAt);
+        return Objects.hash(super.hashCode(), device, powerLevel, recordedAt);
     }
 
     @Override
     public String toString() {
         return "DeviceLog{" +
-                "id=" + id +
-                ", device=" + device +
+                "device=" + device +
                 ", powerLevel=" + powerLevel +
                 ", recordedAt=" + recordedAt +
                 '}';
