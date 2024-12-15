@@ -4,6 +4,7 @@ import com.hydropowerplant.waterlevel.businesslogic.object.event.Event;
 import com.hydropowerplant.waterlevel.entity.action.Action;
 import com.hydropowerplant.waterlevel.entity.action.EmailAction;
 import com.hydropowerplant.waterlevel.repository.action.EmailActionDao;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -15,13 +16,16 @@ public class EmailActionBoImpl implements ActionBo, EmailActionBo {
 
     private final EmailActionDao emailActionDao;
 
-    private final JavaMailSender emailSender;
+    private final JavaMailSender javaEmailSender;
 
-    public EmailActionBoImpl(EmailActionDao emailActionDao, JavaMailSender emailSender) {
+    public EmailActionBoImpl(EmailActionDao emailActionDao, JavaMailSender javaEmailSender) {
         this.emailActionDao = emailActionDao;
-        this.emailSender = emailSender;
+        this.javaEmailSender = javaEmailSender;
     }
 
+
+    @Value("${spring.mail.username}")
+    private String emailSender;
 
     @Override
     public void saveEmailAction(EmailAction emailAction) {
@@ -32,11 +36,12 @@ public class EmailActionBoImpl implements ActionBo, EmailActionBo {
     public <T extends Action, S extends Event> void start(T action, S event) {
         if (action instanceof EmailAction emailAction) {
             SimpleMailMessage message = new SimpleMailMessage();
-            message.setFrom("icmarino6108@gmail.com");
+            message.setFrom(emailSender);
             message.setTo(emailAction.getAddress());
             message.setSubject(emailAction.getSubject());
             message.setText(emailAction.getText());
-            emailSender.send(message);
+            javaEmailSender.send(message);
         }
     }
+    
 }

@@ -5,9 +5,8 @@ import com.hydropowerplant.waterlevel.businesslogic.object.event.Event;
 import com.hydropowerplant.waterlevel.businesslogic.service.device.DeviceBo;
 import com.hydropowerplant.waterlevel.businesslogic.service.device.DeviceLogBo;
 import com.hydropowerplant.waterlevel.businesslogic.service.scenario.ScenarioBo;
-import com.hydropowerplant.waterlevel.entity.DeviceLog;
-import com.hydropowerplant.waterlevel.repository.condition.PowerLevelConditionDao;
-import com.hydropowerplant.waterlevel.repository.condition.PowerLevelLimitConditionDao;
+import com.hydropowerplant.waterlevel.entity.device.DeviceLog;
+import com.hydropowerplant.waterlevel.repository.condition.ConditionDao;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -16,25 +15,20 @@ import java.util.List;
 @Service
 public class ConditionBoImpl implements ConditionBo {
 
+    private final ConditionDao conditionDao;
+
     private final DeviceBo deviceBo;
 
     private final DeviceLogBo deviceLogBo;
 
-    private final PowerLevelConditionDao powerLevelConditionDao;
-
-    private final PowerLevelLimitConditionDao powerLevelLimitConditionDao;
-
     private final ScenarioBo scenarioBo;
 
-    public ConditionBoImpl(DeviceBo deviceBo, DeviceLogBo deviceLogBo, PowerLevelConditionDao powerLevelConditionDao,
-                           PowerLevelLimitConditionDao powerLevelLimitConditionDao, ScenarioBo scenarioBo) {
+    public ConditionBoImpl(ConditionDao conditionDao, DeviceBo deviceBo, DeviceLogBo deviceLogBo, ScenarioBo scenarioBo) {
+        this.conditionDao = conditionDao;
         this.deviceBo = deviceBo;
         this.deviceLogBo = deviceLogBo;
-        this.powerLevelConditionDao = powerLevelConditionDao;
-        this.powerLevelLimitConditionDao = powerLevelLimitConditionDao;
         this.scenarioBo = scenarioBo;
     }
-
 
     @Override
     public void manageDeviceEvent(DeviceEvent deviceEvent) {
@@ -45,8 +39,8 @@ public class ConditionBoImpl implements ConditionBo {
         deviceLogBo.saveDeviceLog(
                 new DeviceLog(null, deviceBo.getBySerial(serial), powerLevel, LocalDateTime.parse(deviceEvent.getRecordedAt())));
 
-        List<Integer> conditions = powerLevelConditionDao.findByDeviceSerial(serial);
-        conditions.addAll(powerLevelLimitConditionDao.findByDeviceSerialAndPowerLevel(serial, powerLevel));
+        List<Integer> conditions = conditionDao.findPowerLevelConditionByDevice(serial);
+        conditions.addAll(conditionDao.findPowerLevelLimitConditionByDeviceAndPowerLevel(serial, powerLevel));
         performScenarios(conditions, deviceEvent);
     }
 
@@ -55,4 +49,5 @@ public class ConditionBoImpl implements ConditionBo {
             scenarioBo.performActions(conditions, event);
         }
     }
+
 }
