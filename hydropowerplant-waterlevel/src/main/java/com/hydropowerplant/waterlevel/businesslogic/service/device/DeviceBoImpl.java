@@ -1,7 +1,7 @@
 package com.hydropowerplant.waterlevel.businesslogic.service.device;
 
 import com.hydropowerplant.waterlevel.businesslogic.exception.ItemNotFoundException;
-import com.hydropowerplant.waterlevel.entity.Device;
+import com.hydropowerplant.waterlevel.entity.device.Device;
 import com.hydropowerplant.waterlevel.repository.device.DeviceDao;
 import com.hydropowerplant.waterlevel.ws.dto.PowerLevelDto;
 import com.hydropowerplant.waterlevel.ws.dto.ResponseDto;
@@ -20,8 +20,11 @@ public class DeviceBoImpl implements DeviceBo {
 
     private final DeviceDao deviceDao;
 
+    private final RestTemplate restTemplate;
+
     public DeviceBoImpl(DeviceDao deviceDao) {
         this.deviceDao = deviceDao;
+        this.restTemplate = new RestTemplate();
     }
 
 
@@ -48,8 +51,7 @@ public class DeviceBoImpl implements DeviceBo {
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<PowerLevelDto> request = new HttpEntity<>(new PowerLevelDto(powerLevel), headers);
 
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<ResponseDto> response = restTemplate.exchange(device.getAddress(), HttpMethod.PATCH, request, ResponseDto.class);
+        ResponseEntity<ResponseDto> response = restTemplate.exchange(device.getAddress(), HttpMethod.PUT, request, ResponseDto.class);
         if (response.getStatusCode().is2xxSuccessful()) {
             updatePowerLevel(serial, powerLevel);
         }

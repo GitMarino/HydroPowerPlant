@@ -8,8 +8,8 @@ public interface DeviceBo {
 
     void saveDevice(Device device);
 
-    int setPowerLevel(String serial, double powerLevel);
+    void setPowerLevel(String serial, double powerLevel);
 
-    int updatePowerLevel(String serial, double powerLevel);
+    void updatePowerLevel(String serial, double powerLevel);
 
 }

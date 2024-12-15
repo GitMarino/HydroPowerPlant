@@ -1,12 +1,14 @@
 package com.hydropowerplant.waterlevel.businesslogic.service.device;
 
 import com.hydropowerplant.waterlevel.businesslogic.exception.ItemNotFoundException;
+import com.hydropowerplant.waterlevel.entity.device.Device;
 import com.hydropowerplant.waterlevel.repository.device.DeviceDao;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.web.client.RestClientException;
 
 import java.util.Optional;
 
@@ -22,16 +24,31 @@ class DeviceBoImplTest {
     @Mock
     private DeviceDao deviceDao;
 
+    private final String serial = "1T18H4UR300158E";
+
+    private final double powerLevel = 0.0;
+
     @Test
-    public void setPowerLevelThrowsItemNotFoundExceptionTest() {
-        // Arrange
-        String serial = "cda899e-fb9c-47ad-9866";
-        double powerLevel = 50.0;
+    void setPowerLevelThrowsItemNotFoundExceptionTest() {
         when(deviceDao.findById(serial)).thenReturn(Optional.empty());
 
-        // Act & Assert
         assertThrows(ItemNotFoundException.class, () -> deviceBoImpl.setPowerLevel(serial, powerLevel));
     }
 
+    @Test
+    void setPowerLevelThrowsRestClientExceptionExceptionTest() {
+        // Arrange
+        Device device = getDevice();
+
+        when(deviceDao.findById(serial)).thenReturn(Optional.of(device));
+
+        // Act & Assert
+        assertThrows(RestClientException.class, () -> deviceBoImpl.setPowerLevel(serial, powerLevel));
+    }
+
+    private Device getDevice() {
+        return new Device(serial, "https://siemens.iot.devices/device/1T18H4UR300158E",
+                "Main inlet valve", 64.0);
+    }
 
 }
