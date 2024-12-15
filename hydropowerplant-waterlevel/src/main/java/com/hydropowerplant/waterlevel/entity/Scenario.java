@@ -4,6 +4,8 @@ import com.hydropowerplant.waterlevel.entity.action.Action;
 import com.hydropowerplant.waterlevel.entity.condition.Condition;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -16,10 +18,12 @@ public class Scenario extends IdentifiedEntity {
 
     public static final String TABLE_NAME = "scenario";
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "scenario_id")
     private Set<Action> actions;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "scenario_id")
     private Set<Condition> conditions;
 
     @Column(name = "description")

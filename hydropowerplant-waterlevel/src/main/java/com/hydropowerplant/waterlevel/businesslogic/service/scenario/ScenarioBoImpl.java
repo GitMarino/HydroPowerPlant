@@ -3,12 +3,12 @@ package com.hydropowerplant.waterlevel.businesslogic.service.scenario;
 import com.hydropowerplant.waterlevel.businesslogic.exception.ItemNotFoundException;
 import com.hydropowerplant.waterlevel.businesslogic.object.event.Event;
 import com.hydropowerplant.waterlevel.businesslogic.service.action.ActionBoFactory;
-import com.hydropowerplant.waterlevel.businesslogic.service.condition.ConditionBo;
 import com.hydropowerplant.waterlevel.entity.Scenario;
 import com.hydropowerplant.waterlevel.entity.action.Action;
 import com.hydropowerplant.waterlevel.entity.condition.Condition;
 import com.hydropowerplant.waterlevel.repository.ScenarioDao;
 import com.hydropowerplant.waterlevel.repository.action.ActionDao;
+import com.hydropowerplant.waterlevel.repository.condition.ConditionDao;
 import com.hydropowerplant.waterlevel.ws.dto.ScenarioDto;
 import org.springframework.stereotype.Service;
 
@@ -24,26 +24,26 @@ public class ScenarioBoImpl implements ScenarioBo {
 
     private final ActionDao actionDao;
 
-    private final ConditionBo conditionBo;
+    private final ConditionDao conditionDao;
 
     private final ScenarioDao scenarioDao;
 
-    public ScenarioBoImpl(ActionBoFactory actionBoFactory, ActionDao actionDao, ConditionBo conditionBo, ScenarioDao scenarioDao) {
+    public ScenarioBoImpl(ActionBoFactory actionBoFactory, ActionDao actionDao, ConditionDao conditionDao, ScenarioDao scenarioDao) {
         this.actionBoFactory = actionBoFactory;
         this.actionDao = actionDao;
-        this.conditionBo = conditionBo;
+        this.conditionDao = conditionDao;
         this.scenarioDao = scenarioDao;
     }
 
 
     @Override
     public void createScenario(ScenarioDto scenarioDto) {
-        Set<Action> actions = scenarioDto.getActions().stream().map(this::findActionById).collect(Collectors.toSet());
-        Set<Condition> conditions = scenarioDto.getConditions().stream().map(conditionBo::getById).collect(Collectors.toSet());
+        Set<Action> actions = scenarioDto.getActions().stream().map(this::getActionById).collect(Collectors.toSet());
+        Set<Condition> conditions = scenarioDto.getConditions().stream().map(this::getConditionById).collect(Collectors.toSet());
         scenarioDao.save(new Scenario(null, scenarioDto.getDescription(), actions, conditions, scenarioDto.getEnabled(), scenarioDto.getName()));
     }
 
-    private Action findActionById(Integer actionId) {
+    private Action getActionById(Integer actionId) {
         Optional<Action> optionalAction = actionDao.findById(actionId);
         if (optionalAction.isPresent()) {
             return optionalAction.get();
@@ -51,8 +51,16 @@ public class ScenarioBoImpl implements ScenarioBo {
         throw new ItemNotFoundException("No action found with id:" + actionId);
     }
 
+    private Condition getConditionById(Integer conditionId) {
+        Optional<Condition> optionalCondition = conditionDao.findById(conditionId);
+        if (optionalCondition.isPresent()) {
+            return optionalCondition.get();
+        }
+        throw new ItemNotFoundException("No condition found with id:" + conditionId);
+    }
+
     @Override
-    public <S extends Event> void performActions(List<Condition> conditions, S event) {
+    public <S extends Event> void performActions(List<Integer> conditions, S event) {
         actionDao.findByScenarioEnabledTrueAndConditionIn(conditions)
                 .parallelStream()
                 .forEach(action -> actionBoFactory.getActionBo(action.getType()).start(action, event));
