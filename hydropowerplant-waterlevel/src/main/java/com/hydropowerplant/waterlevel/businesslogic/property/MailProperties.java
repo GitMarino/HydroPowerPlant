@@ -16,7 +16,7 @@ public class MailProperties {
     private String host;
 
     @NotNull
-    private int port;
+    private Integer port;
 
     @NotNull
     @Email
