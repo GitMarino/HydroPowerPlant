@@ -14,6 +14,9 @@ public class IdentifiedEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    public IdentifiedEntity() {
+    }
+
     public IdentifiedEntity(Integer id) {
         this.id = id;
     }

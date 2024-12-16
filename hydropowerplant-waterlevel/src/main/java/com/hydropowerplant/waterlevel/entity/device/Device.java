@@ -27,6 +27,9 @@ public class Device {
     @Column(name = "powerlevel", nullable = false)
     private double powerLevel;
 
+    public Device() {
+    }
+
     public Device(String serial, String address, String name, double powerLevel) {
         this.serial = serial;
         this.address = address;

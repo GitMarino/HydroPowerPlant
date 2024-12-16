@@ -20,6 +20,9 @@ public class Action extends IdentifiedEntity {
     @Column(name = "type", nullable = false)
     private String type;
 
+    public Action() {
+    }
+
     public Action(Integer id, String name, String type) {
         super(id);
         this.name = name;

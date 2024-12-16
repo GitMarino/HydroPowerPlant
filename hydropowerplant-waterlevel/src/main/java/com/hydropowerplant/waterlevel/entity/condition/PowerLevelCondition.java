@@ -15,6 +15,9 @@ public class PowerLevelCondition extends Condition {
     @ManyToMany
     private Set<Device> devices;
 
+    public PowerLevelCondition() {
+    }
+
     public PowerLevelCondition(Integer id, String name, String type, Set<Device> devices) {
         super(id, name, type);
         this.devices = devices;

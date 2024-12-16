@@ -19,6 +19,9 @@ public class PowerLevelAction extends Action {
     @Column(name = "multiplier", nullable = false)
     private double multiplier;
 
+    public PowerLevelAction() {
+    }
+
     public PowerLevelAction(Integer id, String name, String type, Set<Device> devices, double multiplier) {
         super(id, name, type);
         this.devices = devices;

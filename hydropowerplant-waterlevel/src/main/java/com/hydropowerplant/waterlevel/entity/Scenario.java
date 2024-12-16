@@ -35,6 +35,9 @@ public class Scenario extends IdentifiedEntity {
     @Column(name = "name", nullable = false)
     private String name;
 
+    public Scenario() {
+    }
+
     public Scenario(Integer id, String description, Set<Action> actions, Set<Condition> conditions, boolean enabled, String name) {
         super(id);
         this.actions = actions;

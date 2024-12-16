@@ -24,6 +24,9 @@ public class DeviceLog extends IdentifiedEntity {
     @Column(name = "recordedat", nullable = false)
     private LocalDateTime recordedAt;
 
+    public DeviceLog() {
+    }
+
     public DeviceLog(Integer id, Device device, double powerLevel, LocalDateTime recordedAt) {
         super(id);
         this.device = device;
