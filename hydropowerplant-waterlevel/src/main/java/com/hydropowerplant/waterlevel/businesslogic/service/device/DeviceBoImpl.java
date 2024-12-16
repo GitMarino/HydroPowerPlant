@@ -34,7 +34,7 @@ public class DeviceBoImpl implements DeviceBo {
         if (optionalDevice.isPresent()) {
             return optionalDevice.get();
         }
-        throw new ItemNotFoundException("No device found with serial:" + serial);
+        throw new ItemNotFoundException("No device found with serial=" + serial);
     }
 
     @Override
@@ -60,7 +60,7 @@ public class DeviceBoImpl implements DeviceBo {
     @Override
     public void updatePowerLevel(String serial, double powerLevel) {
         if (deviceDao.updatePowerLevelBySerial(serial, powerLevel) == 0) {
-            throw new ItemNotFoundException("No device found with serial:" + serial);
+            throw new ItemNotFoundException("No device found with serial=" + serial);
         }
     }
 

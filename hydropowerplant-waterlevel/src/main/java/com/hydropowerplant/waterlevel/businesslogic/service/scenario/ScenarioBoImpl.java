@@ -48,7 +48,7 @@ public class ScenarioBoImpl implements ScenarioBo {
         if (optionalAction.isPresent()) {
             return optionalAction.get();
         }
-        throw new ItemNotFoundException("No action found with id:" + actionId);
+        throw new ItemNotFoundException("No action found with id=" + actionId);
     }
 
     private Condition getConditionById(Integer conditionId) {
@@ -56,7 +56,7 @@ public class ScenarioBoImpl implements ScenarioBo {
         if (optionalCondition.isPresent()) {
             return optionalCondition.get();
         }
-        throw new ItemNotFoundException("No condition found with id:" + conditionId);
+        throw new ItemNotFoundException("No condition found with id=" + conditionId);
     }
 
     @Override
