@@ -27,4 +27,5 @@ public class ConditionController {
         conditionBo.manageDeviceEvent(deviceEvent);
         return new ResponseEntity<>(new ResponseDto("Success!"), HttpStatus.OK);
     }
+
 }

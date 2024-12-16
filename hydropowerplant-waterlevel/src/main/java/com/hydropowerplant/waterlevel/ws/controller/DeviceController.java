@@ -3,6 +3,7 @@ package com.hydropowerplant.waterlevel.ws.controller;
 import com.hydropowerplant.waterlevel.businesslogic.service.device.DeviceBo;
 import com.hydropowerplant.waterlevel.entity.device.Device;
 import com.hydropowerplant.waterlevel.ws.dto.DeviceDto;
+import com.hydropowerplant.waterlevel.ws.dto.PowerLevelDto;
 import com.hydropowerplant.waterlevel.ws.dto.ResponseDto;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -24,7 +24,7 @@ public class DeviceController {
     public DeviceController(DeviceBo deviceBo) {
         this.deviceBo = deviceBo;
     }
-    
+
 
     @PostMapping
     public ResponseEntity<ResponseDto> createDevice(@Valid @RequestBody DeviceDto deviceDto) {
@@ -33,8 +33,9 @@ public class DeviceController {
     }
 
     @PatchMapping("{id}/powerLevel")
-    public ResponseEntity<ResponseDto> setDevicePowerLevel(@PathVariable("id") final String serial, @RequestParam double powerLevel) {
-        deviceBo.setPowerLevel(serial, powerLevel);
+    public ResponseEntity<ResponseDto> setDevicePowerLevel(@PathVariable("id") final String serial, @Valid @RequestBody PowerLevelDto powerLevelDto) {
+        deviceBo.setPowerLevel(serial, powerLevelDto.getPowerLevel());
         return new ResponseEntity<>(new ResponseDto("Success!"), HttpStatus.OK);
     }
+
 }

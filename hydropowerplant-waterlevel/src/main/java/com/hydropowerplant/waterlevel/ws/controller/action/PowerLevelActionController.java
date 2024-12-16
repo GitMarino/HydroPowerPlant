@@ -27,4 +27,5 @@ public class PowerLevelActionController {
         powerLevelActionBo.createPowerLevelAction(powerLevelActionDto);
         return new ResponseEntity<>(new ResponseDto("Success!"), HttpStatus.OK);
     }
+    
 }

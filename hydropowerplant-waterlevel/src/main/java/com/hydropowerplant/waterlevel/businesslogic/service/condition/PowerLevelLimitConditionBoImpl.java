@@ -5,10 +5,12 @@ import com.hydropowerplant.waterlevel.entity.condition.PowerLevelLimitCondition;
 import com.hydropowerplant.waterlevel.entity.device.Device;
 import com.hydropowerplant.waterlevel.repository.condition.PowerLevelLimitConditionDao;
 import com.hydropowerplant.waterlevel.ws.dto.condition.PowerLevelLimitConditionDto;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@Service
 public class PowerLevelLimitConditionBoImpl implements PowerLevelLimitConditionBo {
 
     private final DeviceBo deviceBo;

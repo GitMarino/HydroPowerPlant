@@ -27,4 +27,5 @@ public class PowerLevelConditionController {
         powerLevelConditionBo.createPowerLevelCondition(powerLevelConditionDto);
         return new ResponseEntity<>(new ResponseDto("Success!"), HttpStatus.OK);
     }
+    
 }
