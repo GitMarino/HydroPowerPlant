@@ -4,17 +4,17 @@ import java.util.Objects;
 
 public class DeviceEvent extends Event {
 
-    private Double powerLevel;
+    private double powerLevel;
 
     private String serial;
 
-    public DeviceEvent(String recordedAt, Double powerLevel, String serial) {
+    public DeviceEvent(String recordedAt, double powerLevel, String serial) {
         super(recordedAt);
         this.powerLevel = powerLevel;
         this.serial = serial;
     }
 
-    public Double getPowerLevel() {
+    public double getPowerLevel() {
         return powerLevel;
     }
 
@@ -22,7 +22,7 @@ public class DeviceEvent extends Event {
         return serial;
     }
 
-    public void setPowerLevel(Double powerLevel) {
+    public void setPowerLevel(double powerLevel) {
         this.powerLevel = powerLevel;
     }
 
@@ -34,7 +34,7 @@ public class DeviceEvent extends Event {
     public boolean equals(Object o) {
         if (!(o instanceof DeviceEvent that)) return false;
         if (!super.equals(o)) return false;
-        return Objects.equals(powerLevel, that.powerLevel) && Objects.equals(serial, that.serial);
+        return Double.compare(powerLevel, that.powerLevel) == 0 && Objects.equals(serial, that.serial);
     }
 
     @Override
