@@ -12,30 +12,30 @@ public class DeviceDto implements Serializable {
     @Serial
     private static final long serialVersionUID = 4583358869346738599L;
 
+    @NotBlank
     private String address;
 
+    @NotBlank
     private String name;
 
+    @NotNull
     private Double powerLevel;
 
+    @NotBlank
     private String serial;
 
-    @NotBlank
     public String getAddress() {
         return address;
     }
 
-    @NotBlank
     public String getName() {
         return name;
     }
 
-    @NotNull
     public Double getPowerLevel() {
         return powerLevel;
     }
 
-    @NotBlank
     public String getSerial() {
         return serial;
     }

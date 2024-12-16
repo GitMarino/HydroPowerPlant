@@ -11,13 +11,13 @@ public class PowerLevelDto implements Serializable {
     @Serial
     private static final long serialVersionUID = 7861821225655031488L;
 
+    @NotNull
     private Double powerLevel;
 
     public PowerLevelDto(Double powerLevel) {
         this.powerLevel = powerLevel;
     }
 
-    @NotNull
     public Double getPowerLevel() {
         return powerLevel;
     }

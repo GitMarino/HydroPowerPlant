@@ -1,5 +1,8 @@
 package com.hydropowerplant.waterlevel.ws.dto.device;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
@@ -9,10 +12,13 @@ public class DeviceEventDto implements Serializable {
     @Serial
     private static final long serialVersionUID = 8893632167406455616L;
 
+    @NotNull
     private Double powerLevel;
 
+    @NotBlank
     private String recordedAt;
 
+    @NotBlank
     private String serial;
 
     public Double getPowerLevel() {

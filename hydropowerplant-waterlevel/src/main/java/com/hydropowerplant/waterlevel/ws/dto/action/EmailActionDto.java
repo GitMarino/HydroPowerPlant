@@ -13,23 +13,25 @@ public class EmailActionDto implements Serializable {
     @Serial
     private static final long serialVersionUID = -3874322908279588911L;
 
+    @NotNull
+    @Email
     private String address;
 
+    @NotBlank
     private String name;
 
     private String subject;
 
+    @NotBlank
     private String text;
 
+    @NotBlank
     private String type;
 
-    @NotNull
-    @Email
     public String getAddress() {
         return address;
     }
 
-    @NotBlank
     public String getName() {
         return name;
     }
@@ -38,12 +40,10 @@ public class EmailActionDto implements Serializable {
         return subject;
     }
 
-    @NotBlank
     public String getText() {
         return text;
     }
 
-    @NotBlank
     public String getType() {
         return type;
     }

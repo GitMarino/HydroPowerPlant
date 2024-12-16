@@ -14,22 +14,24 @@ public class ScenarioDto implements Serializable {
     @Serial
     private static final long serialVersionUID = -4148276754147704024L;
 
+    @NotEmpty
     private List<Integer> actions;
 
+    @NotEmpty
     private List<Integer> conditions;
 
     private String description;
 
+    @NotNull
     private Boolean enabled;
 
+    @NotBlank
     private String name;
 
-    @NotEmpty
     public List<Integer> getActions() {
         return actions;
     }
 
-    @NotEmpty
     public List<Integer> getConditions() {
         return conditions;
     }
@@ -38,12 +40,10 @@ public class ScenarioDto implements Serializable {
         return description;
     }
 
-    @NotNull
     public Boolean getEnabled() {
         return enabled;
     }
 
-    @NotBlank
     public String getName() {
         return name;
     }

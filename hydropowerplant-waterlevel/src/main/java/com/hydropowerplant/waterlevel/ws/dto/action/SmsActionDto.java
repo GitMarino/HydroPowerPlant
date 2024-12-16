@@ -8,41 +8,37 @@ import java.util.Objects;
 
 public class SmsActionDto {
 
+    @NotBlank
     private String name;
 
+    @NotNull
+    @PhoneNumber
     private String phoneNumber;
 
+    @NotBlank
     private String text;
 
+    @NotBlank
     private String type;
 
-    @NotBlank
     public String getName() {
         return name;
     }
 
-    @NotBlank
-    public String getType() {
-        return type;
-    }
-
-    @NotNull
-    @PhoneNumber
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    @NotBlank
     public String getText() {
         return text;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getType() {
+        return type;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setPhoneNumber(String phoneNumber) {
@@ -51,6 +47,10 @@ public class SmsActionDto {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     @Override
