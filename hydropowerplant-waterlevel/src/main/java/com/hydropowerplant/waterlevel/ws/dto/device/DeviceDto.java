@@ -1,4 +1,4 @@
-package com.hydropowerplant.waterlevel.ws.dto;
+package com.hydropowerplant.waterlevel.ws.dto.device;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

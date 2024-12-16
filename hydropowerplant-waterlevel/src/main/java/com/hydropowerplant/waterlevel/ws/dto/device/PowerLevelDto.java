@@ -1,4 +1,4 @@
-package com.hydropowerplant.waterlevel.ws.dto;
+package com.hydropowerplant.waterlevel.ws.dto.device;
 
 import jakarta.validation.constraints.NotNull;
 
@@ -16,7 +16,7 @@ public class PowerLevelDto implements Serializable {
     public PowerLevelDto(Double powerLevel) {
         this.powerLevel = powerLevel;
     }
-    
+
     @NotNull
     public Double getPowerLevel() {
         return powerLevel;
