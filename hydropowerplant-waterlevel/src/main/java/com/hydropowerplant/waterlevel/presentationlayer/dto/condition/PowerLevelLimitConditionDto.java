@@ -1,4 +1,4 @@
-package com.hydropowerplant.waterlevel.ws.dto.condition;
+package com.hydropowerplant.waterlevel.presentationlayer.dto.condition;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
@@ -90,4 +90,5 @@ public class PowerLevelLimitConditionDto implements Serializable {
                 ", type='" + type + '\'' +
                 '}';
     }
+    
 }

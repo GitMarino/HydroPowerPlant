@@ -1,4 +1,4 @@
-package com.hydropowerplant.waterlevel.ws.dto.device;
+package com.hydropowerplant.waterlevel.presentationlayer.dto.device;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -76,4 +76,5 @@ public class DeviceDto implements Serializable {
                 ", serial='" + serial + '\'' +
                 '}';
     }
+    
 }

@@ -1,8 +1,8 @@
-package com.hydropowerplant.waterlevel.ws.controller;
+package com.hydropowerplant.waterlevel.presentationlayer.controller;
 
-import com.hydropowerplant.waterlevel.businesslogic.service.scenario.ScenarioBo;
-import com.hydropowerplant.waterlevel.ws.dto.ResponseDto;
-import com.hydropowerplant.waterlevel.ws.dto.ScenarioDto;
+import com.hydropowerplant.waterlevel.businesslayer.service.scenario.ScenarioBo;
+import com.hydropowerplant.waterlevel.presentationlayer.dto.ResponseDto;
+import com.hydropowerplant.waterlevel.presentationlayer.dto.ScenarioDto;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +21,7 @@ public class ScenarioController {
         this.scenarioBo = scenarioBo;
     }
 
-    
+
     @PostMapping
     public ResponseEntity<ResponseDto> createScenario(@Valid @RequestBody ScenarioDto scenarioDto) {
         scenarioBo.createScenario(scenarioDto);

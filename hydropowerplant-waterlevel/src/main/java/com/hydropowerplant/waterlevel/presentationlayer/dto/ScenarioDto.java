@@ -1,4 +1,4 @@
-package com.hydropowerplant.waterlevel.ws.dto;
+package com.hydropowerplant.waterlevel.presentationlayer.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
@@ -90,4 +90,5 @@ public class ScenarioDto implements Serializable {
                 ", name='" + name + '\'' +
                 '}';
     }
+    
 }

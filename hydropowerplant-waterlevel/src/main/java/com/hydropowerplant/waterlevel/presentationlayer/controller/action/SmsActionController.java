@@ -1,9 +1,9 @@
-package com.hydropowerplant.waterlevel.ws.controller.action;
+package com.hydropowerplant.waterlevel.presentationlayer.controller.action;
 
-import com.hydropowerplant.waterlevel.businesslogic.service.action.SmsActionBo;
+import com.hydropowerplant.waterlevel.businesslayer.service.action.SmsActionBo;
 import com.hydropowerplant.waterlevel.entity.action.SmsAction;
-import com.hydropowerplant.waterlevel.ws.dto.ResponseDto;
-import com.hydropowerplant.waterlevel.ws.dto.action.SmsActionDto;
+import com.hydropowerplant.waterlevel.presentationlayer.dto.ResponseDto;
+import com.hydropowerplant.waterlevel.presentationlayer.dto.action.SmsActionDto;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

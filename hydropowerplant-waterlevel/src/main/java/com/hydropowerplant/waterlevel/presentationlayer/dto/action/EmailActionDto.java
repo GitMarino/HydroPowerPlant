@@ -1,4 +1,4 @@
-package com.hydropowerplant.waterlevel.ws.dto.action;
+package com.hydropowerplant.waterlevel.presentationlayer.dto.action;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -9,6 +9,8 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class EmailActionDto implements Serializable {
+
+    //TODO return a response with the wrong attribute
 
     @Serial
     private static final long serialVersionUID = -3874322908279588911L;
@@ -89,4 +91,5 @@ public class EmailActionDto implements Serializable {
                 ", type='" + type + '\'' +
                 '}';
     }
+    
 }

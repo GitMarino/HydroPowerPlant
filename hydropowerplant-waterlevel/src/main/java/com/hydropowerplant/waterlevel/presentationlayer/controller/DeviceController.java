@@ -1,10 +1,10 @@
-package com.hydropowerplant.waterlevel.ws.controller;
+package com.hydropowerplant.waterlevel.presentationlayer.controller;
 
-import com.hydropowerplant.waterlevel.businesslogic.service.device.DeviceBo;
+import com.hydropowerplant.waterlevel.businesslayer.service.device.DeviceBo;
 import com.hydropowerplant.waterlevel.entity.device.Device;
-import com.hydropowerplant.waterlevel.ws.dto.ResponseDto;
-import com.hydropowerplant.waterlevel.ws.dto.device.DeviceDto;
-import com.hydropowerplant.waterlevel.ws.dto.device.PowerLevelDto;
+import com.hydropowerplant.waterlevel.presentationlayer.dto.ResponseDto;
+import com.hydropowerplant.waterlevel.presentationlayer.dto.device.DeviceDto;
+import com.hydropowerplant.waterlevel.presentationlayer.dto.device.PowerLevelDto;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +31,7 @@ public class DeviceController {
         deviceBo.saveDevice(new Device(deviceDto.getSerial(), deviceDto.getAddress(), deviceDto.getName(), deviceDto.getPowerLevel()));
         return new ResponseEntity<>(new ResponseDto("Success!"), HttpStatus.OK);
     }
-    
+
     @PatchMapping("/{id}/powerLevel")
     public ResponseEntity<ResponseDto> setDevicePowerLevel(@PathVariable("id") final String serial, @Valid @RequestBody PowerLevelDto powerLevelDto) {
         deviceBo.setPowerLevel(serial, powerLevelDto.getPowerLevel());

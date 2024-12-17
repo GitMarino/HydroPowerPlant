@@ -1,8 +1,8 @@
-package com.hydropowerplant.waterlevel.ws.controller.condition;
+package com.hydropowerplant.waterlevel.presentationlayer.controller.condition;
 
-import com.hydropowerplant.waterlevel.businesslogic.service.condition.PowerLevelConditionBo;
-import com.hydropowerplant.waterlevel.ws.dto.ResponseDto;
-import com.hydropowerplant.waterlevel.ws.dto.condition.PowerLevelConditionDto;
+import com.hydropowerplant.waterlevel.businesslayer.service.condition.PowerLevelConditionBo;
+import com.hydropowerplant.waterlevel.presentationlayer.dto.ResponseDto;
+import com.hydropowerplant.waterlevel.presentationlayer.dto.condition.PowerLevelConditionDto;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

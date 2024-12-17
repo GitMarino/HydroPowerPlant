@@ -1,4 +1,4 @@
-package com.hydropowerplant.waterlevel.ws.dto;
+package com.hydropowerplant.waterlevel.presentationlayer.dto;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -41,4 +41,5 @@ public class ResponseDto implements Serializable {
                 "message='" + message + '\'' +
                 '}';
     }
+    
 }

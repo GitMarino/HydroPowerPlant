@@ -1,9 +1,9 @@
-package com.hydropowerplant.waterlevel.ws.controller.condition;
+package com.hydropowerplant.waterlevel.presentationlayer.controller.condition;
 
-import com.hydropowerplant.waterlevel.businesslogic.object.event.DeviceEvent;
-import com.hydropowerplant.waterlevel.businesslogic.service.condition.ConditionBo;
-import com.hydropowerplant.waterlevel.ws.dto.ResponseDto;
-import com.hydropowerplant.waterlevel.ws.dto.device.DeviceEventDto;
+import com.hydropowerplant.waterlevel.businesslayer.object.event.DeviceEvent;
+import com.hydropowerplant.waterlevel.businesslayer.service.condition.ConditionBo;
+import com.hydropowerplant.waterlevel.presentationlayer.dto.ResponseDto;
+import com.hydropowerplant.waterlevel.presentationlayer.dto.device.DeviceEventDto;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

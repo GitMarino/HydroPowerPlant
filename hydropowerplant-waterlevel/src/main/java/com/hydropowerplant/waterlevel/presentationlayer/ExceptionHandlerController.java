@@ -1,7 +1,7 @@
-package com.hydropowerplant.waterlevel.ws.controller;
+package com.hydropowerplant.waterlevel.presentationlayer;
 
-import com.hydropowerplant.waterlevel.businesslogic.exception.ItemNotFoundException;
-import com.hydropowerplant.waterlevel.ws.dto.ResponseDto;
+import com.hydropowerplant.waterlevel.businesslayer.exception.ItemNotFoundException;
+import com.hydropowerplant.waterlevel.presentationlayer.dto.ResponseDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

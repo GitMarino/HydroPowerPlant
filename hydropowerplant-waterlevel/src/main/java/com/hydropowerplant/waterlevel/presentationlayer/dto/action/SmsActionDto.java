@@ -1,6 +1,6 @@
-package com.hydropowerplant.waterlevel.ws.dto.action;
+package com.hydropowerplant.waterlevel.presentationlayer.dto.action;
 
-import com.hydropowerplant.waterlevel.businesslogic.annotation.PhoneNumber;
+import com.hydropowerplant.waterlevel.businesslayer.annotation.PhoneNumber;
 import jakarta.validation.constraints.NotBlank;
 
 import java.util.Objects;
@@ -72,4 +72,5 @@ public class SmsActionDto {
                 ", type='" + type + '\'' +
                 '}';
     }
+    
 }

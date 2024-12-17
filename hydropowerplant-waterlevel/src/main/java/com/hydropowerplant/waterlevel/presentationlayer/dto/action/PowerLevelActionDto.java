@@ -1,4 +1,4 @@
-package com.hydropowerplant.waterlevel.ws.dto.action;
+package com.hydropowerplant.waterlevel.presentationlayer.dto.action;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
@@ -78,4 +78,5 @@ public class PowerLevelActionDto implements Serializable {
                 ", type='" + type + '\'' +
                 '}';
     }
+    
 }
