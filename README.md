@@ -1,9 +1,9 @@
 Hydro power plant management software (10/2024 - 12/2024).
 
 - Features :
-    Set a power level of a device.
-    Smart devices can decide other devices power level.
-    If a device power level is outside the limits it can be notified through email and sms, like all device events.
+  Set a power level of a device.
+  Smart devices can decide other devices power level.
+  If a device power level is outside the limits it can be notified through email and sms, like all device events.
 - Technologies used : Spring Framework, Spring Boot, Spring Data, Java, JPA, Hibernate, JUnit.
 - Programming paradigms : Aspect-Oriented Programming, Data-Driven Programming, Object-Oriented Programming.
 - Design patterns : Factory Method, Strategy.
