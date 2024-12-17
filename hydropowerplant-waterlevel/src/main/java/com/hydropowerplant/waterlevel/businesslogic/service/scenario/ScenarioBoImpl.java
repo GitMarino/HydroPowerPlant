@@ -6,9 +6,10 @@ import com.hydropowerplant.waterlevel.businesslogic.service.action.ActionBoFacto
 import com.hydropowerplant.waterlevel.entity.Scenario;
 import com.hydropowerplant.waterlevel.entity.action.Action;
 import com.hydropowerplant.waterlevel.entity.condition.Condition;
-import com.hydropowerplant.waterlevel.repository.ScenarioDao;
 import com.hydropowerplant.waterlevel.repository.action.ActionDao;
 import com.hydropowerplant.waterlevel.repository.condition.ConditionDao;
+import com.hydropowerplant.waterlevel.repository.scenario.ScenarioDao;
+import com.hydropowerplant.waterlevel.repository.scenario.ScenarioProjection;
 import com.hydropowerplant.waterlevel.ws.dto.ScenarioDto;
 import org.springframework.stereotype.Service;
 
@@ -60,10 +61,13 @@ public class ScenarioBoImpl implements ScenarioBo {
     }
 
     @Override
-    public <S extends Event> void performActions(List<Integer> conditions, S event) {
-        actionDao.findByScenarioEnabledTrueAndConditionIn(conditions)
-                .parallelStream()
-                .forEach(action -> actionBoFactory.getActionBo(action.getType()).start(action, event));
+    public <S extends Event> void performActions(Set<Condition> conditions, S event) {
+        List<ScenarioProjection> spl = scenarioDao.findByEnabledTrueAndConditionsIn(conditions);
+        for (ScenarioProjection sp : spl) {
+            for (Action a : sp.getActions()) {
+                actionBoFactory.getActionBo(a.getType()).start(a, event);
+            }
+        }
     }
 
 }
