@@ -1,0 +1,370 @@
+{
+	"info": {
+		"_postman_id": "92420473-299c-44b0-9681-1946d2956146",
+		"name": "HYDRO POWER PLANT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28324985"
+	},
+	"item": [
+		{
+			"name": "Dam Level Device",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"address\": \"https://siemens.iot.devices/device/0T18H4UR300158E\",\n    \"name\": \"Dam level device\",\n    \"powerLevel\": 0.0,\n    \"serial\": \"0T18H4UR300158E\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/hydro-power-plant/device",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"hydro-power-plant",
+						"device"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Inlet Valve Device",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"address\": \"https://siemens.iot.devices/device/1T18H4UR300158E\",\n    \"name\": \"Main inlet valve\",\n    \"powerLevel\": 0.0,\n    \"serial\": \"1T18H4UR300158E\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/hydro-power-plant/device",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"hydro-power-plant",
+						"device"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PowerLevel Condition",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"devices\": [\"0T18H4UR300158E\"],\n    \"name\": \"Dam water level %\",\n    \"type\": \"POWER_LEVEL\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/hydro-power-plant/condition/powerLevel",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"hydro-power-plant",
+						"condition",
+						"powerLevel"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PowerLevel Action",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"devices\": [\"1T18H4UR300158E\"],\n    \"multiplier\" : 0.8,\n    \"name\": \"Water volume % allowed in main inlet valve\",\n    \"type\": \"POWER_LEVEL\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/hydro-power-plant/action/powerLevel",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"hydro-power-plant",
+						"action",
+						"powerLevel"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Water % Scenario",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"actions\": [1],\n    \"conditions\": [1],\n    \"description\": \"Dam water level guide access of a certain water volume % in the main inlet valve\",\n    \"enabled\": true,\n    \"name\": \"Water % scenario\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/hydro-power-plant/scenario",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"hydro-power-plant",
+						"scenario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PowerLevelLimit Condition",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"devices\": [\"0T18H4UR300158E\"],\n    \"maxPowerLevel\": 80.0,\n    \"minPowerLevel\": 10.0,\n    \"name\": \"Dam water level limit %\",\n    \"type\": \"POWER_LEVEL_LIMIT\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/hydro-power-plant/condition/powerLevelLimit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"hydro-power-plant",
+						"condition",
+						"powerLevelLimit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Email Action",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"address\": \"icmarinostranger@gmail.com\",\n    \"name\":  \"Dam limit exceeded email\",\n    \"subject\": \"Attention! Water level out of limit\",\n    \"text\" : \"The water level of the dam is lower or higher than allowed\",\n    \"type\": \"EMAIL\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/hydro-power-plant/action/email",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"hydro-power-plant",
+						"action",
+						"email"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sms Action",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":  \"Dam limit exceeded sms\",\n    \"phoneNumber\": \"+393333333333\",\n    \"text\" : \"Attention! The water level of the dam is lower or higher than allowed\",\n    \"type\": \"SMS\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/hydro-power-plant/action/sms",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"hydro-power-plant",
+						"action",
+						"sms"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Limit exceeded Scenario",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"actions\": [2,3],\n    \"conditions\": [2],\n    \"description\": \"If water level is out of limit an email and an sms are sent\",\n    \"enabled\": true,\n    \"name\": \"Limit exceeded scenario\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/hydro-power-plant/scenario",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"hydro-power-plant",
+						"scenario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "START",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"powerLevel\": 70.0,\n    \"recordedAt\": \"2024-12-12T12:12:12.000000\",\n    \"serial\": \"0T18H4UR300158E\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/hydro-power-plant/condition/device",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"hydro-power-plant",
+						"condition",
+						"device"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PowerLevel Device",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"powerLevel\": 0.0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/hydro-power-plant/device/1T18H4UR300158E/powerLevel",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"hydro-power-plant",
+						"device",
+						"1T18H4UR300158E",
+						"powerLevel"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
