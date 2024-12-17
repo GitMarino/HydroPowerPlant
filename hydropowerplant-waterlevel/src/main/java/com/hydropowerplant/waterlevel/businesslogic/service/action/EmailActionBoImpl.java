@@ -26,6 +26,7 @@ public class EmailActionBoImpl implements ActionBo, EmailActionBo {
         this.mailProperties = mailProperties;
     }
 
+
     @Override
     public void saveEmailAction(EmailAction emailAction) {
         emailActionDao.save(emailAction);

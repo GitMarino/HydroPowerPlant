@@ -20,8 +20,8 @@ public class ScenarioController {
     public ScenarioController(ScenarioBo scenarioBo) {
         this.scenarioBo = scenarioBo;
     }
-    
 
+    
     @PostMapping
     public ResponseEntity<ResponseDto> createScenario(@Valid @RequestBody ScenarioDto scenarioDto) {
         scenarioBo.createScenario(scenarioDto);
