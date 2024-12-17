@@ -14,6 +14,9 @@ public class PowerLevelDto implements Serializable {
     @NotNull
     private Double powerLevel;
 
+    public PowerLevelDto() {
+    }
+
     public PowerLevelDto(Double powerLevel) {
         this.powerLevel = powerLevel;
     }

@@ -31,8 +31,8 @@ public class DeviceController {
         deviceBo.saveDevice(new Device(deviceDto.getSerial(), deviceDto.getAddress(), deviceDto.getName(), deviceDto.getPowerLevel()));
         return new ResponseEntity<>(new ResponseDto("Success!"), HttpStatus.OK);
     }
-
-    @PatchMapping("{id}/powerLevel")
+    
+    @PatchMapping("/{id}/powerLevel")
     public ResponseEntity<ResponseDto> setDevicePowerLevel(@PathVariable("id") final String serial, @Valid @RequestBody PowerLevelDto powerLevelDto) {
         deviceBo.setPowerLevel(serial, powerLevelDto.getPowerLevel());
         return new ResponseEntity<>(new ResponseDto("Success!"), HttpStatus.OK);
