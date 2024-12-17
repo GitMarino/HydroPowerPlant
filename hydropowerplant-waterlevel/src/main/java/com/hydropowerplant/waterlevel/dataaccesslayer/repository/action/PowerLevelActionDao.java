@@ -1,4 +1,4 @@
-package com.hydropowerplant.waterlevel.repository.action;
+package com.hydropowerplant.waterlevel.dataaccesslayer.repository.action;
 
 import com.hydropowerplant.waterlevel.entity.action.PowerLevelAction;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,5 +1,6 @@
-package com.hydropowerplant.waterlevel.repository.scenario;
+package com.hydropowerplant.waterlevel.dataaccesslayer.repository;
 
+import com.hydropowerplant.waterlevel.dataaccesslayer.ScenarioProjection;
 import com.hydropowerplant.waterlevel.entity.Scenario;
 import com.hydropowerplant.waterlevel.entity.condition.Condition;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,4 +1,4 @@
-package com.hydropowerplant.waterlevel.repository.device;
+package com.hydropowerplant.waterlevel.dataaccesslayer.repository.device;
 
 import com.hydropowerplant.waterlevel.entity.device.Device;
 import jakarta.transaction.Transactional;

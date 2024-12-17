@@ -1,4 +1,4 @@
-package com.hydropowerplant.waterlevel.repository.condition;
+package com.hydropowerplant.waterlevel.dataaccesslayer.repository.condition;
 
 import com.hydropowerplant.waterlevel.entity.condition.Condition;
 import org.springframework.data.jpa.repository.JpaRepository;
