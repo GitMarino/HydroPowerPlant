@@ -15,10 +15,10 @@ public class ScenarioDto implements Serializable {
     private static final long serialVersionUID = -4148276754147704024L;
 
     @NotEmpty
-    private List<Integer> actions;
+    private List<@NotNull Integer> actions;
 
     @NotEmpty
-    private List<Integer> conditions;
+    private List<@NotNull Integer> conditions;
 
     private String description;
 

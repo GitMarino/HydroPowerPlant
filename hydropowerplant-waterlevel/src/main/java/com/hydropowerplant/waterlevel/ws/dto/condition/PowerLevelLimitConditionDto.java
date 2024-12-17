@@ -1,6 +1,7 @@
 package com.hydropowerplant.waterlevel.ws.dto.condition;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 import java.io.Serial;
@@ -13,8 +14,8 @@ public class PowerLevelLimitConditionDto implements Serializable {
     @Serial
     private static final long serialVersionUID = 6407212529034798218L;
 
-    @NotBlank
-    private List<String> devices;
+    @NotEmpty
+    private List<@NotBlank String> devices;
 
     @NotNull
     private Double maxPowerLevel;

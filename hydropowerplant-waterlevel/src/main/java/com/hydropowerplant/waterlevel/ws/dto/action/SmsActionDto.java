@@ -2,7 +2,6 @@ package com.hydropowerplant.waterlevel.ws.dto.action;
 
 import com.hydropowerplant.waterlevel.businesslogic.annotation.PhoneNumber;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
 import java.util.Objects;
 
@@ -11,7 +10,7 @@ public class SmsActionDto {
     @NotBlank
     private String name;
 
-    @NotNull
+    @NotBlank
     @PhoneNumber
     private String phoneNumber;
 
