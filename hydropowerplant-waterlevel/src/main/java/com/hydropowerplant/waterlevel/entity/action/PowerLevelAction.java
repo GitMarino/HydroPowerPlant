@@ -63,4 +63,5 @@ public class PowerLevelAction extends Action {
                 ", multiplier=" + multiplier +
                 '}';
     }
+    
 }

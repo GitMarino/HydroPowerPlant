@@ -78,4 +78,5 @@ public class DeviceLog extends IdentifiedEntity {
                 ", recordedAt=" + recordedAt +
                 '}';
     }
+    
 }

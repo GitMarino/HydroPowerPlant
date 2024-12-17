@@ -49,4 +49,5 @@ public class PowerLevelCondition extends Condition {
                 "devices=" + devices +
                 '}';
     }
+    
 }

@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 
+import java.util.Objects;
+
 @Entity(name = Condition.TABLE_NAME)
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Condition extends IdentifiedEntity {
@@ -43,4 +45,24 @@ public class Condition extends IdentifiedEntity {
         this.type = type;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Condition condition)) return false;
+        if (!super.equals(o)) return false;
+        return Objects.equals(name, condition.name) && Objects.equals(type, condition.type);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), name, type);
+    }
+
+    @Override
+    public String toString() {
+        return "Condition{" +
+                "name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                '}';
+    }
+    
 }

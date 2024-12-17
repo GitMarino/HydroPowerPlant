@@ -76,5 +76,6 @@ public class PowerLevelLimitCondition extends Condition {
                 ", minPowerLevel=" + minPowerLevel +
                 '}';
     }
+    
 }
 

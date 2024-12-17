@@ -46,4 +46,5 @@ public class IdentifiedEntity {
                 "id=" + id +
                 '}';
     }
+    
 }
