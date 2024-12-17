@@ -8,4 +8,4 @@ Hydro power plant management software (10/2024 - 12/2024).
 - Programming paradigms : Aspect-Oriented Programming, Data-Driven Programming, Object-Oriented Programming.
 - Design patterns : Factory Method, Strategy.
 - Entity-Relationship Diagram :
-![hppDB](https://github.com/user-attachments/assets/ed8ea0a9-7c7e-42cb-be4a-ddd1b2d6a041)
+![hppDB](https://github.com/user-attachments/assets/8ce85318-3490-4b48-a131-a1a725dc65dc)
