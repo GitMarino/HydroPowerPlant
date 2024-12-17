@@ -62,11 +62,10 @@ public class ScenarioBoImpl implements ScenarioBo {
 
     @Override
     public <S extends Event> void performActions(Set<Condition> conditions, S event) {
-        List<ScenarioProjection> spl = scenarioDao.findByEnabledTrueAndConditionsIn(conditions);
-        for (ScenarioProjection sp : spl) {
-            for (Action a : sp.getActions()) {
-                actionBoFactory.getActionBo(a.getType()).start(a, event);
-            }
+        List<ScenarioProjection> scenarioProjections = scenarioDao.findByEnabledTrueAndConditionsIn(conditions);
+        for (ScenarioProjection scenarioProjection : scenarioProjections) {
+            scenarioProjection.getActions().parallelStream()
+                    .forEach(action -> actionBoFactory.getActionBo(action.getType()).start(action, event));
         }
     }
 
