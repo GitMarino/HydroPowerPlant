@@ -9,6 +9,8 @@ import com.hydropowerplant.waterlevel.entity.action.Action;
 import com.hydropowerplant.waterlevel.entity.action.PowerLevelAction;
 import com.hydropowerplant.waterlevel.entity.device.Device;
 import com.hydropowerplant.waterlevel.presentationlayer.dto.action.PowerLevelActionDto;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
@@ -31,11 +33,13 @@ public class PowerLevelActionBoImpl implements ActionBo, PowerLevelActionBo {
         this.powerLevelActionDao = powerLevelActionDao;
     }
 
+    private static final Logger log = LoggerFactory.getLogger(PowerLevelActionBoImpl.class);
 
     @Override
     public void createPowerLevelAction(PowerLevelActionDto powerLevelActionDto) {
         Set<Device> devices = powerLevelActionDto.getDevices().stream().map(deviceBo::getBySerial).collect(Collectors.toSet());
-        powerLevelActionDao.save(new PowerLevelAction(null, powerLevelActionDto.getName(), powerLevelActionDto.getType(), devices, powerLevelActionDto.getMultiplier()));
+        PowerLevelAction powerLevelAction = powerLevelActionDao.save(new PowerLevelAction(null, powerLevelActionDto.getName(), powerLevelActionDto.getType(), devices, powerLevelActionDto.getMultiplier()));
+        log.info("Power level action {} with id={} created", powerLevelActionDto.getName(), powerLevelAction.getId());
     }
 
     @Override

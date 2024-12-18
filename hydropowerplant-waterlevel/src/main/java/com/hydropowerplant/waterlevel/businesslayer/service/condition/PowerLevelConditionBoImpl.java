@@ -5,6 +5,8 @@ import com.hydropowerplant.waterlevel.dataaccesslayer.repository.condition.Power
 import com.hydropowerplant.waterlevel.entity.condition.PowerLevelCondition;
 import com.hydropowerplant.waterlevel.entity.device.Device;
 import com.hydropowerplant.waterlevel.presentationlayer.dto.condition.PowerLevelConditionDto;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
@@ -22,11 +24,13 @@ public class PowerLevelConditionBoImpl implements PowerLevelConditionBo {
         this.powerLevelConditionDao = powerLevelConditionDao;
     }
 
+    public static final Logger log = LoggerFactory.getLogger(PowerLevelConditionBoImpl.class);
 
     @Override
     public void createPowerLevelCondition(PowerLevelConditionDto powerLevelConditionDto) {
         Set<Device> devices = powerLevelConditionDto.getDevices().stream().map(deviceBo::getBySerial).collect(Collectors.toSet());
-        powerLevelConditionDao.save(new PowerLevelCondition(null, powerLevelConditionDto.getName(), powerLevelConditionDto.getType(), devices));
+        PowerLevelCondition powerLevelCondition = powerLevelConditionDao.save(new PowerLevelCondition(null, powerLevelConditionDto.getName(), powerLevelConditionDto.getType(), devices));
+        log.info("PowerLevelCondition {} with id={} created", powerLevelCondition.getName(), powerLevelCondition.getId());
     }
 
 }

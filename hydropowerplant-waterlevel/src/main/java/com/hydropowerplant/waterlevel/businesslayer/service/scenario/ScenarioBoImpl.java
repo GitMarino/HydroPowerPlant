@@ -11,6 +11,8 @@ import com.hydropowerplant.waterlevel.entity.Scenario;
 import com.hydropowerplant.waterlevel.entity.action.Action;
 import com.hydropowerplant.waterlevel.entity.condition.Condition;
 import com.hydropowerplant.waterlevel.presentationlayer.dto.ScenarioDto;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,12 +38,14 @@ public class ScenarioBoImpl implements ScenarioBo {
         this.scenarioDao = scenarioDao;
     }
 
+    public static final Logger log = LoggerFactory.getLogger(ScenarioBoImpl.class);
 
     @Override
     public void createScenario(ScenarioDto scenarioDto) {
         Set<Action> actions = scenarioDto.getActions().stream().map(this::getActionById).collect(Collectors.toSet());
         Set<Condition> conditions = scenarioDto.getConditions().stream().map(this::getConditionById).collect(Collectors.toSet());
-        scenarioDao.save(new Scenario(null, scenarioDto.getDescription(), actions, conditions, scenarioDto.getEnabled(), scenarioDto.getName()));
+        Scenario scenario = scenarioDao.save(new Scenario(null, actions, conditions, scenarioDto.getDescription(), scenarioDto.getEnabled(), scenarioDto.getName()));
+        log.info("Scenario {} with id={} created", scenario.getName(), scenario.getId());
     }
 
     private Action getActionById(Integer actionId) {
@@ -49,6 +53,7 @@ public class ScenarioBoImpl implements ScenarioBo {
         if (optionalAction.isPresent()) {
             return optionalAction.get();
         }
+        log.error("No action found with id={}", actionId);
         throw new ItemNotFoundException("No action found with id=" + actionId);
     }
 
@@ -57,6 +62,7 @@ public class ScenarioBoImpl implements ScenarioBo {
         if (optionalCondition.isPresent()) {
             return optionalCondition.get();
         }
+        log.error("No condition found with id={}", conditionId);
         throw new ItemNotFoundException("No condition found with id=" + conditionId);
     }
 

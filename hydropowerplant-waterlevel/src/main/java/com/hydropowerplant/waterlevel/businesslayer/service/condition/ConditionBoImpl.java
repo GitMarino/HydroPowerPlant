@@ -9,6 +9,8 @@ import com.hydropowerplant.waterlevel.dataaccesslayer.repository.condition.Power
 import com.hydropowerplant.waterlevel.dataaccesslayer.repository.condition.PowerLevelLimitConditionDao;
 import com.hydropowerplant.waterlevel.entity.condition.Condition;
 import com.hydropowerplant.waterlevel.entity.device.DeviceLog;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -36,9 +38,11 @@ public class ConditionBoImpl implements ConditionBo {
         this.scenarioBo = scenarioBo;
     }
 
+    public static final Logger log = LoggerFactory.getLogger(ConditionBoImpl.class);
 
     @Override
     public void manageDeviceEvent(DeviceEvent deviceEvent) {
+        log.info("Device event {} has occurred", deviceEvent);
         String serial = deviceEvent.getSerial();
         double powerLevel = deviceEvent.getPowerLevel();
 

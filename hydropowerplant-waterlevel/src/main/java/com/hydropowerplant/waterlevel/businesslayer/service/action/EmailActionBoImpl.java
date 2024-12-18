@@ -5,6 +5,8 @@ import com.hydropowerplant.waterlevel.businesslayer.object.property.MailProperti
 import com.hydropowerplant.waterlevel.dataaccesslayer.repository.action.EmailActionDao;
 import com.hydropowerplant.waterlevel.entity.action.Action;
 import com.hydropowerplant.waterlevel.entity.action.EmailAction;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -26,10 +28,12 @@ public class EmailActionBoImpl implements ActionBo, EmailActionBo {
         this.mailProperties = mailProperties;
     }
 
+    public static final Logger log = LoggerFactory.getLogger(EmailActionBoImpl.class);
 
     @Override
     public void saveEmailAction(EmailAction emailAction) {
-        emailActionDao.save(emailAction);
+        EmailAction emailActionDB = emailActionDao.save(emailAction);
+        log.info("Email action {} with id={} created", emailActionDB.getName(), emailActionDB.getId());
     }
 
     @Override
@@ -41,6 +45,7 @@ public class EmailActionBoImpl implements ActionBo, EmailActionBo {
             message.setSubject(emailAction.getSubject());
             message.setText(emailAction.getText());
             javaEmailSender.send(message);
+            log.info("Email sent to {}", emailAction.getAddress());
         }
     }
     

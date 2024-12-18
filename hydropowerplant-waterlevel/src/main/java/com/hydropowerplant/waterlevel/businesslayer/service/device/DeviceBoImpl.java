@@ -5,6 +5,8 @@ import com.hydropowerplant.waterlevel.dataaccesslayer.repository.device.DeviceDa
 import com.hydropowerplant.waterlevel.entity.device.Device;
 import com.hydropowerplant.waterlevel.presentationlayer.dto.ResponseDto;
 import com.hydropowerplant.waterlevel.presentationlayer.dto.device.PowerLevelDto;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -27,6 +29,9 @@ public class DeviceBoImpl implements DeviceBo {
         this.restTemplate = new RestTemplate();
     }
 
+    public static final Logger log = LoggerFactory.getLogger(DeviceBoImpl.class);
+
+    private static final String noDeviceFoundMessage = "No device found with serial={}";
 
     @Override
     public Device getBySerial(String serial) {
@@ -34,12 +39,14 @@ public class DeviceBoImpl implements DeviceBo {
         if (optionalDevice.isPresent()) {
             return optionalDevice.get();
         }
+        log.error(noDeviceFoundMessage, serial);
         throw new ItemNotFoundException("No device found with serial=" + serial);
     }
 
     @Override
     public void saveDevice(Device device) {
         deviceDao.save(device);
+        log.info("Device {} with serial={} created", device.getName(), device.getSerial());
     }
 
     @Override
@@ -55,11 +62,13 @@ public class DeviceBoImpl implements DeviceBo {
         if (response.getStatusCode().is2xxSuccessful()) {
             updatePowerLevel(serial, powerLevel);
         }
+        log.info("Device {} with serial={} set with power level={}", device.getName(), device.getSerial(), powerLevel);
     }
 
     @Override
     public void updatePowerLevel(String serial, double powerLevel) {
         if (deviceDao.updatePowerLevelBySerial(serial, powerLevel) == 0) {
+            log.error(noDeviceFoundMessage, serial);
             throw new ItemNotFoundException("No device found with serial=" + serial);
         }
     }
