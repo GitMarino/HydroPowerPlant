@@ -38,7 +38,7 @@ public class Scenario extends IdentifiedEntity {
     public Scenario() {
     }
 
-    public Scenario(Integer id, String description, Set<Action> actions, Set<Condition> conditions, boolean enabled, String name) {
+    public Scenario(Integer id, Set<Action> actions, Set<Condition> conditions, String description, boolean enabled, String name) {
         super(id);
         this.actions = actions;
         this.conditions = conditions;
