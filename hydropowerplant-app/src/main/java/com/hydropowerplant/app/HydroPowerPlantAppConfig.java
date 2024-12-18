@@ -1,6 +1,7 @@
 package com.hydropowerplant.app;
 
 import com.hydropowerplant.waterlevel.businesslayer.object.property.MailProperties;
+import com.hydropowerplant.waterlevel.businesslayer.object.property.SmsProperties;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
@@ -18,7 +19,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
         @PropertySource("classpath:mail.properties"),
         @PropertySource("classpath:server.properties")
 })
-@EnableConfigurationProperties(MailProperties.class)
+@EnableConfigurationProperties({MailProperties.class, SmsProperties.class})
 public class HydroPowerPlantAppConfig {
 
 }

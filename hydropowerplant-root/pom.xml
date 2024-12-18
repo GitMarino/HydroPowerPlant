@@ -23,6 +23,7 @@
 		<postgresql.version>42.7.3</postgresql.version>
 		<hibernate-core.version>6.6.0.Final</hibernate-core.version>
 		<libphonenumber.version>8.13.51</libphonenumber.version>
+		<twilio.version>10.6.4</twilio.version>
 	</properties>
 
 	<dependencyManagement>
@@ -68,6 +69,11 @@
 				<groupId>com.googlecode.libphonenumber</groupId>
 				<artifactId>libphonenumber</artifactId>
 				<version>${libphonenumber.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.twilio.sdk</groupId>
+				<artifactId>twilio</artifactId>
+				<version>${twilio.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
