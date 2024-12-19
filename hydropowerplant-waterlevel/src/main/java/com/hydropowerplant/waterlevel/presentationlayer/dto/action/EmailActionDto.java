@@ -10,8 +10,6 @@ import java.util.Objects;
 
 public class EmailActionDto implements Serializable {
 
-    //TODO return a response with the wrong attribute
-
     @Serial
     private static final long serialVersionUID = -3874322908279588911L;
 
