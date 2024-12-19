@@ -1,6 +1,7 @@
 package com.hydropowerplant.waterlevel.presentationlayer.controller.condition;
 
 import com.hydropowerplant.waterlevel.businesslayer.object.event.DeviceEvent;
+import com.hydropowerplant.waterlevel.businesslayer.service.CachedThreadPool;
 import com.hydropowerplant.waterlevel.businesslayer.service.condition.ConditionBo;
 import com.hydropowerplant.waterlevel.presentationlayer.dto.ResponseDto;
 import com.hydropowerplant.waterlevel.presentationlayer.dto.device.DeviceEventDto;
@@ -16,16 +17,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/condition")
 public class ConditionController {
 
+    private final CachedThreadPool cachedThreadPool;
+
     private final ConditionBo conditionBo;
 
-    public ConditionController(ConditionBo conditionBo) {
+    public ConditionController(CachedThreadPool cachedThreadPool, ConditionBo conditionBo) {
+        this.cachedThreadPool = cachedThreadPool;
         this.conditionBo = conditionBo;
     }
 
 
     @PostMapping("/device")
     public ResponseEntity<ResponseDto> manageDeviceEvent(@Valid @RequestBody DeviceEventDto deviceEventDto) {
-        conditionBo.manageDeviceEvent(new DeviceEvent(deviceEventDto.getRecordedAt(), deviceEventDto.getPowerLevel(), deviceEventDto.getSerial()));
+        cachedThreadPool.getExecutor().execute(
+                () -> conditionBo.manageDeviceEvent(new DeviceEvent(deviceEventDto.getRecordedAt(), deviceEventDto.getPowerLevel(), deviceEventDto.getSerial())));
         return new ResponseEntity<>(new ResponseDto("Success!"), HttpStatus.OK);
     }
 
