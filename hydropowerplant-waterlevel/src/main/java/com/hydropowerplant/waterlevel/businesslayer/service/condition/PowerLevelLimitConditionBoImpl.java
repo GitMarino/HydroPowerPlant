@@ -32,7 +32,7 @@ public class PowerLevelLimitConditionBoImpl implements PowerLevelLimitConditionB
         PowerLevelLimitCondition powerLevelLimitCondition = powerLevelLimitConditionDao.save(new PowerLevelLimitCondition(
                 null, powerLevelLimitConditionDto.getName(), powerLevelLimitConditionDto.getType(), devices,
                 powerLevelLimitConditionDto.getMaxPowerLevel(), powerLevelLimitConditionDto.getMinPowerLevel()));
-        log.info("PowerLevelLimitCondition {} with id={} created", powerLevelLimitCondition.getName(), powerLevelLimitCondition.getId());
+        log.info("Power level limit condition created with id [{}]", powerLevelLimitCondition.getId());
     }
 
 }

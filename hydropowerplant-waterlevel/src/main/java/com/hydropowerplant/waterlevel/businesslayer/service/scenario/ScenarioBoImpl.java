@@ -45,7 +45,7 @@ public class ScenarioBoImpl implements ScenarioBo {
         Set<Action> actions = scenarioDto.getActions().stream().map(this::getActionById).collect(Collectors.toSet());
         Set<Condition> conditions = scenarioDto.getConditions().stream().map(this::getConditionById).collect(Collectors.toSet());
         Scenario scenario = scenarioDao.save(new Scenario(null, actions, conditions, scenarioDto.getDescription(), scenarioDto.getEnabled(), scenarioDto.getName()));
-        log.info("Scenario {} with id={} created", scenario.getName(), scenario.getId());
+        log.info("Scenario created with id [{}]", scenario.getId());
     }
 
     private Action getActionById(Integer actionId) {
@@ -53,7 +53,7 @@ public class ScenarioBoImpl implements ScenarioBo {
         if (optionalAction.isPresent()) {
             return optionalAction.get();
         }
-        log.error("No action found with id={}", actionId);
+        log.error("No action found with id [{}]", actionId);
         throw new ItemNotFoundException("No action found with id=" + actionId);
     }
 
@@ -62,13 +62,14 @@ public class ScenarioBoImpl implements ScenarioBo {
         if (optionalCondition.isPresent()) {
             return optionalCondition.get();
         }
-        log.error("No condition found with id={}", conditionId);
+        log.error("No condition found with id [{}]", conditionId);
         throw new ItemNotFoundException("No condition found with id=" + conditionId);
     }
 
     @Override
     public <S extends Event> void performActions(Set<Condition> conditions, S event) {
         List<ScenarioProjection> scenarioProjections = scenarioDao.findByEnabledTrueAndConditionsIn(conditions);
+        log.debug("{} scenarios activated", scenarioProjections.size());
         for (ScenarioProjection scenarioProjection : scenarioProjections) {
             scenarioProjection.getActions().parallelStream()
                     .forEach(action -> actionBoFactory.getActionBo(action.getType()).start(action, event));

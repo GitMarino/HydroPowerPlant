@@ -30,7 +30,7 @@ public class PowerLevelConditionBoImpl implements PowerLevelConditionBo {
     public void createPowerLevelCondition(PowerLevelConditionDto powerLevelConditionDto) {
         Set<Device> devices = powerLevelConditionDto.getDevices().stream().map(deviceBo::getBySerial).collect(Collectors.toSet());
         PowerLevelCondition powerLevelCondition = powerLevelConditionDao.save(new PowerLevelCondition(null, powerLevelConditionDto.getName(), powerLevelConditionDto.getType(), devices));
-        log.info("PowerLevelCondition {} with id={} created", powerLevelCondition.getName(), powerLevelCondition.getId());
+        log.info("Power level condition created with id [{}]", powerLevelCondition.getId());
     }
 
 }

@@ -31,7 +31,7 @@ public class DeviceBoImpl implements DeviceBo {
 
     public static final Logger log = LoggerFactory.getLogger(DeviceBoImpl.class);
 
-    private static final String noDeviceFoundMessage = "No device found with serial={}";
+    private static final String noDeviceFoundMessage = "No device found with serial [{}]";
 
     @Override
     public Device getBySerial(String serial) {
@@ -46,7 +46,7 @@ public class DeviceBoImpl implements DeviceBo {
     @Override
     public void saveDevice(Device device) {
         deviceDao.save(device);
-        log.info("Device {} with serial={} created", device.getName(), device.getSerial());
+        log.info("Device created with serial [{}]", device.getSerial());
     }
 
     @Override
@@ -62,7 +62,7 @@ public class DeviceBoImpl implements DeviceBo {
         if (response.getStatusCode().is2xxSuccessful()) {
             updatePowerLevel(serial, powerLevel);
         }
-        log.info("Device {} with serial={} set with power level={}", device.getName(), device.getSerial(), powerLevel);
+        log.info("Device with serial [{}] power level set to [{}]", device.getSerial(), powerLevel);
     }
 
     @Override

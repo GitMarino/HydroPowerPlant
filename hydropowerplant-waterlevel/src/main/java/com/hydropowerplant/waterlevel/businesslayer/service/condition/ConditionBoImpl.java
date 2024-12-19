@@ -42,7 +42,7 @@ public class ConditionBoImpl implements ConditionBo {
 
     @Override
     public void manageDeviceEvent(DeviceEvent deviceEvent) {
-        log.info("Device event {} has occurred", deviceEvent);
+        log.info("Device event [{}] occurred", deviceEvent);
         String serial = deviceEvent.getSerial();
         double powerLevel = deviceEvent.getPowerLevel();
 
@@ -52,6 +52,7 @@ public class ConditionBoImpl implements ConditionBo {
 
         Set<Condition> conditions = powerLevelConditionDao.findByDevicesSerial(serial);
         conditions.addAll(powerLevelLimitConditionDao.findByDevicesSerialAndMinPowerLevelGreaterThanOrMaxPowerLevelLessThan(serial, powerLevel, powerLevel));
+        log.debug("{} conditions activated", conditions.size());
         performScenarios(conditions, deviceEvent);
     }
 

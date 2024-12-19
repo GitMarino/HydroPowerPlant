@@ -39,7 +39,7 @@ public class PowerLevelActionBoImpl implements ActionBo, PowerLevelActionBo {
     public void createPowerLevelAction(PowerLevelActionDto powerLevelActionDto) {
         Set<Device> devices = powerLevelActionDto.getDevices().stream().map(deviceBo::getBySerial).collect(Collectors.toSet());
         PowerLevelAction powerLevelAction = powerLevelActionDao.save(new PowerLevelAction(null, powerLevelActionDto.getName(), powerLevelActionDto.getType(), devices, powerLevelActionDto.getMultiplier()));
-        log.info("Power level action {} with id={} created", powerLevelActionDto.getName(), powerLevelAction.getId());
+        log.info("Power level action created with id [{}]", powerLevelAction.getId());
     }
 
     @Override

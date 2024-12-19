@@ -32,7 +32,7 @@ public class SmsActionBoImpl implements ActionBo, SmsActionBo {
     @Override
     public void saveSmsAction(SmsAction smsAction) {
         SmsAction smsActionDB = smsActionDao.save(smsAction);
-        log.info("Sms action {} with id={} created", smsActionDB.getName(), smsActionDB.getId());
+        log.info("Sms action created with id [{}]", smsActionDB.getId());
     }
 
     @Override
@@ -43,7 +43,7 @@ public class SmsActionBoImpl implements ActionBo, SmsActionBo {
                             new PhoneNumber(smsProperties.getPhoneNumber()),
                             smsAction.getText())
                     .create();
-            log.info("SMS sent to {}", smsAction.getPhoneNumber());
+            log.info("SMS sent to [{}]", smsAction.getPhoneNumber());
         }
     }
     

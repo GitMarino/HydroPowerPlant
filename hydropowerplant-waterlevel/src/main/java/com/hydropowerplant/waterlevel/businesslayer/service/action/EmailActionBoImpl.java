@@ -33,7 +33,7 @@ public class EmailActionBoImpl implements ActionBo, EmailActionBo {
     @Override
     public void saveEmailAction(EmailAction emailAction) {
         EmailAction emailActionDB = emailActionDao.save(emailAction);
-        log.info("Email action {} with id={} created", emailActionDB.getName(), emailActionDB.getId());
+        log.info("Email action created with id [{}]", emailActionDB.getId());
     }
 
     @Override
@@ -45,7 +45,7 @@ public class EmailActionBoImpl implements ActionBo, EmailActionBo {
             message.setSubject(emailAction.getSubject());
             message.setText(emailAction.getText());
             javaEmailSender.send(message);
-            log.info("Email sent to {}", emailAction.getAddress());
+            log.info("Email sent to [{}]", emailAction.getAddress());
         }
     }
     

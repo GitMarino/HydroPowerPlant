@@ -19,8 +19,8 @@ public class DeviceLogBoImpl implements DeviceLogBo {
 
     @Override
     public void saveDeviceLog(DeviceLog deviceLog) {
-        deviceLogDao.save(deviceLog);
-        log.info("State of device {} with serial={} saved", deviceLog.getDevice().getName(), deviceLog.getDevice().getSerial());
+        DeviceLog deviceLogDB = deviceLogDao.save(deviceLog);
+        log.info("Device log created with id [{}]", deviceLogDB.getId());
     }
     
 }
