@@ -38,12 +38,16 @@ public class SmsActionBoImpl implements ActionBo, SmsActionBo {
     @Override
     public <T extends Action, S extends Event> void start(T action, S event) {
         if (action instanceof SmsAction smsAction) {
-            Message.creator(
-                            new PhoneNumber(smsAction.getPhoneNumber()),
-                            new PhoneNumber(smsProperties.getNumber()),
-                            smsAction.getText())
-                    .create();
-            log.info("SMS sent to [{}]", smsAction.getPhoneNumber());
+            try {
+                Message.creator(
+                                new PhoneNumber(smsAction.getPhoneNumber()),
+                                new PhoneNumber(smsProperties.getNumber()),
+                                smsAction.getText())
+                        .create();
+                log.info("SMS sent to [{}]", smsAction.getPhoneNumber());
+            } catch (Exception e) {
+                log.error(e.getMessage(), e);
+            }
         }
     }
     

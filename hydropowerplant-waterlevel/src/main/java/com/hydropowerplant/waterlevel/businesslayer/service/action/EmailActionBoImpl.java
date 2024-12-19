@@ -44,8 +44,12 @@ public class EmailActionBoImpl implements ActionBo, EmailActionBo {
             message.setTo(emailAction.getAddress());
             message.setSubject(emailAction.getSubject());
             message.setText(emailAction.getText());
-            javaEmailSender.send(message);
-            log.info("Email sent to [{}]", emailAction.getAddress());
+            try {
+                javaEmailSender.send(message);
+                log.info("Email sent to [{}]", emailAction.getAddress());
+            } catch (Exception e) {
+                log.error(e.getMessage(), e);
+            }
         }
     }
     
