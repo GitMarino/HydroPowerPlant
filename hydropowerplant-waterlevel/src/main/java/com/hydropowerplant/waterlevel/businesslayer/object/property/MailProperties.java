@@ -18,7 +18,7 @@ public class MailProperties {
     @NotNull
     private Integer port;
 
-    @NotNull
+    @NotBlank
     @Email
     private String username;
 

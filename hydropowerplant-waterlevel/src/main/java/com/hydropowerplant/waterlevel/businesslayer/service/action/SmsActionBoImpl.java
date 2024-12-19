@@ -24,7 +24,7 @@ public class SmsActionBoImpl implements ActionBo, SmsActionBo {
     public SmsActionBoImpl(SmsActionDao smsActionDao, SmsProperties smsProperties) {
         this.smsActionDao = smsActionDao;
         this.smsProperties = smsProperties;
-        Twilio.init(smsProperties.getAccountSid(), smsProperties.getAuthToken());
+        Twilio.init(smsProperties.getUsername(), smsProperties.getPassword());
     }
 
     private static final Logger log = LoggerFactory.getLogger(SmsActionBoImpl.class);
@@ -40,7 +40,7 @@ public class SmsActionBoImpl implements ActionBo, SmsActionBo {
         if (action instanceof SmsAction smsAction) {
             Message.creator(
                             new PhoneNumber(smsAction.getPhoneNumber()),
-                            new PhoneNumber(smsProperties.getPhoneNumber()),
+                            new PhoneNumber(smsProperties.getNumber()),
                             smsAction.getText())
                     .create();
             log.info("SMS sent to [{}]", smsAction.getPhoneNumber());

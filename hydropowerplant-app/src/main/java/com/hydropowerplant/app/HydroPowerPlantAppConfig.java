@@ -17,7 +17,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @PropertySources({
         @PropertySource("classpath:database.properties"),
         @PropertySource("classpath:mail.properties"),
-        @PropertySource("classpath:server.properties")
+        @PropertySource("classpath:server.properties"),
+        @PropertySource("classpath:sms.properties")
 })
 @EnableConfigurationProperties({MailProperties.class, SmsProperties.class})
 public class HydroPowerPlantAppConfig {

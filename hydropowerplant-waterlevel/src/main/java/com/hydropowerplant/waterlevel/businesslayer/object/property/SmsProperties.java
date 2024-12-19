@@ -14,56 +14,57 @@ import java.util.Objects;
 public class SmsProperties {
 
     @NotBlank
-    private String accountSid;
-
-    @NotBlank
-    private String authToken;
-
-    @NotBlank
     @PhoneNumber
-    private String phoneNumber;
+    private String number;
 
-    public String getAccountSid() {
-        return accountSid;
+    @NotBlank
+    private String password;
+
+    @NotBlank
+    private String username;
+
+    public String getNumber() {
+        return number;
     }
 
-    public String getAuthToken() {
-        return authToken;
+    public String getPassword() {
+        return password;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getUsername() {
+        return username;
     }
 
-    public void setAccountSid(String accountSid) {
-        this.accountSid = accountSid;
+    public void setNumber(String number) {
+        this.number = number;
     }
 
-    public void setAuthToken(String authToken) {
-        this.authToken = authToken;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof SmsProperties that)) return false;
-        return Objects.equals(accountSid, that.accountSid) && Objects.equals(authToken, that.authToken) && Objects.equals(phoneNumber, that.phoneNumber);
+        return Objects.equals(number, that.number) && Objects.equals(password, that.password) && Objects.equals(username, that.username);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(accountSid, authToken, phoneNumber);
+        return Objects.hash(number, password, username);
     }
 
     @Override
     public String toString() {
         return "SmsProperties{" +
-                "accountSid='" + accountSid + '\'' +
-                ", authToken='" + authToken + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
+                "number='" + number + '\'' +
+                ", password='" + password + '\'' +
+                ", username='" + username + '\'' +
                 '}';
     }
+    
 }
