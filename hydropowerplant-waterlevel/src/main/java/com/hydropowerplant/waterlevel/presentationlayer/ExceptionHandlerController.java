@@ -22,18 +22,17 @@ public class ExceptionHandlerController {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ResponseDto> handleMethodArgumentNotValidException(final MethodArgumentNotValidException exception) {
-        return new ResponseEntity<>(new ResponseDto("Failure! " + buildMethodArgumentNotValidException(exception.getBindingResult().getFieldErrors())), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new ResponseDto(buildResponseForMethodArgumentNotValidException(exception.getBindingResult().getFieldErrors())), HttpStatus.BAD_REQUEST);
     }
 
-    private String buildMethodArgumentNotValidException(List<FieldError> fieldErrors) {
+    private String buildResponseForMethodArgumentNotValidException(List<FieldError> fieldErrors) {
+        StringBuilder stringBuilder = new StringBuilder("Failure!");
         if (!CollectionUtils.isEmpty(fieldErrors)) {
-            StringBuilder stringBuilder = new StringBuilder();
             for (FieldError fieldError : fieldErrors) {
-                stringBuilder.append(String.format("%s: %s;", fieldError.getField(), fieldError.getDefaultMessage()));
+                stringBuilder.append(String.format(" %s:%s;", fieldError.getField(), fieldError.getDefaultMessage()));
             }
-            return stringBuilder.toString();
         }
-        return "";
+        return stringBuilder.toString();
     }
 
 }
