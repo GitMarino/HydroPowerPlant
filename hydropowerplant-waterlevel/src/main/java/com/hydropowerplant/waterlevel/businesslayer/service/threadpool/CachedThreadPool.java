@@ -1,4 +1,4 @@
-package com.hydropowerplant.waterlevel.businesslayer.service;
+package com.hydropowerplant.waterlevel.businesslayer.service.threadpool;
 
 import org.springframework.stereotype.Service;
 
